@@ -12,8 +12,9 @@
   text-align: left;
 }
 
-.card.stage-2 { --stage-color: var(--c-stage-2); --art-filter: saturate(0.75) sepia(0.35); }
-.card.stage-3 { --stage-color: var(--c-stage-3); --art-filter: saturate(0.5) sepia(0.7) hue-rotate(35deg) brightness(0.85); }
+.card.stage-1 { --gauge-fill: 33.4%; }
+.card.stage-2 { --stage-color: var(--c-stage-2); --gauge-fill: 66.7%; --art-filter: saturate(0.75) sepia(0.35); }
+.card.stage-3 { --stage-color: var(--c-stage-3); --gauge-fill: 100%; --art-filter: saturate(0.5) sepia(0.7) hue-rotate(35deg) brightness(0.85); }
 
 .card-inner {
   position: absolute;
@@ -102,7 +103,7 @@
   position: absolute;
   z-index: 2;
   right: 3cqw;
-  bottom: 3cqw;
+  bottom: 12cqw;
   display: flex;
   align-items: center;
   gap: 2cqw;
@@ -136,7 +137,7 @@
   position: absolute;
   z-index: 2;
   left: 3cqw;
-  bottom: 3cqw;
+  bottom: 12cqw;
   display: flex;
   align-items: center;
   gap: 2cqw;
@@ -174,6 +175,22 @@
     radial-gradient(circle at 70% 65%, var(--c-white) 0 14%, transparent 16%),
     #7b3fa0;
   box-shadow: 0 0 0 max(2px, 2cqw) var(--c-ink);
+}
+
+/* Face compacte : jauge de fraîcheur en 3 segments le long du bord bas (stade 1, 2 ou 3) */
+.card-front::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8cqw;
+  border-top: max(2px, 2cqw) solid var(--c-ink);
+  background:
+    linear-gradient(to right, transparent calc(33.3% - 1cqw), var(--c-ink) 0 calc(33.3% + 1cqw), transparent 0),
+    linear-gradient(to right, transparent calc(66.7% - 1cqw), var(--c-ink) 0 calc(66.7% + 1cqw), transparent 0),
+    linear-gradient(to right, var(--stage-color) var(--gauge-fill), var(--c-white) 0);
 }
 
 /* Malus en face compacte : bord rouge à rayures */

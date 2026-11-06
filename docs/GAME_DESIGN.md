@@ -594,7 +594,7 @@ Reprendre · Collection (hors combat) · Options · Retour au titre (confirmatio
 | Audio | Grincement de porte | Activé / Désactivé | Activé |
 | Affichage | Plateau | Incliné (2.5D) / À plat | Incliné |
 | Affichage | Réduire les clignotements | Oui / Non | Non (proposé à l'avertissement) |
-| Affichage | Plein écran | Oui / Non | Non (masquée sur Android, toujours plein écran) |
+| Affichage | Plein écran | Oui / Non | Oui (demandé au premier geste du joueur ; masquée sur Android, toujours plein écran) |
 | Affichage | Taille du texte | Petit / Normal / Grand / Très grand | Normal |
 | Texte | Vitesse du texte | Lent / Normal / Rapide / Instantané | Normal |
 | Jeu | Difficulté | Découverte (Je suis un Noob) / Le vrai jeu (Je suis un Gamer) | Découverte |
@@ -795,3 +795,4 @@ Répliques du narrateur (~120), textes d'ambiance des cartes, dialogues des PNJ,
 - **v1.0** : document initial.
 - **v1.1** : vieillissement continu, stade verrouillé, IA sans vieillissement, miroir strict, raisons d'inactivité, PANIC après passe, garde-fou de dimensionnement.
 - **v2.0** (novembre 2026) : réécriture complète pour un développement avec Claude. Ajout du **tactile** et du **mobile** (§14, §17) ; règles clarifiées : PANIC sur un seul tour, TRANSFER au choix, une carte ne se cible jamais elle-même, pénalité du Scotch avant la division au stade 3, défaite qui restaure la Collection d'avant combat, combat interrompu, règles spéciales de combat en liste fermée (§9.11), Surgelé défini par l'étiquette seule, confirmation pour Passer ; retrait des marques réelles (« Eco+ » → « Premier Prix », « Discord » → « forum ») ; les éléments techniques passent dans `ARCHITECTURE.md`.
+- **v2.0.1** (novembre 2026, demande de l'auteur) : option « Plein écran » à « Oui » par défaut (§15.4).

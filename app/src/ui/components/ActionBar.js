@@ -15,6 +15,7 @@ export function createActionBar(opts) {
   const { t } = opts;
   const passBtn = button(t, 'combat.pass', 'pass', 'btn-pass');
   const flatBtn = button(t, 'combat.flat', 'flat', 'btn-small');
+  flatBtn.setAttribute('aria-label', t('combat.flatLabel'));
   const quitBtn = button(t, 'combat.quit', 'quit', 'btn-small');
   const idle = el('div', { className: 'actions-idle' }, [passBtn, el('div', { className: 'actions-row' }, [flatBtn, quitBtn])]);
 

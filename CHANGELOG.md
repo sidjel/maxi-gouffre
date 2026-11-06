@@ -2,6 +2,49 @@
 
 Une entrée par jalon (ARCHITECTURE.md §18). Tag `vN.0-nom` posé après la fusion dans `main`.
 
+## Défilement du panneau et cartes rognées (2026-11-06)
+
+Retours de l'auteur après le test du plein écran.
+
+### Corrigé
+- **Téléphone : le panneau de droite revenait en haut** au deuxième glissé. Lever le doigt (`pointerleave` au toucher) et chaque coup de l'IA rafraîchissaient la fiche, qui remettait son défilement à zéro. La fiche ne remonte plus qu'en changeant de carte, et `pointerleave` ne compte que pour la souris.
+- **Cartes de la main rognées en bas** (surtout visible en plein écran) : en éventail, les cartes des bords descendaient sous le bas de l'écran. Ce sont maintenant les cartes du centre qui montent.
+
+### Modifié
+- `GAME_DESIGN.md` v2.0.1 (demande de l'auteur) : option « Plein écran » à « Oui » par défaut (§15.4).
+- Tests : le défilement du panneau reste en place (téléphone), aucune carte de la main ne dépasse du bas de l'écran (3 tailles).
+
+## Plein écran (2026-11-06)
+
+Demande de l'auteur : le jeu passe en plein écran tout seul, sur PC et téléphone.
+
+### Ajouté
+- Plein écran au **premier geste du joueur** (toucher, clic ou touche) : un navigateur n'accepte jamais le plein écran sans geste. Sur téléphone Android, l'écran est aussi bloqué en paysage quand c'est possible.
+- Si le navigateur refuse : fenêtre « Jouer en plein écran ? » avec « Plein écran » et « Plus tard ».
+- Petit bouton (icône à 4 coins) en bas à droite, visible tant que le jeu n'est pas en plein écran (par exemple après Échap). Aucune nouvelle tentative automatique si le joueur sort du plein écran exprès.
+- Sans plein écran possible (iPhone, par exemple), ni bouton ni fenêtre.
+- `platform.js` : `fullscreenSupported`, `isFullscreen`, `requestFullscreen`, `onFullscreenChange`. Écran `ui/screens/fullscreen.js`, style `css/fullscreen.css`. Tests `tests/e2e/fullscreen.mjs` (5 cas).
+
+### Corrigé
+- Écran titre sur téléphone : avec « Combat rapide », le logo était coupé en haut et la version chevauchait « Crédits ». Le menu passe sur 2 colonnes, avec « Combat rapide » sur toute la largeur.
+
+## Corrections du J1 — lisibilité du combat (2026-11-06)
+
+Retours de l'auteur après le test en ligne du J1.
+
+### Modifié
+- **Panneau de droite** réorganisé pour un nouveau joueur : en premier la puissance, la fraîcheur actuelle (icône de stade, âge), l'effet dans un encadré, le Malus en rouge, puis le texte d'ambiance ; en retrait en bas, l'évolution sur 3 stades. Le panneau défile au doigt et à la molette, et son bas s'estompe quand il reste du texte.
+- **Sans carte visée**, le panneau affiche « Comment jouer » : poser, gagner une manche, passer, Malus, effets au jalon 2.
+- **Cases du plateau** au format des cartes (5:7). La zone à toucher reste plus large que l'emplacement dessiné. Chaque ligne porte son nom (Avant, Arrière).
+- **Consigne** déplacée au-dessus du plateau. Sur téléphone, elle occupe le vide laissé par le haut du plateau incliné.
+- Textes plus courts pour Malus, Outil, Détruire les voisins, Annuler (voisins) et l'effet pas encore actif.
+- **Jauge de fraîcheur en 3 segments** aussi sur les faces compactes (plateau, main sur téléphone), le long du bord bas, et dans le panneau de droite.
+- Boutons « À plat » (ex-« Plateau à plat ») et « Quitter » plus petits : zone à toucher au minimum de 44 px réels, sans ombre.
+
+### Ajouté
+- `tests/e2e/info-band.mjs` : pour les 26 cartes à leurs 3 stades et aux 3 tailles, l'effet et le Malus se lisent sans défiler (et le texte d'ambiance aussi sur grand écran). Le rappel des règles s'affiche sans carte visée.
+- Capture `plateau-a-plat-telephone-844x390.png`.
+
 ## v1.0-premier-match — J1 : premier match jouable (2026-11-06)
 
 ### Ajouté

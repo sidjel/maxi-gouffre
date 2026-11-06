@@ -17,6 +17,7 @@ import { createStrings } from './ui/strings.js';
 import { createTitleScreen } from './ui/screens/title.js';
 import { createCombatScreen } from './ui/screens/combat.js';
 import { createRotateScreen } from './ui/screens/rotate.js';
+import { createFullscreen } from './ui/screens/fullscreen.js';
 import { showCrash, installCrashHandlers } from './ui/screens/crash.js';
 import { InputHandler } from './input/InputHandler.js';
 import { DEFAULT_BINDINGS } from './input/bindings.js';
@@ -63,6 +64,9 @@ async function boot() {
     ? forcedDelay
     : GAME.AI_DELAY_MIN + Math.round(Math.random() * (GAME.AI_DELAY_MAX - GAME.AI_DELAY_MIN)));
   const ctx = { t, bus, scheduler, tech: TECH, sm, session, aiDelay, navigate: null };
+
+  // Plein écran au premier geste du joueur, ou par un bouton si le navigateur refuse.
+  createFullscreen().mount(doc.getElementById('fullscreen'), { t, bus, platform });
 
   // Rotation : écran superposé et pause (GD §14.5).
   const rotate = createRotateScreen();

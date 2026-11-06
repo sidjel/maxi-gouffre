@@ -50,6 +50,15 @@ function combatShots() {
       },
     },
     {
+      file: 'plateau-a-plat-telephone-844x390.png',
+      context: PHONE_LANDSCAPE,
+      before: async (p) => {
+        await startQuickMatch(p, 'touch');
+        await press(p, '[data-action="flat"]', 'touch');
+        await p.waitForTimeout(400);
+      },
+    },
+    {
       file: 'fin-de-manche-1920x1080.png',
       context: WIDE,
       before: async (p) => {
