@@ -21,9 +21,10 @@ Ces deux documents sont la référence. Ne pas recopier leurs règles ici : les 
 
 ## État du projet
 - Documents v2.0 en place dans `docs/`.
-- **J0 — Socle et mise en ligne** livré sur la branche `j0-socle` (pull request vers `main`) : scène mise à l'échelle (`wide` / `compact`), écran « Tourne ton téléphone », écran titre provisoire, écran de plantage, données `strings.json` et `credits.json` validées, `rng`, `config`, `EventBus`, `Scheduler`, `StateMachine`, `InputHandler` minimal, panneau debug, workflow `pages.yml`. Tag à poser après fusion : `v0.0-socle`.
-- Vérifications : `npm run check` (données, registre, tailles, recherches interdites, tests unitaires) ; `npm run e2e` et `npm run shots` utilisent Playwright (déjà présent dans les sessions cloud, sinon `npm install`).
-- Polices provisoires (Lilita One, Atkinson Hyperlegible, IBM Plex Mono) en attente de validation par l'auteur.
-- Prochain jalon : **J1 — Premier match jouable** (`ARCHITECTURE.md` §18).
+- **J0 — Socle et mise en ligne** : fusionné dans `main` (pull request sidjel/maxi-gouffre#1), tag `v0.0-socle` posé. Testé en ligne par l'auteur sur PC et téléphone : aucun bug. **Polices validées** : Lilita One, Atkinson Hyperlegible, IBM Plex Mono.
+- **J1 — Premier match jouable** livré sur la branche `j1-premier-match` (pull request vers `main`) : « Combat rapide » depuis le titre, contre l'IA Noob (Chad Prot') ; 20 cartes et 6 plats en données (effets présents mais pas résolus) ; plateau 2.5D ou à plat ; main ; pose au pointeur ; Malus ; passer avec confirmation ; scores en direct ; 3 manches, manche nulle, départage, qui commence ; chifoumi ; fins de manche et de match ; `Store`, `Session`. Tag à poser après fusion : `v1.0-premier-match`.
+- Vérifications : `npm run check` (données, registre, tailles, recherches interdites, tests unitaires) ; `npm run e2e` (smoke + `play-match.mjs`) et `npm run shots` utilisent Playwright (déjà présent dans les sessions cloud, sinon `npm install`). Les matchs e2e tournent avec le vrai délai de l'IA (~1 min 30 au total).
+- Dans les sessions cloud, pousser un tag échoue et sidjel.github.io n'est pas joignable : l'auteur pose les tags et teste en ligne.
+- Prochain jalon : **J2 — Effets, vieillissement, IA Gamer** (`ARCHITECTURE.md` §18). Points ouverts : départage aux points même avec 1 manche gagnée contre 2 nulles (DECISIONS J1) ; l'IA Noob vide souvent sa main dès la manche 1, à mesurer par la simulation.
 
 Mettre à jour la section « État du projet » à la fin de chaque jalon.
