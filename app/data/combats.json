@@ -1,0 +1,21 @@
+[
+  {
+    "id": "c2_chad",
+    "opponent": "Chad Prot'",
+    "handBudget": 38,
+    "rules": [],
+    "hand": [
+      { "card": "influenceur", "stage": 1 },
+      { "card": "influenceur", "stage": 1 },
+      { "card": "influenceur", "stage": 2 },
+      { "card": "influenceur", "stage": 3 },
+      { "card": "banane", "stage": 2 },
+      { "card": "plante", "stage": 2 },
+      { "card": "steak", "stage": 2 },
+      { "card": "enfant", "stage": 2 },
+      { "card": "pizza", "stage": 1 },
+      { "card": "console", "stage": 1 }
+    ],
+    "startingBoard": []
+  }
+]

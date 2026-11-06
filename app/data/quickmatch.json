@@ -1,0 +1,16 @@
+{
+  "combat": "c2_chad",
+  "level": "noob",
+  "hand": [
+    { "card": "banane", "age": 15 },
+    { "card": "lait", "age": 30 },
+    { "card": "baguette", "age": 0 },
+    { "card": "steak", "age": 15 },
+    { "card": "plante", "age": 15 },
+    { "card": "pile", "age": 0 },
+    { "card": "chat", "age": 0 },
+    { "card": "cassette", "age": 0 },
+    { "card": "biere", "age": 30 },
+    { "card": "glace", "age": 31 }
+  ]
+}

@@ -1,7 +1,12 @@
 /**
  * Validation des données au chargement. Chaque problème nomme le fichier, l'élément et le champ.
  * Toutes les erreurs sont rassemblées avant de lever une seule DataError.
+ * Après validation : plats dépliés en 3 stades, cartes et combats indexés par identifiant, tout est gelé.
  */
+import { GAME } from '../config.js';
+import { validateCards, validateCombats, validateQuickmatch } from './validateCards.js';
+import { expandCards } from './expand.js';
+import { crossCheck } from './crossCheck.js';
 
 /** Erreur de données : liste de messages lisibles. */
 export class DataError extends Error {
@@ -69,12 +74,23 @@ function validateCredits(data, problems) {
 const VALIDATORS = Object.freeze({
   strings: validateStrings,
   credits: validateCredits,
+  cards: validateCards,
+  combats: validateCombats,
+  quickmatch: validateQuickmatch,
 });
+
+/** Forme utilisée par le jeu : cartes (plats dépliés) et combats indexés par identifiant. */
+function prepare(raw) {
+  const defs = { ...raw };
+  if (raw.cards) defs.cards = expandCards(raw.cards, GAME.FUSED_STAGE3_RATIO);
+  if (raw.combats) defs.combats = Object.fromEntries(raw.combats.map((c) => [c.id, c]));
+  return defs;
+}
 
 /**
  * Valide toutes les données chargées.
  * @param {Record<string, unknown>} raw sortie de loadAll()
- * @returns {Record<string, unknown>} les mêmes données, gelées
+ * @returns {Record<string, any>} données prêtes pour le jeu, gelées
  * @throws {DataError}
  */
 export function validateAll(raw) {
@@ -85,10 +101,13 @@ export function validateAll(raw) {
       problems.push(`données "${key}" : aucun validateur`);
       continue;
     }
-    validator(data, problems);
+    validator(data, problems, GAME);
   }
   if (problems.length > 0) throw new DataError(problems);
-  return deepFreeze(raw);
+  const defs = prepare(raw);
+  const crossProblems = crossCheck(defs, GAME);
+  if (crossProblems.length > 0) throw new DataError(crossProblems);
+  return deepFreeze(defs);
 }
 
 function deepFreeze(obj) {

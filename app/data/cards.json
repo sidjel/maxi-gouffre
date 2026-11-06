@@ -1,0 +1,873 @@
+[
+  {
+    "id": "banane",
+    "family": "banane",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Banane Verte",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Croquante comme un concombre. Personne n'en veut."
+      },
+      {
+        "name": "Banane Parfaite",
+        "power": 6,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Trois secondes de perfection. Profites-en."
+      },
+      {
+        "name": "Bouillie Brune",
+        "power": -1,
+        "effects": [
+          {
+            "type": "ZONE_MALUS"
+          }
+        ],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Ça coule. Ça colle. Ça se glisse chez l'adversaire."
+      }
+    ]
+  },
+  {
+    "id": "steak",
+    "family": "steak",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Steak Haché Premier Prix",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] 15 % de bœuf, 85 % de mystère."
+      },
+      {
+        "name": "Steak Douteux",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] La couleur n'existe pas dans la nature."
+      },
+      {
+        "name": "Bactérie Mortelle",
+        "power": 0,
+        "effects": [
+          {
+            "type": "DESTROY_FACING"
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle a des projets. Des grands projets."
+      }
+    ]
+  },
+  {
+    "id": "lait",
+    "family": "lait",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Lait Entier",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Entier. Pour l'instant."
+      },
+      {
+        "name": "Lait Tourné",
+        "power": 4,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il a tourné. Dans quel sens, on ne sait pas."
+      },
+      {
+        "name": "Fromage Vivant",
+        "power": 8,
+        "effects": [],
+        "tags": [
+          "monstre",
+          "fermentation"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Il respire. Il te regarde."
+      }
+    ]
+  },
+  {
+    "id": "baguette",
+    "family": "baguette",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Pain Baguette",
+        "power": 4,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Tradition française, cuisson industrielle."
+      },
+      {
+        "name": "Baguette Dure",
+        "power": 7,
+        "effects": [
+          {
+            "type": "DESTROY_FACING",
+            "condition": {
+              "stage": 1
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Arme par destination."
+      },
+      {
+        "name": "Poussière de Pain",
+        "power": 1,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle se répand partout. Même dans tes rêves."
+      }
+    ]
+  },
+  {
+    "id": "glace",
+    "family": "glace",
+    "tags": [
+      "aliment",
+      "surgele"
+    ],
+    "stages": [
+      {
+        "name": "Glace Vanille",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Parfum « vanille », arôme « congélateur »."
+      },
+      {
+        "name": "Soupe Sucrée",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Une minute hors du froid et voilà."
+      },
+      {
+        "name": "Flotte Collante",
+        "power": -2,
+        "effects": [],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Une flaque tiède que tu offres à l'adversaire."
+      }
+    ]
+  },
+  {
+    "id": "pizza",
+    "family": "pizza",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Pizza Ananas",
+        "power": 4,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Le débat est clos. Elle existe."
+      },
+      {
+        "name": "Pizza Tiède",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Ni chaude ni froide. Juste triste."
+      },
+      {
+        "name": "Scandale Culinaire",
+        "power": 0,
+        "effects": [
+          {
+            "type": "CANCEL"
+          }
+        ],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Même le Gérant détourne les yeux."
+      }
+    ]
+  },
+  {
+    "id": "pile",
+    "family": "pile",
+    "tags": [
+      "objet"
+    ],
+    "stages": [
+      {
+        "name": "Pile LR6 Neuve",
+        "power": 6,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Pleine d'énergie, contrairement à toi."
+      },
+      {
+        "name": "Pile Faible",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle tient encore. Comme ton moral."
+      },
+      {
+        "name": "Acide de Pile",
+        "power": -2,
+        "effects": [],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Ne pas lécher. Surtout chez toi."
+      }
+    ]
+  },
+  {
+    "id": "cereales",
+    "family": "cereales",
+    "tags": [
+      "aliment"
+    ],
+    "stages": [
+      {
+        "name": "Céréales Fluo",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Couleur garantie sans fruit."
+      },
+      {
+        "name": "Céréales Molles",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Restées trop longtemps dans le lait de la vie."
+      },
+      {
+        "name": "Sucre Toxique",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il brille dans le noir. C'est bon signe ?"
+      }
+    ]
+  },
+  {
+    "id": "influenceur",
+    "family": "influenceur",
+    "tags": [
+      "humain"
+    ],
+    "stages": [
+      {
+        "name": "Influenceur Fitness",
+        "power": 5,
+        "effects": [
+          {
+            "type": "BOOST",
+            "scope": "neighbors",
+            "condition": {
+              "stage": 1
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] « Code promo GOUFFRE pour −10 % sur ta dignité. »"
+      },
+      {
+        "name": "Influenceur Fatigué",
+        "power": 3,
+        "effects": [
+          {
+            "type": "BOOST",
+            "scope": "neighbors",
+            "condition": {
+              "stage": 1
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il filme quand même. Il filme toujours."
+      },
+      {
+        "name": "Influenceur Annulé",
+        "power": -5,
+        "effects": [
+          {
+            "type": "ZONE_MALUS"
+          }
+        ],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Personne ne veut être vu à côté de lui."
+      }
+    ]
+  },
+  {
+    "id": "enfant",
+    "family": "enfant",
+    "tags": [
+      "humain"
+    ],
+    "stages": [
+      {
+        "name": "Enfant Hurlant",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il veut le paquet de bonbons. Maintenant."
+      },
+      {
+        "name": "Enfant Épuisé",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il a tellement crié qu'il en est devenu fort."
+      },
+      {
+        "name": "Enfant Endormi",
+        "power": 1,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Ne le réveille pas. Ne le réveille SURTOUT pas."
+      }
+    ]
+  },
+  {
+    "id": "console",
+    "family": "console",
+    "tags": [
+      "objet"
+    ],
+    "stages": [
+      {
+        "name": "Console Portable",
+        "power": 4,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Batterie : 3 %. Comme d'habitude."
+      },
+      {
+        "name": "Console Rayée",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] L'écran a vu des choses."
+      },
+      {
+        "name": "Console Brickée",
+        "power": 0,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Un presse-papier très cher."
+      }
+    ]
+  },
+  {
+    "id": "papier",
+    "family": "papier",
+    "tags": [
+      "objet"
+    ],
+    "stages": [
+      {
+        "name": "Papier Toilette",
+        "power": 1,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] La vraie monnaie du Gouffre."
+      },
+      {
+        "name": "Dernier Rouleau",
+        "power": 10,
+        "effects": [
+          {
+            "type": "PANIC"
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Tout le monde le veut. Panique générale."
+      },
+      {
+        "name": "Carton Vide",
+        "power": 0,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il ne reste que le tube. Et le désespoir."
+      }
+    ]
+  },
+  {
+    "id": "biere",
+    "family": "biere",
+    "tags": [
+      "boisson"
+    ],
+    "stages": [
+      {
+        "name": "Bière Fraîche",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Fraîche, pas chère, pas bonne."
+      },
+      {
+        "name": "Bière Chaude",
+        "power": 1,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle a le goût d'un parking en août."
+      },
+      {
+        "name": "Vomi de Soirée",
+        "power": -4,
+        "effects": [],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Un cadeau à poser chez l'adversaire."
+      }
+    ]
+  },
+  {
+    "id": "kevin",
+    "family": "kevin",
+    "tags": [
+      "humain"
+    ],
+    "stages": [
+      {
+        "name": "Kévin (Caissier)",
+        "power": 4,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] « Vous avez la carte du magasin ? »"
+      },
+      {
+        "name": "Kévin (Démissionnaire)",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il a rendu son badge. Il est toujours là."
+      },
+      {
+        "name": "Kévin (Syndiqué)",
+        "power": 8,
+        "effects": [
+          {
+            "type": "BOOST",
+            "scope": "backRow"
+          }
+        ],
+        "tags": [
+          "fermentation"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Il a lu le règlement. Tout le règlement."
+      }
+    ]
+  },
+  {
+    "id": "mixeur",
+    "family": "mixeur",
+    "tags": [
+      "outil"
+    ],
+    "stages": [
+      {
+        "name": "Mixeur Bon Marché",
+        "power": null,
+        "placeable": false,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Garantie : jusqu'à la sortie du magasin."
+      },
+      {
+        "name": "Mixeur Surchauffé",
+        "power": null,
+        "placeable": false,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il sent le plastique brûlé et la mauvaise idée."
+      },
+      {
+        "name": "Explosion Électrique",
+        "power": 0,
+        "effects": [
+          {
+            "type": "DESTROY_ADJACENT"
+          }
+        ],
+        "tags": [
+          "malus"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Une bombe. Pose-la chez quelqu'un que tu n'aimes pas."
+      }
+    ]
+  },
+  {
+    "id": "scotch",
+    "family": "scotch",
+    "tags": [
+      "outil"
+    ],
+    "stages": [
+      {
+        "name": "Scotch Gris",
+        "power": null,
+        "placeable": false,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il répare tout. Sauf ta vie."
+      },
+      {
+        "name": "Scotch Poussiéreux",
+        "power": null,
+        "placeable": false,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il colle encore, un peu, par politesse."
+      },
+      {
+        "name": "Colle Sèche",
+        "power": 0,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle ne colle plus rien. Même pas l'ambiance."
+      }
+    ]
+  },
+  {
+    "id": "plante",
+    "family": "plante",
+    "tags": [
+      "vegetal"
+    ],
+    "stages": [
+      {
+        "name": "Plante Verte",
+        "power": 2,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle purifie l'air du rayon. Elle fait de son mieux."
+      },
+      {
+        "name": "Plante Florissante",
+        "power": 6,
+        "effects": [
+          {
+            "type": "SCORE_BONUS",
+            "value": 2
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle a trouvé la lumière. Où ça, ici ?"
+      },
+      {
+        "name": "Tige Morte",
+        "power": 1,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle a abandonné avant toi."
+      }
+    ]
+  },
+  {
+    "id": "chat",
+    "family": "chat",
+    "tags": [
+      "animal"
+    ],
+    "stages": [
+      {
+        "name": "Chat Errant",
+        "power": 4,
+        "effects": [
+          {
+            "type": "EAT",
+            "target": {
+              "family": "steak",
+              "stage": 3
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il vit au rayon poissonnerie. Il a ses raisons."
+      },
+      {
+        "name": "Gros Matou",
+        "power": 7,
+        "effects": [
+          {
+            "type": "EAT",
+            "target": {
+              "family": "steak",
+              "stage": 3
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il a mangé le rayon poissonnerie."
+      },
+      {
+        "name": "Boule de Poils",
+        "power": 2,
+        "effects": [
+          {
+            "type": "EAT",
+            "target": {
+              "family": "steak",
+              "stage": 3
+            }
+          }
+        ],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Il reste surtout des poils."
+      }
+    ]
+  },
+  {
+    "id": "cassette",
+    "family": "cassette",
+    "tags": [
+      "objet"
+    ],
+    "stages": [
+      {
+        "name": "Cassette Maudite",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Ne pas rembobiner. Ne pas regarder."
+      },
+      {
+        "name": "Bande Démagnétisée",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Des voix. Juste des voix."
+      },
+      {
+        "name": "Entité Libérée",
+        "power": 9,
+        "effects": [],
+        "tags": [
+          "horreur",
+          "fermentation"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Tu l'as regardée, hein ?"
+      }
+    ]
+  },
+  {
+    "id": "grandmere",
+    "family": "grandmere",
+    "tags": [
+      "humain"
+    ],
+    "stages": [
+      {
+        "name": "Grand-Mère Perdue",
+        "power": 3,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle cherche le rayon tricot depuis 1987."
+      },
+      {
+        "name": "Grand-Mère Paniquée",
+        "power": 5,
+        "effects": [],
+        "tags": [],
+        "image": null,
+        "flavor": "[TEMP] Elle a perdu son sac. Et son chemin. Et ses lunettes."
+      },
+      {
+        "name": "Héritage",
+        "power": 10,
+        "effects": [
+          {
+            "type": "TRANSFER"
+          }
+        ],
+        "tags": [
+          "fermentation"
+        ],
+        "image": null,
+        "flavor": "[TEMP] Elle t'a tout laissé. Utilise-le bien."
+      }
+    ]
+  },
+  {
+    "id": "milkshake",
+    "family": "milkshake",
+    "dish": true,
+    "tags": [
+      "plat",
+      "boisson"
+    ],
+    "name": "Milkshake Protéiné",
+    "power": 10,
+    "effects": [],
+    "image": null,
+    "flavor": "[TEMP] Banane, lait, et une odeur de vestiaire."
+  },
+  {
+    "id": "burger",
+    "family": "burger",
+    "dish": true,
+    "tags": [
+      "plat",
+      "aliment"
+    ],
+    "name": "Burger Gras",
+    "power": 12,
+    "effects": [],
+    "image": null,
+    "flavor": "[TEMP] Il goutte. Il goutte beaucoup."
+  },
+  {
+    "id": "petit_dej",
+    "family": "petit_dej",
+    "dish": true,
+    "tags": [
+      "plat",
+      "aliment"
+    ],
+    "name": "Petit-Dèj Épique",
+    "power": 9,
+    "effects": [],
+    "image": null,
+    "flavor": "[TEMP] Le repas le plus important du Gouffre."
+  },
+  {
+    "id": "ado_muet",
+    "family": "ado_muet",
+    "dish": true,
+    "tags": [
+      "plat",
+      "humain"
+    ],
+    "name": "Ado Muet",
+    "power": 8,
+    "effects": [
+      {
+        "type": "CANCEL_FACING"
+      }
+    ],
+    "image": null,
+    "flavor": "[TEMP] Enfant + console : silence absolu."
+  },
+  {
+    "id": "plante_mutante",
+    "family": "plante_mutante",
+    "dish": true,
+    "tags": [
+      "plat",
+      "vegetal"
+    ],
+    "name": "Plante Mutante",
+    "power": 9,
+    "effects": [
+      {
+        "type": "SCORE_BONUS",
+        "value": 4
+      }
+    ],
+    "image": null,
+    "flavor": "[TEMP] Elle a bu l'acide. Elle en redemande."
+  },
+  {
+    "id": "lance",
+    "family": "lance",
+    "dish": true,
+    "tags": [
+      "plat",
+      "objet"
+    ],
+    "name": "Lance de Fortune",
+    "power": 9,
+    "effects": [
+      {
+        "type": "DESTROY_FACING"
+      }
+    ],
+    "image": null,
+    "flavor": "[TEMP] Une baguette, du scotch, et beaucoup de courage."
+  }
+]

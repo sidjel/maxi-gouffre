@@ -3,11 +3,14 @@ import { DataError } from './validate.js';
 /**
  * Fichiers de données chargés au démarrage (dossier app/data/).
  * La clé est le nom sous lequel la donnée est rangée dans `defs`.
- * La liste s'allonge au fil des jalons (cards.json au J1, etc.).
+ * La liste s'allonge au fil des jalons.
  */
 export const DATA_FILES = Object.freeze({
   strings: 'strings.json',
   credits: 'credits.json',
+  cards: 'cards.json',
+  combats: 'combats.json',
+  quickmatch: 'quickmatch.json',
 });
 
 /**
