@@ -18,6 +18,7 @@ export function createInfoBand(opts) {
     power: el('span', { className: 'info-power' }),
     stageIcon: el('span', { className: 'stage-icon', attrs: { 'aria-hidden': 'true' } }),
     fresh: el('span', { className: 'info-fresh-text' }),
+    gauge: el('span', { className: 'info-gauge', attrs: { 'aria-hidden': 'true' } }, [0, 1, 2].map(() => el('span', { className: 'info-seg' }))),
     effectIcon: el('span', { className: 'info-effect-icon', attrs: { 'aria-hidden': 'true' } }),
     effectName: el('span', { className: 'info-effect-name' }),
     effectText: el('span'),
@@ -35,7 +36,7 @@ export function createInfoBand(opts) {
   refs.effectLine.append(refs.effectText, ' ', refs.pending);
   const card = el('div', { className: 'info-card' }, [
     el('div', { className: 'info-head' }, [refs.power, refs.name]),
-    el('p', { className: 'info-fresh' }, [refs.stageIcon, refs.fresh, refs.tags]),
+    el('p', { className: 'info-fresh' }, [refs.stageIcon, refs.gauge, refs.fresh, refs.tags]),
     effectBox,
     refs.malus,
     refs.flavor,
@@ -71,6 +72,7 @@ export function createInfoBand(opts) {
     refs.power.textContent = powerText(view.power);
     refs.power.classList.toggle('is-negative', view.power !== null && view.power < 0);
     refs.stageIcon.dataset.stage = String(view.stage);
+  refs.gauge.dataset.stage = String(view.stage);
     const stage = stageLabel(t, view.stage);
     const fresh = view.owner === 'player' ? t('info.freshness', { stage, age: view.age }) : t('info.freshnessFixed', { stage });
     refs.fresh.textContent = view.stageLocked ? `${fresh} · ${t('info.stageLocked')}` : fresh;

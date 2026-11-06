@@ -94,8 +94,8 @@
   "combat.passQuestion": "Passer pour toute la manche ?",
   "combat.passConfirm": "Oui, je passe",
   "combat.no": "Non",
-  "combat.flat": "Plateau à plat",
-  "combat.tilted": "Plateau incliné",
+  "combat.flat": "À plat",
+  "combat.tilted": "Incliné",
   "combat.quit": "Quitter",
   "combat.quitQuestion": "Quitter le combat et revenir au titre ?",
   "combat.quitConfirm": "Oui, quitter",
@@ -158,5 +158,6 @@
   "help.read": "Touche ou survole une carte pour lire son effet et sa fraîcheur. Touche un endroit vide pour revenir ici.",
   "board.front": "Avant",
   "board.back": "Arrière",
-  "help.effects": "Les effets des cartes s'appliqueront au jalon 2. Pour l'instant, chaque carte compte seulement ses points."
+  "help.effects": "Les effets des cartes s'appliqueront au jalon 2. Pour l'instant, chaque carte compte seulement ses points.",
+  "combat.flatLabel": "Afficher le plateau à plat ou incliné"
 }

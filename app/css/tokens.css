@@ -48,6 +48,7 @@
   --fs-logo: calc(232px * var(--text-scale));
   --fs-promo: calc(56px * var(--text-scale));
   --touch-min: 96px; /* 96 × 0,57 ≈ 55 px réels ≥ TOUCH_MIN_PX */
+  --touch-small: 78px; /* boutons peu utilisés : 78 × 0,573 ≈ 44,7 px réels au minimum */
   --space-xs: 8px;
   --space-s: 16px;
   --space-m: 32px;
@@ -78,6 +79,7 @@ html[data-profile='compact'] {
   --fs-logo: calc(150px * var(--text-scale));
   --fs-promo: calc(38px * var(--text-scale));
   --touch-min: 88px; /* 88 × 0,54 ≈ 47 px réels */
+  --touch-small: 82px; /* 82 × 0,54 ≈ 44,4 px réels */
   --space-xs: 6px;
   --space-s: 12px;
   --space-m: 20px;

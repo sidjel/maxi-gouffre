@@ -12,6 +12,8 @@ Retours de l'auteur après le test en ligne du J1.
 - **Cases du plateau** au format des cartes (5:7). La zone à toucher reste plus large que l'emplacement dessiné. Chaque ligne porte son nom (Avant, Arrière).
 - **Consigne** déplacée au-dessus du plateau. Sur téléphone, elle occupe le vide laissé par le haut du plateau incliné.
 - Textes plus courts pour Malus, Outil, Détruire les voisins, Annuler (voisins) et l'effet pas encore actif.
+- **Jauge de fraîcheur en 3 segments** aussi sur les faces compactes (plateau, main sur téléphone), le long du bord bas, et dans le panneau de droite.
+- Boutons « À plat » (ex-« Plateau à plat ») et « Quitter » plus petits : zone à toucher au minimum de 44 px réels, sans ombre.
 
 ### Ajouté
 - `tests/e2e/info-band.mjs` : pour les 26 cartes à leurs 3 stades et aux 3 tailles, l'effet et le Malus se lisent sans défiler (et le texte d'ambiance aussi sur grand écran). Le rappel des règles s'affiche sans carte visée.

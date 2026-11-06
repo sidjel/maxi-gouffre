@@ -184,13 +184,10 @@ html[data-profile='compact'] .panel-left {
 }
 
 .btn-small {
-  padding: var(--space-xs);
+  min-height: var(--touch-small);
+  padding: 2px var(--space-xs);
   font-size: var(--fs-small);
-}
-
-/* Grand écran : boutons secondaires un peu moins hauts (82 × 0,57 ≈ 47 px réels au minimum) */
-html[data-profile='wide'] .btn-small {
-  min-height: calc(var(--touch-min) * 0.85);
+  box-shadow: none;
 }
 
 .actions-question {
@@ -270,4 +267,8 @@ html[data-profile='compact'] .board.is-flat .board-plane {
   scrollbar-width: thin;
   font-size: var(--fs-info);
   line-height: 1.25;
+}
+
+html[data-profile='compact'] .panel-right {
+  gap: var(--space-xs);
 }
