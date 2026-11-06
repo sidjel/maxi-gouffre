@@ -1,6 +1,7 @@
 /**
  * Plateau 2.5D (GD §9.3, §17.5) : adversaire en haut, joueur en bas, ligne Avant côté centre.
- * La case est le bouton (zone à toucher) ; la carte posée est un simple bloc à l'intérieur.
+ * La case est le bouton (zone à toucher, plus large que la carte) ; elle contient un emplacement
+ * au format des cartes (5:7), où se place la carte posée. Chaque ligne porte son nom (Avant, Arrière).
  * Vue inclinée par `perspective` et `rotateX` ; « à plat » = la classe is-flat.
  */
 import { el } from '../dom.js';
@@ -25,6 +26,7 @@ export function createBoard(opts) {
     // Ligne Avant côté centre : en haut pour le joueur, en bas pour l'adversaire.
     const rows = camp === 'player' ? [0, 1] : [1, 0];
     for (const row of rows) {
+      node.append(el('span', { className: 'row-label', text: t(row === 0 ? 'board.front' : 'board.back'), attrs: { 'aria-hidden': 'true' } }));
       for (let col = 0; col < cols; col += 1) {
         const index = row * cols + col;
         const cell = el('button', {
@@ -32,6 +34,8 @@ export function createBoard(opts) {
           attrs: { type: 'button', 'data-camp': camp, 'data-cell': String(index), 'aria-disabled': 'true' },
         });
         cell.cellLabel = t('combat.cellLabel', { row: rowName(row), col: col + 1 });
+        cell.cellSlot = el('span', { className: 'cell-slot' });
+        cell.append(cell.cellSlot);
         cells[camp][index] = cell;
         node.append(cell);
       }
@@ -69,7 +73,7 @@ export function createBoard(opts) {
           cell.setAttribute('aria-disabled', legal ? 'false' : 'true');
           if (!slot) {
             cell.classList.remove('is-occupied');
-            cell.replaceChildren();
+            cell.cellSlot.replaceChildren();
             cell.setAttribute('aria-label', `${cell.cellLabel}, ${t('combat.cellEmpty')}`);
             return;
           }
@@ -83,7 +87,7 @@ export function createBoard(opts) {
               card.addEventListener('animationend', () => card.classList.remove('is-new'), { once: true });
             }
           }
-          if (card.parentNode !== cell) cell.replaceChildren(card);
+          if (card.parentNode !== cell.cellSlot) cell.cellSlot.replaceChildren(card);
           const view = cardView(vm.state, slot.uid, vm.coreCtx);
           const value = vm.evaluation.cards[slot.uid];
           renderCard(card, view, { t, power: value.power, effectActive: value.effectActive });

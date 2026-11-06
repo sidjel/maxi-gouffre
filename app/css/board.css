@@ -26,9 +26,23 @@
 
 .camp {
   display: grid;
-  grid-template-columns: repeat(5, var(--cell-w));
+  grid-template-columns: var(--row-label-w) repeat(5, var(--cell-w));
   grid-auto-rows: var(--cell-h);
   gap: var(--cell-gap);
+}
+
+/* Nom de la ligne (Avant côté centre, Arrière côté bord), écrit à la verticale */
+.row-label {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-s);
+  background: rgb(255 255 255 / 0.15);
+  color: var(--c-white);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  letter-spacing: 0.04em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
 .board-divider {
@@ -38,30 +52,41 @@
   background: var(--c-promo-yellow);
 }
 
+/* La case (bouton) est la zone à toucher ; l'emplacement dessiné a le format d'une carte (5:7) */
 .cell {
-  position: relative;
   display: grid;
   place-items: center;
   padding: 0;
-  border: 3px dashed rgb(27 27 31 / 0.45);
-  border-radius: var(--radius-s);
-  background: var(--c-cell);
+  border: none;
+  background: none;
   cursor: default;
 }
 
-.cell.row-front {
+.cell-slot {
+  position: relative;
+  display: block;
+  height: 100%;
+  aspect-ratio: 5 / 7;
+  border: 3px dashed rgb(27 27 31 / 0.45);
+  border-radius: var(--radius-s);
+  background: var(--c-cell);
+}
+
+.cell.row-front .cell-slot {
   background: var(--c-cell-front);
 }
 
 .cell.is-legal {
+  cursor: pointer;
+}
+
+.cell.is-legal .cell-slot {
   border: var(--border-thick) solid var(--c-ink);
   background: var(--c-legal);
-  cursor: pointer;
   animation: legal-pulse var(--dur-slow) ease-in-out infinite alternate;
 }
 
-.cell.is-occupied {
-  border-style: solid;
+.cell.is-occupied .cell-slot {
   border-color: transparent;
   background: transparent;
 }
@@ -71,9 +96,10 @@
   to { box-shadow: 0 0 0 var(--cell-gap) rgb(255 210 63 / 0.35); }
 }
 
-/* Carte posée : face compacte, à la hauteur de la case */
-.cell .card {
-  height: 100%;
+/* Carte posée : face compacte, qui recouvre l'emplacement */
+.cell-slot .card {
+  position: absolute;
+  inset: -3px;
 }
 
 .cell .card.is-new {
@@ -101,7 +127,7 @@
     transition: none;
   }
 
-  .cell.is-legal,
+  .cell.is-legal .cell-slot,
   .cell .card.is-new {
     animation: none;
   }
