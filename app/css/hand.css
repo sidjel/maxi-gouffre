@@ -4,7 +4,8 @@
   width: var(--hand-card-w);
   margin: 0 var(--hand-overlap);
   cursor: pointer;
-  transform: translateY(calc(var(--fan-abs, 0) * var(--fan-drop))) rotate(calc(var(--fan-d, 0) * var(--fan-angle)));
+  /* Les cartes des bords restent sur la ligne de base, celles du centre montent : rien ne sort par le bas */
+  transform: translateY(calc((var(--fan-abs, 0) - var(--fan-max, 0)) * var(--fan-drop))) rotate(calc(var(--fan-d, 0) * var(--fan-angle)));
   transform-origin: 50% 100%;
   transition: transform var(--dur-fast) ease-out;
 }

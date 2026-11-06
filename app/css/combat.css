@@ -209,7 +209,8 @@ html[data-profile='compact'] .panel-left {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: var(--space-s);
+  /* Marge pour le coin des cartes inclinées du bord de l'éventail */
+  padding-bottom: calc(var(--space-s) + var(--space-xs));
 }
 
 .hand-empty {

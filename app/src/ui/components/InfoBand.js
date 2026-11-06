@@ -50,6 +50,7 @@ export function createInfoBand(opts) {
   // Indique qu'il reste du texte plus bas, jusqu'à ce qu'on ait défilé jusqu'au bout.
   const markMore = () => root.classList.toggle('has-more', root.scrollTop + root.clientHeight < root.scrollHeight - 2);
   root.addEventListener('scroll', markMore, { passive: true });
+  let shown;
 
   return {
     el: root,
@@ -59,7 +60,11 @@ export function createInfoBand(opts) {
       root.classList.toggle('is-empty', !view);
       card.hidden = !view;
       help.hidden = Boolean(view);
-      root.scrollTop = 0;
+      // On ne remonte en haut que si la fiche change de carte (ou de stade) : un simple rafraîchissement
+      // (coup de l'IA, doigt levé) ne doit pas perdre l'endroit où le joueur a fait défiler.
+      const key = view ? `${view.uid}:${view.stage}:${view.stageLocked}` : null;
+      if (key !== shown) root.scrollTop = 0;
+      shown = key;
       if (view) fill(view);
       markMore();
     },

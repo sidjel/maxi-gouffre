@@ -91,3 +91,24 @@ test('sans carte visée, le panneau rappelle les règles', async () => {
   assert.deepEqual(problems, []);
   await context.close();
 });
+
+test('téléphone : le défilement du panneau reste en place quand l\'écran se rafraîchit ou qu\'on lève le doigt', async () => {
+  const { context, page, problems } = await openPage(browser, { viewport: { width: 844, height: 390 }, ...PHONE });
+  await page.goto(`${server.url}?debug=1&aiDelay=0`);
+  await waitReady(page);
+  await startQuickMatch(page, 'touch');
+  await page.locator('.hand .card.is-malus').first().tap();
+  const band = page.locator('.panel-right .info-band');
+  await band.evaluate((el) => { el.scrollTop = 40; });
+  const before = await band.evaluate((el) => el.scrollTop);
+  assert.ok(before > 0, 'la fiche défile');
+  // Doigt levé (pointerleave au toucher), puis rafraîchissement de l'écran (bouton « À plat »).
+  await page.locator('.screen-combat').dispatchEvent('pointerleave', { pointerType: 'touch' });
+  await page.locator('[data-action="flat"]').tap();
+  assert.equal(await band.evaluate((el) => el.scrollTop), before);
+  // Une autre carte : la fiche repart du haut.
+  await page.locator('.hand .card:not(.is-malus)').first().tap();
+  assert.equal(await band.evaluate((el) => el.scrollTop), 0);
+  assert.deepEqual(problems, []);
+  await context.close();
+});

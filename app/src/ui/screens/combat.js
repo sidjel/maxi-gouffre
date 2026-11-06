@@ -258,7 +258,9 @@ export function createCombatScreen() {
       ]);
       root.addEventListener('click', onClick);
       root.addEventListener('pointerover', onPointerOver);
-      root.addEventListener('pointerleave', () => {
+      root.addEventListener('pointerleave', (e) => {
+        // Au doigt, lever le doigt « quitte » l'écran : seul le survol de la souris compte ici.
+        if (e.pointerType !== 'mouse' || ui.hover === null) return;
         ui.hover = null;
         renderInfo();
       });
