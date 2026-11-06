@@ -1,0 +1,20 @@
+MAXI-GOUFFRE
+Copyright (c) 2026 sidjel, auteur de MAXI-GOUFFRE.
+Tous droits réservés.
+
+Ce dépôt (code, données, textes, illustrations, sons et documents) est la propriété
+exclusive de son auteur. Le jeu est destiné à la vente.
+
+Le fait que le dépôt soit public, ou que le jeu soit jouable en ligne, ne donne
+aucun droit de copie, de modification, de redistribution, de publication ou
+d'utilisation commerciale, en tout ou en partie, sans l'accord écrit de l'auteur.
+
+Exceptions : les assets de tiers gardent leur propre licence, indiquée dans le
+registre app/data/credits.json (et docs/CREDITS.md). En particulier, les polices
+de app/assets/fonts/ sont distribuées sous SIL Open Font License 1.1 ; le texte
+de chaque licence est fourni à côté du fichier de police (OFL-*.txt).
+
+-----------------------------------------------------------------------------
+All rights reserved. No license is granted to copy, modify, distribute or use
+this work, in whole or in part, without the author's prior written consent.
+Third-party assets keep their own licenses (see app/data/credits.json).
