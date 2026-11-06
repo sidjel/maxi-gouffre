@@ -1,8 +1,8 @@
 import { el } from '../dom.js';
 
 /**
- * Écran titre provisoire (J0). Menu du GD §15.2 ; les entrées ne mènent encore nulle part :
- * elles affichent un message provisoire. « Continuer » est grisé (aucune sauvegarde au J0).
+ * Écran titre provisoire. Menu du GD §15.2, plus « Combat rapide » (J1) qui lance un match contre l'IA.
+ * Les autres entrées affichent encore un message provisoire. « Continuer » est grisé (aucune sauvegarde).
  */
 export function createTitleScreen() {
   let root = null;
@@ -20,20 +20,20 @@ export function createTitleScreen() {
     });
   }
 
-  function menuButton(key, { disabled = false } = {}) {
+  function menuButton(key, { disabled = false, onClick = null, extra = '' } = {}) {
     const label = ctx.t(key);
     return el('button', {
-      className: 'btn btn-menu',
+      className: `btn btn-menu ${extra}`.trim(),
       text: label,
       attrs: { type: 'button', disabled, 'aria-disabled': disabled ? 'true' : false, 'data-menu': key },
-      on: { click: () => say(ctx.t('title.notYet', { label })) },
+      on: { click: onClick ?? (() => say(ctx.t('title.notYet', { label }))) },
     });
   }
 
   return {
     /**
      * @param {HTMLElement} parent
-     * @param {{ t: Function, scheduler: import('../../app/Scheduler.js').Scheduler, tech: object }} context
+     * @param {{ t: Function, scheduler: import('../../app/Scheduler.js').Scheduler, tech: object, navigate: Function }} context
      */
     mount(parent, context) {
       ctx = context;
@@ -46,6 +46,7 @@ export function createTitleScreen() {
         el('h1', { className: 'title-logo', text: ctx.t('game.title'), attrs: { id: 'title-logo' } }),
         el('p', { className: 'title-tagline', text: ctx.t('title.tagline') }),
         el('nav', { className: 'title-menu', attrs: { 'aria-label': ctx.t('title.menuLabel') } }, [
+          menuButton('title.quickMatch', { onClick: () => ctx.navigate('COMBAT'), extra: 'btn-primary' }),
           menuButton('title.newGame'),
           menuButton('title.continue', { disabled: true }),
           menuButton('title.options'),

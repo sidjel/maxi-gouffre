@@ -1,0 +1,255 @@
+/* ---------- Écran de combat (GD §17.5) ---------- */
+.screen-combat {
+  display: grid;
+  grid-template-columns: var(--side-left) 1fr var(--side-right);
+  grid-template-rows: 1fr var(--hand-h);
+  grid-template-areas:
+    'left center right'
+    'hand hand hand';
+  background:
+    repeating-conic-gradient(var(--c-floor-a) 0 25%, var(--c-floor-b) 0 50%) 0 0 / 96px 96px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding: var(--space-s);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Panneau gauche : scores */
+.panel-left {
+  grid-area: left;
+  justify-content: space-between;
+  border-right: var(--border-thick) solid var(--c-ink);
+  background: var(--c-promo-yellow);
+}
+
+.score-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-s);
+  border: var(--border-thick) solid var(--c-ink);
+  border-radius: var(--radius-s);
+  background: var(--c-white);
+  box-shadow: var(--shadow-print);
+}
+
+.score-side.is-turn {
+  outline: var(--border-thick) solid var(--c-fresh-blue);
+  outline-offset: 3px;
+}
+
+.score-player {
+  flex-direction: column-reverse;
+}
+
+html[data-profile='compact'] .score-side {
+  gap: 0;
+  padding: var(--space-xs) var(--space-s);
+}
+
+html[data-profile='compact'] .panel-left {
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+}
+
+.score-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.score-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-score);
+  line-height: 1;
+  color: var(--c-tomato);
+}
+
+.score-player .score-value {
+  color: var(--c-fresh-blue);
+}
+
+.score-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: calc(var(--fs-small) * 1.3);
+}
+
+.score-pips {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.pip {
+  width: calc(var(--fs-small) * 1.1);
+  height: calc(var(--fs-small) * 1.1);
+  border: 4px solid var(--c-ink);
+  border-radius: 50%;
+  background: var(--c-white);
+}
+
+.pip.is-won {
+  background: var(--c-tomato);
+}
+
+.score-passed {
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-s);
+  background: var(--c-ink);
+  color: var(--c-promo-yellow);
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.score-hand,
+.score-round {
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.score-round {
+  padding: var(--space-xs);
+  border-radius: var(--radius-s);
+  background: var(--c-ink);
+  color: var(--c-white);
+  text-align: center;
+}
+
+/* Centre : plateau */
+.combat-center {
+  grid-area: center;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+/* Panneau droit : consigne, bandeau d'information, actions */
+.panel-right {
+  grid-area: right;
+  border-left: var(--border-thick) solid var(--c-ink);
+  background: var(--c-paper);
+}
+
+.combat-status {
+  min-height: calc(var(--fs-small) * 2.6);
+  padding: var(--space-xs) var(--space-s);
+  border-radius: var(--radius-s);
+  background: var(--c-ink);
+  color: var(--c-promo-yellow);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.info-band {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--fs-small);
+  line-height: 1.25;
+}
+
+.info-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+
+.info-band.is-empty .info-name {
+  color: var(--c-disabled-text);
+}
+
+.info-stages {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.info-stages .is-current {
+  font-weight: 700;
+}
+
+.info-effect {
+  font-weight: 700;
+}
+
+.info-flavor {
+  font-style: italic;
+}
+
+html[data-profile='compact'] .info-flavor,
+html[data-profile='compact'] .info-band:not(.is-empty) .info-hint {
+  display: none;
+}
+
+.actions,
+.actions-idle,
+.actions-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.actions-row {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.actions-row .btn {
+  flex: 1;
+}
+
+.btn-pass,
+.btn-yes {
+  background: var(--c-tomato);
+  color: var(--c-white);
+}
+
+.btn-small {
+  padding: var(--space-xs);
+  font-size: var(--fs-small);
+}
+
+.actions-question {
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+/* Main */
+.hand {
+  grid-area: hand;
+  position: relative;
+  border-top: var(--border-thick) solid var(--c-ink);
+  background: rgb(27 27 31 / 0.12);
+}
+
+.hand-cards {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--space-s);
+}
+
+.hand-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: var(--fs-body);
+  font-weight: 700;
+}
+
+.combat-status:empty {
+  visibility: hidden;
+}

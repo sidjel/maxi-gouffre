@@ -60,9 +60,9 @@ export const GAME = deepFreeze({
   PANIC_TURNS: 1,
 });
 
-/** Valeurs techniques (ARCHITECTURE.md §13), plus quelques réglages propres au socle J0. */
+/** Valeurs techniques (ARCHITECTURE.md §13), plus quelques réglages propres aux jalons (DECISIONS.md). */
 export const TECH = deepFreeze({
-  APP_VERSION: '0.0.0',
+  APP_VERSION: '1.0.0',
   WIDE_STAGE: { width: 1920, height: 1080 },
   COMPACT_STAGE: { width: 1280, height: 720 },
   COMPACT_MAX_WIDTH: 1100,
@@ -85,4 +85,6 @@ export const TECH = deepFreeze({
   DEBUG_LOG_MAX: 50,
   DEBUG_RNG_PREVIEW: 5,
   FONTS_TIMEOUT_MS: 3000,
+  // J1 : accélérer l'IA en mode debug (?debug=1&aiDelay=0), pour les tests navigateur
+  AI_DELAY_QUERY_PARAM: 'aiDelay',
 });
