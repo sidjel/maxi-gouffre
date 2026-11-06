@@ -1,0 +1,90 @@
+/*
+ * Scène mise à l'échelle (ARCHITECTURE.md §8.1). Stage.js fournit les variables :
+ * --stage-w, --stage-h (taille logique), --stage-scale, --stage-x, --stage-y.
+ */
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  /* Bandes de décor autour de la scène : rayures d'affiche promo */
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--c-promo-yellow) 0 28px,
+      var(--c-tomato) 28px 56px
+    );
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--stage-w, 1920px);
+  height: var(--stage-h, 1080px);
+  transform-origin: 0 0;
+  transform: translate(var(--stage-x, 0px), var(--stage-y, 0px)) scale(var(--stage-scale, 1));
+  overflow: hidden;
+  background: var(--c-bg);
+  box-shadow: 0 0 0 var(--border-thick) var(--c-ink);
+  contain: layout paint;
+}
+
+.screens,
+.screen {
+  position: absolute;
+  inset: 0;
+}
+
+/* Couches hors scène, en px réels */
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+#debug-root {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  pointer-events: none;
+}
+
+#debug-root > * {
+  pointer-events: auto;
+}
+
+.layer-crash {
+  z-index: 30;
+}
+
+/* Boutons communs : zone à toucher ≥ 44 px réels */
+.btn {
+  min-height: var(--touch-min);
+  padding: var(--space-s) var(--space-m);
+  border: var(--border-thick) solid var(--c-ink);
+  border-radius: var(--radius-s);
+  background: var(--c-white);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: var(--fs-button);
+  line-height: 1.1;
+  cursor: pointer;
+  box-shadow: var(--shadow-print);
+  transition: transform var(--dur-fast) ease-out, box-shadow var(--dur-fast) ease-out;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background: var(--c-disabled-bg);
+  color: var(--c-disabled-text);
+  box-shadow: none;
+}
