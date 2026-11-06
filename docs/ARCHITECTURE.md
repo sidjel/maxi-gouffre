@@ -72,7 +72,8 @@ maxi-gouffre/
 │   └── android.yml           (J10) construction d'un APK de test
 ├── capacitor.config.json     (J10) webDir = "app"
 ├── docs/
-│   ├── GAME_DESIGN.md  ARCHITECTURE.md
+│   ├── GAME_DESIGN.md  ARCHITECTURE.md  DIRECTION_ARTISTIQUE.md
+│   ├── PROMPTS_IMAGES.md     consignes de génération d'images pour l'auteur (J1.5)
 │   ├── DECISIONS.md          journal des décisions (date, décision, raison)
 │   └── CREDITS.md            généré depuis app/data/credits.json
 ├── app/                      ← LE JEU. Seul dossier publié (web, PWA, Android).
@@ -85,7 +86,7 @@ maxi-gouffre/
 │   │   └── audio/            music/  sfx/
 │   ├── data/                 cards.json  recipes.json  campaign.json  rooms.json  combats.json
 │   │                         npcs.json  events.json  dialogues.json  strings.json  credits.json
-│   │                         scenarios.json (chargé seulement en mode debug)
+│   │                         arenas.json (supports de plateau, J1.5)  scenarios.json (chargé seulement en mode debug)
 │   └── src/
 │       ├── main.js           démarrage et câblage
 │       ├── config.js         constantes gelées
@@ -398,7 +399,7 @@ Les mesures du GD §20.7. Le rapport (texte) est joint au rapport de jalon à pa
 **Vérifié par l'auteur**
 - [ ] Jouable sur PC avec chaque entrée concernée par le jalon
 - [ ] Jouable au doigt sur téléphone
-- [ ] Manette (à partir de J3), son (à partir de J9), APK (J10)
+- [ ] Manette (à partir de J3), son (à partir de J9b), APK (J10)
 
 ---
 
@@ -434,6 +435,7 @@ Chaque jalon tient en **un échange** et se termine par quelque chose de **jouab
 |---|---|---|
 | **J0 — Socle et mise en ligne** | Dépôt, arborescence, scripts, `README`, `LICENSE`, publication GitHub Pages ; `index.html`, scène mise à l'échelle (profils `wide` et `compact`), écran « Tourne ton téléphone », tokens CSS et polices provisoires ; chargement et validation des données ; `rng`, `config`, `EventBus`, `Scheduler`, `StateMachine` ; panneau debug ; écran titre provisoire ; tests unitaires et smoke | L'URL GitHub Pages s'ouvre sur PC et téléphone ; l'écran s'adapte à la fenêtre ; le portrait affiche le message ; `?debug=1` montre l'état et les FPS |
 | **J1 — Premier match jouable** | Les 20 cartes et 6 plats en données (P, stades, étiquettes ; effets présents mais pas encore résolus) ; plateau 2.5D et à plat ; main ; sélection et pose au pointeur (souris et doigt) ; cartes Malus ; passer avec confirmation ; scores en direct ; 3 manches, manche nulle, départage, qui commence ; chifoumi ; IA « Noob » ; écran de fin de match ; entrée « Combat rapide » depuis le titre | Jouer un match complet contre l'IA à la souris puis au doigt |
+| **J1.5 — Habillage du combat et de l'accueil** | Selon `DIRECTION_ARTISTIQUE.md` §12 : illustrations SVG des 20 cartes (3 stades) et 6 plats, `docs/PROMPTS_IMAGES.md` ; nouvelles faces, rendu par stade, finitions `matte` / `promo` / `limited` / `greasy` avec reflets (souris, gyroscope) ; états d'interaction (contour, scintillement, scanner à la pose) ; plateau posé sur un support réel (tapis de caisse pour le combat rapide, table de démonstration pour Chad), `arenas.json` ; interface intégrée au décor (afficheur de caisse, tickets, étiquette électronique, haut-parleur, boutons de caisse, pioche en vrac, bac de démarque) ; caméras de surveillance avec avatars et expressions ; ticket de fin de manche, rideau de fer, gants du chifoumi ; écran d'accueil (portes coulissantes, enseigne néon, panneaux de rayon, caddie, portes qui se referment) | Rejouer un combat rapide sur PC et téléphone : tout est dans le décor, les cartes brillent selon leur rareté ; ouvrir le jeu et voir les portes s'ouvrir |
 | **J2 — Effets, vieillissement, IA Gamer** | Les 10 effets avec lignes, priorités, raisons d'inactivité ; PANIC, TRANSFER avec choix ; vieillissement : âge, crans, stade verrouillé, changement de face en main, horloge, jauge ; inspection (clic droit, appui long, I) ; IA « Gamer » ; simulation et premier rapport ; scénarios debug | Voir une carte pourrir en plein match ; vérifier Chat contre Bactérie et les autres règles avec les scénarios ; perdre contre l'IA Gamer |
 | **J3 — Clavier, manette, focus** | `FocusManager` complet, clavier, manette (branchement à chaud, pause auto), glyphes selon l'entrée, bouton retour Android simulé | Jouer un match entier au clavier seul, puis à la manette seule |
 | **J4 — Campagne** | Machine à états complète ; exploration (salles, portes, tirage sans remise, graine) ; Acte I complet (Kévin, tutoriel guidé, cuisine provisoire, Vieux Monsieur, Chad) ; Révélation provisoire ; Acte II (combats C3 à C5, autres salles provisoires) ; préparation de main ; Collection ; butin ; défaite et rejeu ; crans d'exploration ; sauvegarde automatique, Continuer ; pause | Lancer une partie, finir l'Acte I, recharger la page, reprendre au bon endroit |
@@ -441,7 +443,8 @@ Chaque jalon tient en **un échange** et se termine par quelque chose de **jouab
 | **J6 — Narrateur et avant-jeu** | Moteur du narrateur, ~120 répliques `[TEMP]`, machine à écrire et blips, tous les déclencheurs, bavardage ; WARNING, PRESS_KEY, titre, intro terminal, bouton qui fuit (souris, focus, doigt), formulaire ; scène de mort du Vieux Monsieur ; Révélation mise en scène | Une nouvelle partie de zéro, le narrateur réagit à tout |
 | **J7 — Options, sauvegarde complète, accessibilité** | Toutes les options du GD §15.4, remappage, taille du texte, réduction des clignotements ; effacer mes données ; export et import ; sauvegarde corrompue ; passe d'accessibilité | Changer chaque option ; exporter puis importer ; tout effacer |
 | **J8 — Contenu complet et fin** | 6 combats aux budgets prévus, boss avec Heures sup', Acte III, fin, crédits ; variantes de salles ; équilibrage par la simulation avec propositions chiffrées à l'auteur | Une partie complète d'environ 30 minutes |
-| **J9 — Audio, illustrations, finition** | `AudioManager` complet, sons provisoires puis sons de l'auteur ; intégration des illustrations fournies ; tremblement, particules, arrêt sur image, glisser-déposer ; 60 fps | Écouter, ressentir, vérifier la fluidité sur téléphone |
+| **J9a — Finition visuelle** | Intégration des illustrations et décors fournis par l'auteur (conversion WebP) ; tremblement, particules, arrêt sur image, glisser-déposer ; variantes de décor ; 60 fps sur téléphone | Vérifier le rendu final et la fluidité sur téléphone |
+| **J9b — Audio** | Direction musicale (`DIRECTION_ARTISTIQUE.md` §10, à compléter avant) ; `AudioManager` complet, sons provisoires puis sons de l'auteur ; ambiances par zone et par support | Écouter le jeu de bout en bout |
 | **J10 — Android et hors ligne** | Capacitor, stockage natif, bouton retour, cycle de vie, orientation, plein écran, icônes et écran de démarrage provisoires ; APK de test par GitHub Actions ; PWA optionnelle ; contrôle final de conformité (registre complet, console propre, checklist) | Installer l'APK sur le téléphone et jouer sans réseau |
 
 Un jalon trop gros pour un seul échange est coupé en `Na` et `Nb`, annoncé dès le début de l'échange.
@@ -459,3 +462,4 @@ Canvas, WebGL, Three.js · frameworks et bundlers · dépendance d'exécution ·
 - **v1.0** : document initial (développement avec Antigravity).
 - **v1.1** : graine du hasard, vieillissement continu, raisons d'inactivité, sauvegarde asynchrone.
 - **v2.0** (novembre 2026) : réécriture complète pour un développement **avec Claude, de zéro**. Dépôt GitHub source de vérité ; un jalon complet par échange (J0 à J10) avec rapport et tests ; dossier `app/` seul publié ; publication GitHub Pages ; tactile, profils d'écran `wide` / `compact`, mobile et Android (Capacitor) ; contexte `ctx.rules` à la place des constantes modifiables ; actions pures avec `structuredClone` ; valeurs dérivées recalculées ; Glacière et stade verrouillé à source unique ; données sorties de `src/` ; registre `credits.json` ; scénarios debug ; tests navigateur Playwright.
+- **v2.1** (novembre 2026) : ajout de `DIRECTION_ARTISTIQUE.md` ; nouveau jalon **J1.5 — Habillage du combat et de l'accueil** ; J9 coupé en J9a (visuel) et J9b (audio) ; `arenas.json` et `PROMPTS_IMAGES.md`.
