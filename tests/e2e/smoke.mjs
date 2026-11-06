@@ -60,7 +60,7 @@ for (const size of SIZES) {
     assert.equal(m.state, 'TITLE');
     assert.equal(m.profile, size.profile);
     assert.equal(await page.locator('.title-logo').textContent(), 'MAXI-GOUFFRE');
-    assert.equal(await page.locator('.btn-menu').count(), 4);
+    assert.equal(await page.locator('.btn-menu').count(), 5);
     assert.ok(await page.locator('[data-menu="title.continue"]').isDisabled(), 'Continuer grisé sans sauvegarde');
     assert.ok(await page.locator('#rotate').isHidden());
     // La scène tient dans la fenêtre, centrée.
