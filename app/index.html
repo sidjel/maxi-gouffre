@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" data-state="BOOT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#ffd23f">
+  <meta name="color-scheme" content="light">
+  <title>MAXI-GOUFFRE</title>
+  <link rel="icon" href="assets/img/ui/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/debug.css">
+</head>
+<body>
+  <div class="viewport" id="viewport">
+    <main class="stage" id="stage">
+      <div class="screens" id="screens"></div>
+    </main>
+  </div>
+
+  <div class="layer layer-rotate" id="rotate" hidden></div>
+  <div id="debug-root"></div>
+
+  <!-- Écrit ici et non dans data/strings.json : il doit s'afficher même si les données sont illisibles. -->
+  <div class="layer layer-crash" id="crash" role="alertdialog" aria-labelledby="crash-title" hidden>
+    <h2 class="crash-title" id="crash-title">Le magasin a planté</h2>
+    <p class="crash-text">Une erreur empêche le jeu de continuer. Voici ce qu'elle dit :</p>
+    <pre class="crash-message" id="crash-message"></pre>
+    <button class="btn crash-back" id="crash-back" type="button">Revenir au titre</button>
+  </div>
+
+  <noscript><p class="noscript">MAXI-GOUFFRE a besoin de JavaScript pour fonctionner.</p></noscript>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

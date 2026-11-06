@@ -1,0 +1,27 @@
+# Dépendances de développement (playwright)
+node_modules/
+package-lock.json
+
+# Résultats de tests et traces Playwright
+test-results/
+playwright-report/
+*.trace.zip
+
+# Systèmes et éditeurs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Journaux
+npm-debug.log*
+*.log
+
+# Android (J10) : fichiers générés
+android/app/build/
+android/.gradle/
+*.apk
+*.aab
+*.keystore

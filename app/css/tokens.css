@@ -1,0 +1,95 @@
+/*
+ * Tokens : couleurs, polices, tailles, durées (ARCHITECTURE.md §8.2).
+ * Les tailles sont en px LOGIQUES de la scène (1920×1080 en wide, 1280×720 en compact),
+ * sauf les tokens --real-* utilisés hors scène (rotation, plantage, debug), en px réels.
+ * Contrastes vérifiés ≥ 4,5:1 pour chaque couple texte / fond utilisé.
+ */
+:root {
+  /* Zone 1 « L'Illusion » : prospectus de supermarché (GD §17.2) */
+  --c-promo-yellow: #ffd23f;
+  --c-tomato: #c62828;
+  --c-tomato-dark: #b71c1c;
+  --c-fresh-blue: #1d5fbf;
+  --c-mint: #7ad9b5;
+  --c-paper: #fff8e7;
+  --c-ink: #1b1b1f;
+  --c-white: #ffffff;
+
+  /* Zone 2 « La Réalité » (utilisées à partir de la Révélation) */
+  --c-z2-green: #6b7d4f;
+  --c-z2-sick-yellow: #c9c25a;
+  --c-z2-neon-grey: #e8f0ee;
+  --c-z2-tar: #141612;
+
+  /* Intro terminal */
+  --c-term-bg: #000000;
+  --c-term-green: #33ff66;
+
+  /* Rôles */
+  --c-text: var(--c-ink);
+  --c-bg: var(--c-paper);
+  --c-focus: var(--c-fresh-blue);
+  --c-disabled-bg: #d9d4c7;
+  --c-disabled-text: #4a4740;
+
+  /* Polices (provisoires, OFL, à valider par l'auteur : voir docs/DECISIONS.md) */
+  --font-display: 'Lilita One', 'Arial Black', 'Arial', sans-serif;
+  --font-text: 'Atkinson Hyperlegible', 'Arial', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Taille du texte réglable (option J7) : multiplie toutes les tailles de texte */
+  --text-scale: 1;
+
+  /* Profil wide (scène 1920×1080). Plus petite échelle wide : ≈ 0,57 → 24 px logiques ≈ 13,7 px réels */
+  --fs-small: calc(24px * var(--text-scale));
+  --fs-body: calc(32px * var(--text-scale));
+  --fs-button: calc(40px * var(--text-scale));
+  --fs-heading: calc(64px * var(--text-scale));
+  --fs-logo: calc(232px * var(--text-scale));
+  --fs-promo: calc(56px * var(--text-scale));
+  --touch-min: 96px; /* 96 × 0,57 ≈ 55 px réels ≥ TOUCH_MIN_PX */
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 32px;
+  --space-l: 56px;
+  --border-thick: 6px;
+  --radius-s: 12px;
+  --radius-m: 24px;
+  --shadow-print: 8px 8px 0 var(--c-ink);
+
+  /* Hors scène, en px réels */
+  --real-fs-small: 12px;
+  --real-fs-body: 16px;
+  --real-fs-title: 24px;
+  --real-touch-min: 44px;
+
+  /* Durées */
+  --dur-fast: 120ms;
+  --dur-normal: 240ms;
+  --dur-slow: 1200ms;
+}
+
+/* Profil compact (scène 1280×720, téléphone en paysage). Échelle de référence 844×390 : ≈ 0,54 */
+html[data-profile='compact'] {
+  --fs-small: calc(26px * var(--text-scale)); /* ≈ 14 px réels */
+  --fs-body: calc(30px * var(--text-scale));
+  --fs-button: calc(34px * var(--text-scale));
+  --fs-heading: calc(48px * var(--text-scale));
+  --fs-logo: calc(150px * var(--text-scale));
+  --fs-promo: calc(38px * var(--text-scale));
+  --touch-min: 88px; /* 88 × 0,54 ≈ 47 px réels */
+  --space-xs: 6px;
+  --space-s: 12px;
+  --space-m: 20px;
+  --space-l: 32px;
+  --border-thick: 5px;
+  --shadow-print: 6px 6px 0 var(--c-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-normal: 0ms;
+    --dur-slow: 0ms;
+  }
+}

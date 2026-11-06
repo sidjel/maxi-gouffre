@@ -1,0 +1,52 @@
+# Vérifications puis publication de app/ sur GitHub Pages (ARCHITECTURE.md §12).
+# - pull request vers main : npm run check seulement ;
+# - fusion (push) sur main ou lancement manuel : npm run check, puis publication.
+# Réglage du dépôt : Settings → Pages → Source : GitHub Actions.
+name: Vérifier et publier
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  # Une publication en cours n'est jamais interrompue par la suivante.
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: npm run check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Aucune dépendance d'exécution : pas de npm install nécessaire pour les vérifications.
+      - run: npm run check
+
+  deploy:
+    name: Publier app/ sur GitHub Pages
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app
+      - id: deployment
+        uses: actions/deploy-pages@v4
