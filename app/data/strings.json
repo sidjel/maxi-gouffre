@@ -159,5 +159,10 @@
   "board.front": "Avant",
   "board.back": "Arrière",
   "help.effects": "Les effets des cartes s'appliqueront au jalon 2. Pour l'instant, chaque carte compte seulement ses points.",
-  "combat.flatLabel": "Afficher le plateau à plat ou incliné"
+  "combat.flatLabel": "Afficher le plateau à plat ou incliné",
+  "fullscreen.button": "Plein écran",
+  "fullscreen.title": "Jouer en plein écran ?",
+  "fullscreen.text": "Ton navigateur n'a pas voulu passer en plein écran tout seul. Un toucher suffit.",
+  "fullscreen.accept": "Plein écran",
+  "fullscreen.later": "Plus tard"
 }

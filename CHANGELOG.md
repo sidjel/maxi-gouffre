@@ -2,6 +2,20 @@
 
 Une entrée par jalon (ARCHITECTURE.md §18). Tag `vN.0-nom` posé après la fusion dans `main`.
 
+## Plein écran (2026-11-06)
+
+Demande de l'auteur : le jeu passe en plein écran tout seul, sur PC et téléphone.
+
+### Ajouté
+- Plein écran au **premier geste du joueur** (toucher, clic ou touche) : un navigateur n'accepte jamais le plein écran sans geste. Sur téléphone Android, l'écran est aussi bloqué en paysage quand c'est possible.
+- Si le navigateur refuse : fenêtre « Jouer en plein écran ? » avec « Plein écran » et « Plus tard ».
+- Petit bouton (icône à 4 coins) en bas à droite, visible tant que le jeu n'est pas en plein écran (par exemple après Échap). Aucune nouvelle tentative automatique si le joueur sort du plein écran exprès.
+- Sans plein écran possible (iPhone, par exemple), ni bouton ni fenêtre.
+- `platform.js` : `fullscreenSupported`, `isFullscreen`, `requestFullscreen`, `onFullscreenChange`. Écran `ui/screens/fullscreen.js`, style `css/fullscreen.css`. Tests `tests/e2e/fullscreen.mjs` (5 cas).
+
+### Corrigé
+- Écran titre sur téléphone : avec « Combat rapide », le logo était coupé en haut et la version chevauchait « Crédits ». Le menu passe sur 2 colonnes, avec « Combat rapide » sur toute la largeur.
+
 ## Corrections du J1 — lisibilité du combat (2026-11-06)
 
 Retours de l'auteur après le test en ligne du J1.

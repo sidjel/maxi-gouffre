@@ -12,7 +12,7 @@
     "serve": "node tools/serve.mjs",
     "test": "node tools/test.mjs",
     "check": "node tools/check.mjs",
-    "e2e": "node --test --test-reporter=spec tests/e2e/smoke.mjs tests/e2e/play-match.mjs tests/e2e/info-band.mjs",
+    "e2e": "node --test --test-reporter=spec tests/e2e/smoke.mjs tests/e2e/play-match.mjs tests/e2e/info-band.mjs tests/e2e/fullscreen.mjs",
     "shots": "node tools/screenshots.mjs",
     "credits": "node tools/credits.mjs"
   },

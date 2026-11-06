@@ -63,3 +63,14 @@ Format : date · jalon · décision · raison.
 | 2026-11-06 | Je garde les noms de ligne **Avant / Arrière** sur le plateau. | Les effets du J2 dépendent de la ligne (GD §8.1), et chaque description d'effet commence par « En ligne Avant » ou « En ligne Arrière ». Le nom de la ligne relie les deux. La teinte plus claire de la ligne Avant reste en plus. |
 | 2026-11-06 | Face compacte : **jauge de fraîcheur en 3 segments** le long du bord bas, en plus de l'icône de stade. Le nom de la carte n'y figure pas. | Retour de l'auteur. Le nom ne tient pas lisiblement sur une carte de 50 px réels de large (texte < 12 px) ; il est dans le panneau de droite. La face complète (nom et jauge) reste en main sur grand écran, profil `wide`. |
 | 2026-11-06 | Boutons « À plat » et « Quitter » : hauteur `--touch-small` (78 px logiques en `wide`, 82 en `compact`), soit au moins 44 px réels. | Retour de l'auteur : boutons peu utilisés. On ne descend pas sous TOUCH_MIN_PX. |
+
+## Plein écran
+
+| Date | Décision | Raison |
+|---|---|---|
+| 2026-11-06 | **Plein écran demandé au premier geste du joueur** (première action reçue par `InputHandler` : toucher, clic ou touche reconnue), une seule fois par chargement. | Les navigateurs refusent le plein écran sans geste du joueur : impossible dès l'ouverture de la page. C'est le plus tôt possible. |
+| 2026-11-06 | Refus du navigateur : fenêtre « Jouer en plein écran ? » une seule fois, puis le petit bouton en bas à droite. Le refus n'est pas écrit dans la console. | Demande de l'auteur. Un refus n'est pas une erreur du jeu, et la console doit rester propre. |
+| 2026-11-06 | Si le joueur quitte le plein écran (Échap, geste du système), le jeu ne le relance pas tout seul ; le bouton réapparaît. | Respecter le choix du joueur. |
+| 2026-11-06 | Ce comportement remplace pour l'instant l'option « Plein écran : Non par défaut » du GD §15.4. L'option arrive au J7 ; je propose qu'elle soit alors « Oui » par défaut. **À valider par l'auteur, et à reporter dans le GD s'il le souhaite.** | La demande de l'auteur contredit la valeur par défaut écrite dans le GD, que je ne modifie pas sans son accord. |
+| 2026-11-06 | Sur téléphone Android en plein écran, tentative de blocage en paysage (`screen.orientation.lock`), refus ignoré. | GD §14.5 : paysage obligatoire. L'écran « Tourne ton téléphone » reste pour les autres cas. |
+| 2026-11-06 | Écran titre sur téléphone : menu sur 2 colonnes, « Combat rapide » sur toute la largeur, logo à 120 px logiques. | Corrige un débordement introduit au J1 avec la 5ᵉ entrée. |
