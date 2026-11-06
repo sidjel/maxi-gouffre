@@ -211,3 +211,27 @@ html[data-profile='compact'] .screen-title {
   border-width: 3px;
   box-shadow: 4px 4px 0 var(--c-ink);
 }
+
+/* Titre sur téléphone : 5 entrées. « Combat rapide » sur toute la largeur, les autres sur 2 colonnes */
+html[data-profile='compact'] .screen-title {
+  --menu-width: 720px;
+  gap: var(--space-s);
+}
+
+html[data-profile='compact'] .title-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+html[data-profile='compact'] .title-menu .btn-primary {
+  grid-column: 1 / -1;
+}
+
+html[data-profile='compact'] .title-tagline {
+  max-width: none;
+}
+
+html[data-profile='compact'] .title-toast {
+  position: absolute;
+  bottom: calc(var(--space-m) + var(--fs-small) * 1.4);
+}

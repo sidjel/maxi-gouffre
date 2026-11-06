@@ -51,3 +51,28 @@ export function onResume(cb, doc = document) {
     if (!doc.hidden) cb();
   });
 }
+
+/** Vrai si le navigateur permet de mettre la page en plein écran (pas l'iPhone, par exemple). */
+export function fullscreenSupported(doc = document) {
+  return typeof doc.documentElement.requestFullscreen === 'function' && doc.fullscreenEnabled !== false;
+}
+
+/** Vrai si la page est en plein écran. */
+export function isFullscreen(doc = document) {
+  return Boolean(doc.fullscreenElement);
+}
+
+/**
+ * Passe en plein écran. Le navigateur l'exige pendant un geste du joueur (toucher, clic, touche).
+ * Sur téléphone, on tente aussi de bloquer l'écran en paysage (Android ; refus ignoré).
+ * @returns {Promise<void>} rejetée si le navigateur refuse
+ */
+export async function requestFullscreen(doc = document, win = window) {
+  await doc.documentElement.requestFullscreen({ navigationUI: 'hide' });
+  if (isHandheld(win)) win.screen.orientation?.lock?.('landscape')?.catch(() => {});
+}
+
+/** Prévient quand la page entre dans le plein écran ou en sort (touche Échap, bouton retour…). */
+export function onFullscreenChange(cb, doc = document) {
+  doc.addEventListener('fullscreenchange', cb);
+}

@@ -76,7 +76,7 @@ html[data-profile='compact'] {
   --fs-body: calc(30px * var(--text-scale));
   --fs-button: calc(34px * var(--text-scale));
   --fs-heading: calc(48px * var(--text-scale));
-  --fs-logo: calc(150px * var(--text-scale));
+  --fs-logo: calc(120px * var(--text-scale));
   --fs-promo: calc(38px * var(--text-scale));
   --touch-min: 88px; /* 88 × 0,54 ≈ 47 px réels */
   --touch-small: 82px; /* 82 × 0,54 ≈ 44,4 px réels */
