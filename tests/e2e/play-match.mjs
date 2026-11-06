@@ -49,7 +49,10 @@ function measureCombat(page) {
       const next = cards[i + 1]?.getBoundingClientRect();
       return next ? Math.min(r.width, next.left - r.left) : r.width;
     });
+    const stageRect = stage.getBoundingClientRect();
+    const handBottom = Math.max(...cards.map((c) => c.getBoundingClientRect().bottom));
     return {
+      overflowBottom: handBottom - stageRect.bottom,
       minFont, minFontText,
       minCell: Math.min(...cells.map((r) => Math.min(r.width, r.height))),
       minButton: Math.min(...buttons.map((r) => r.height)),
@@ -169,6 +172,7 @@ for (const size of SIZES) {
     assert.ok(m.minFont >= 12, `texte trop petit : ${m.minFont.toFixed(1)} px réels (« ${m.minFontText} »)`);
     assert.ok(m.minCell >= 44, `case trop petite : ${m.minCell.toFixed(1)} px réels`);
     assert.ok(m.minButton >= 44, `bouton trop petit : ${m.minButton.toFixed(1)} px réels`);
+    assert.ok(m.overflowBottom <= 0.5, `cartes de la main rognées en bas de ${m.overflowBottom.toFixed(1)} px`);
     assert.ok(m.minHandCard >= 44, `carte de la main trop étroite : ${m.minHandCard.toFixed(1)} px réels`);
     assert.deepEqual(problems, []);
     await context.close();

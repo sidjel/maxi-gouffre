@@ -29,6 +29,7 @@ export function createHand(opts) {
         }
       }
       root.classList.toggle('is-waiting', !vm.active);
+      root.style.setProperty('--fan-max', String(Math.max(0, (uids.length - 1) / 2)));
       uids.forEach((uid, i) => {
         let node = cards.get(uid);
         if (!node) {

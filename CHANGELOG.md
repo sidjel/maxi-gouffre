@@ -2,6 +2,18 @@
 
 Une entrée par jalon (ARCHITECTURE.md §18). Tag `vN.0-nom` posé après la fusion dans `main`.
 
+## Défilement du panneau et cartes rognées (2026-11-06)
+
+Retours de l'auteur après le test du plein écran.
+
+### Corrigé
+- **Téléphone : le panneau de droite revenait en haut** au deuxième glissé. Lever le doigt (`pointerleave` au toucher) et chaque coup de l'IA rafraîchissaient la fiche, qui remettait son défilement à zéro. La fiche ne remonte plus qu'en changeant de carte, et `pointerleave` ne compte que pour la souris.
+- **Cartes de la main rognées en bas** (surtout visible en plein écran) : en éventail, les cartes des bords descendaient sous le bas de l'écran. Ce sont maintenant les cartes du centre qui montent.
+
+### Modifié
+- `GAME_DESIGN.md` v2.0.1 (demande de l'auteur) : option « Plein écran » à « Oui » par défaut (§15.4).
+- Tests : le défilement du panneau reste en place (téléphone), aucune carte de la main ne dépasse du bas de l'écran (3 tailles).
+
 ## Plein écran (2026-11-06)
 
 Demande de l'auteur : le jeu passe en plein écran tout seul, sur PC et téléphone.
