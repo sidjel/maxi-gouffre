@@ -48,6 +48,7 @@
   --fs-logo: calc(232px * var(--text-scale));
   --fs-promo: calc(56px * var(--text-scale));
   --touch-min: 96px; /* 96 × 0,57 ≈ 55 px réels ≥ TOUCH_MIN_PX */
+  --touch-small: 78px; /* boutons peu utilisés : 78 × 0,573 ≈ 44,7 px réels au minimum */
   --space-xs: 8px;
   --space-s: 16px;
   --space-m: 32px;
@@ -78,6 +79,7 @@ html[data-profile='compact'] {
   --fs-logo: calc(150px * var(--text-scale));
   --fs-promo: calc(38px * var(--text-scale));
   --touch-min: 88px; /* 88 × 0,54 ≈ 47 px réels */
+  --touch-small: 82px; /* 82 × 0,54 ≈ 44,4 px réels */
   --space-xs: 6px;
   --space-s: 12px;
   --space-m: 20px;
@@ -96,11 +98,13 @@ html[data-profile='compact'] {
 
 /* ---------- Combat (J1) : tailles de la scène par profil ---------- */
 :root {
-  --side-left: 320px;
-  --side-right: 430px;
+  --side-left: 280px;
+  --side-right: 490px;
   --hand-h: 316px;
-  --cell-w: 150px;
-  --cell-h: 168px;
+  --cell-w: 136px;
+  --cell-h: 156px;
+  --row-label-w: 40px;
+  --fs-info: calc(24px * var(--text-scale));
   --cell-gap: 12px;
   --hand-card-w: 186px;
   --hand-overlap: -14px;
@@ -123,11 +127,14 @@ html[data-profile='compact'] {
 }
 
 html[data-profile='compact'] {
-  --side-left: 190px;
-  --side-right: 300px;
+  --side-left: 170px;
+  --side-right: 330px;
   --hand-h: 172px;
-  --cell-w: 144px;
+  --cell-w: 120px;
   --cell-h: 116px;
+  --flat-scale: 0.8;
+  --row-label-w: 34px;
+  --fs-info: calc(24px * var(--text-scale)); /* ≈ 13 px réels */
   --cell-gap: 8px;
   --hand-card-w: 94px;
   --hand-overlap: 4px;

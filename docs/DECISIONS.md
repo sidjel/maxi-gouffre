@@ -48,3 +48,18 @@ Format : date · jalon · décision · raison.
 | 2026-11-06 | En mode debug, **`?aiDelay=N`** fixe le délai de réflexion de l'IA à N ms (ex. `?debug=1&aiDelay=0`). | Accélère les essais à la main. Hors debug, le délai suit toujours `AI_DELAY_MIN` / `AI_DELAY_MAX`. |
 | 2026-11-06 | Nouveau fichier de données **`quickmatch.json`**, absent de la liste de l'ARCHITECTURE §2. | Le combat rapide doit rester décrit en données, sans contenu en dur. |
 | 2026-11-06 | Version du jeu : **1.0.0**, qui suit le tag `v1.0-premier-match`. | Convention des tags de l'ARCHITECTURE §16. |
+
+## Corrections du J1 — lisibilité
+
+| Date | Décision | Raison |
+|---|---|---|
+| 2026-11-06 | **Panneau de droite** : ordre puissance et nom, fraîcheur et âge, effet (encadré), Malus, texte d'ambiance, puis l'évolution sur 3 stades en retrait. Le panneau défile si besoin, avec un dégradé en bas quand il reste du texte. | Demande de l'auteur : mettre en avant l'effet, la fraîcheur et la description, et placer les stades plus bas. |
+| 2026-11-06 | Critère vérifié par les tests : l'effet et le Malus de chaque carte, à chaque stade, se lisent sans défiler sur les 3 tailles ; sur grand écran, le texte d'ambiance aussi. Seule l'évolution peut demander de défiler. | Sur téléphone, le panneau ne peut pas tout montrer à la fois sans passer sous 12 px réels. |
+| 2026-11-06 | Sur téléphone, les étiquettes (Aliment, Objet…) ne sont pas affichées dans le panneau. | Elles servent peu au J1 ; la place va à l'effet et au Malus. |
+| 2026-11-06 | **Sans carte visée**, le panneau affiche « Comment jouer » (6 règles courtes). | Demande de l'auteur : un nouveau joueur doit comprendre vite les règles. |
+| 2026-11-06 | **Cases** : l'emplacement dessiné a le format d'une carte (5:7) ; la zone à toucher (le bouton) garde la largeur de la colonne. Noms des lignes Avant et Arrière écrits sur le plateau. | Demande de l'auteur (cases plus rectangulaires), sans réduire la zone à toucher sous 44 px réels. Les noms des lignes préparent les effets du J2. |
+| 2026-11-06 | Sur téléphone, la consigne est posée par-dessus le haut du plateau incliné, qui recule et laisse un vide. À plat, le plateau est réduit à 80 % pour rester sous la consigne. | Cela rend 16 px logiques de hauteur aux cases : la ligne du fond passe de 41,8 à 47,7 px réels. |
+| 2026-11-06 | Tailles revues : grand écran, cases 136×156, panneaux de 280 et 490 px, boutons secondaires de 82 px logiques (47 px réels au minimum) ; téléphone, cases 120×116, panneaux de 170 et 330 px. | Pour que le panneau de droite tienne. Mesures : texte ≥ 13 px réels, cases et boutons ≥ 47,7 px réels sur téléphone. |
+| 2026-11-06 | Je garde les noms de ligne **Avant / Arrière** sur le plateau. | Les effets du J2 dépendent de la ligne (GD §8.1), et chaque description d'effet commence par « En ligne Avant » ou « En ligne Arrière ». Le nom de la ligne relie les deux. La teinte plus claire de la ligne Avant reste en plus. |
+| 2026-11-06 | Face compacte : **jauge de fraîcheur en 3 segments** le long du bord bas, en plus de l'icône de stade. Le nom de la carte n'y figure pas. | Retour de l'auteur. Le nom ne tient pas lisiblement sur une carte de 50 px réels de large (texte < 12 px) ; il est dans le panneau de droite. La face complète (nom et jauge) reste en main sur grand écran, profil `wide`. |
+| 2026-11-06 | Boutons « À plat » et « Quitter » : hauteur `--touch-small` (78 px logiques en `wide`, 82 en `compact`), soit au moins 44 px réels. | Retour de l'auteur : boutons peu utilisés. On ne descend pas sous TOUCH_MIN_PX. |

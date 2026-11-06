@@ -122,23 +122,27 @@ html[data-profile='compact'] .panel-left {
   text-align: center;
 }
 
-/* Centre : plateau */
+/* Centre : consigne au-dessus du plateau */
 .combat-center {
   grid-area: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 0;
+  padding-top: var(--space-xs);
+}
+
+.combat-center .board {
+  flex: 1;
   display: grid;
   place-items: center;
   min-height: 0;
 }
 
-/* Panneau droit : consigne, bandeau d'information, actions */
-.panel-right {
-  grid-area: right;
-  border-left: var(--border-thick) solid var(--c-ink);
-  background: var(--c-paper);
-}
-
 .combat-status {
-  min-height: calc(var(--fs-small) * 2.6);
+  width: calc(100% - 2 * var(--space-s));
+  min-height: calc(var(--fs-small) * 1.3 + 2 * var(--space-xs));
   padding: var(--space-xs) var(--space-s);
   border-radius: var(--radius-s);
   background: var(--c-ink);
@@ -146,49 +150,14 @@ html[data-profile='compact'] .panel-left {
   font-size: var(--fs-small);
   font-weight: 700;
   line-height: 1.3;
+  text-align: center;
 }
 
-.info-band {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  font-size: var(--fs-small);
-  line-height: 1.25;
-}
-
-.info-name {
-  font-family: var(--font-display);
-  font-size: var(--fs-body);
-  font-weight: 400;
-}
-
-.info-band.is-empty .info-name {
-  color: var(--c-disabled-text);
-}
-
-.info-stages {
-  margin: 0;
-  padding-left: 1.2em;
-}
-
-.info-stages .is-current {
-  font-weight: 700;
-}
-
-.info-effect {
-  font-weight: 700;
-}
-
-.info-flavor {
-  font-style: italic;
-}
-
-html[data-profile='compact'] .info-flavor,
-html[data-profile='compact'] .info-band:not(.is-empty) .info-hint {
-  display: none;
+/* Panneau droit : bandeau d'information, actions */
+.panel-right {
+  grid-area: right;
+  border-left: var(--border-thick) solid var(--c-ink);
+  background: var(--c-paper);
 }
 
 .actions,
@@ -215,8 +184,10 @@ html[data-profile='compact'] .info-band:not(.is-empty) .info-hint {
 }
 
 .btn-small {
-  padding: var(--space-xs);
+  min-height: var(--touch-small);
+  padding: 2px var(--space-xs);
   font-size: var(--fs-small);
+  box-shadow: none;
 }
 
 .actions-question {
@@ -252,4 +223,52 @@ html[data-profile='compact'] .info-band:not(.is-empty) .info-hint {
 
 .combat-status:empty {
   visibility: hidden;
+}
+
+/*
+ * Petit écran : la consigne se place dans le vide que laisse le haut du plateau incliné,
+ * pour donner toute la hauteur aux cases. À plat, le plateau est réduit pour rester sous la consigne.
+ */
+html[data-profile='compact'] .combat-center {
+  position: relative;
+  padding-top: 0;
+}
+
+html[data-profile='compact'] .combat-status {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-xs);
+  left: var(--space-s);
+  padding: 2px var(--space-s);
+  line-height: 1.2;
+}
+
+html[data-profile='compact'] .combat-center .board {
+  place-items: end center;
+}
+
+html[data-profile='compact'] .board.is-flat .board-plane {
+  transform: scale(var(--flat-scale));
+}
+
+/* Il reste du texte plus bas : le bas du bandeau s'estompe */
+.info-band.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 3em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 3em), transparent);
+}
+
+/* Le bandeau défile au doigt et à la molette si une carte a beaucoup à dire */
+.info-band {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  font-size: var(--fs-info);
+  line-height: 1.25;
+}
+
+html[data-profile='compact'] .panel-right {
+  gap: var(--space-xs);
 }

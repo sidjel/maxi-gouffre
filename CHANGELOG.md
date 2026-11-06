@@ -2,6 +2,23 @@
 
 Une entrée par jalon (ARCHITECTURE.md §18). Tag `vN.0-nom` posé après la fusion dans `main`.
 
+## Corrections du J1 — lisibilité du combat (2026-11-06)
+
+Retours de l'auteur après le test en ligne du J1.
+
+### Modifié
+- **Panneau de droite** réorganisé pour un nouveau joueur : en premier la puissance, la fraîcheur actuelle (icône de stade, âge), l'effet dans un encadré, le Malus en rouge, puis le texte d'ambiance ; en retrait en bas, l'évolution sur 3 stades. Le panneau défile au doigt et à la molette, et son bas s'estompe quand il reste du texte.
+- **Sans carte visée**, le panneau affiche « Comment jouer » : poser, gagner une manche, passer, Malus, effets au jalon 2.
+- **Cases du plateau** au format des cartes (5:7). La zone à toucher reste plus large que l'emplacement dessiné. Chaque ligne porte son nom (Avant, Arrière).
+- **Consigne** déplacée au-dessus du plateau. Sur téléphone, elle occupe le vide laissé par le haut du plateau incliné.
+- Textes plus courts pour Malus, Outil, Détruire les voisins, Annuler (voisins) et l'effet pas encore actif.
+- **Jauge de fraîcheur en 3 segments** aussi sur les faces compactes (plateau, main sur téléphone), le long du bord bas, et dans le panneau de droite.
+- Boutons « À plat » (ex-« Plateau à plat ») et « Quitter » plus petits : zone à toucher au minimum de 44 px réels, sans ombre.
+
+### Ajouté
+- `tests/e2e/info-band.mjs` : pour les 26 cartes à leurs 3 stades et aux 3 tailles, l'effet et le Malus se lisent sans défiler (et le texte d'ambiance aussi sur grand écran). Le rappel des règles s'affiche sans carte visée.
+- Capture `plateau-a-plat-telephone-844x390.png`.
+
 ## v1.0-premier-match — J1 : premier match jouable (2026-11-06)
 
 ### Ajouté

@@ -124,3 +124,6 @@ html[data-profile='wide'] .hand .card-malus {
 
 html[data-profile='wide'] .hand .card:not(.is-malus) .card-malus { display: none; }
 html[data-profile='wide'] .hand .card.is-fermented .card-ferment { top: 70px; right: auto; left: 18px; width: 26px; height: 26px; }
+
+/* La face complète a sa propre jauge : pas de jauge en bas de carte */
+html[data-profile='wide'] .hand .card-front::after { display: none; }

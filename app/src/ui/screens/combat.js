@@ -197,7 +197,7 @@ export function createCombatScreen() {
     const cell = e.target.closest('.cell');
     if (cell) return onCell(cell);
     // Toucher un endroit vide annule la sélection (GD §14.3).
-    if (!e.target.closest('.panel-right, .overlay')) {
+    if (!e.target.closest('.actions, .info-band, .overlay')) {
       ui.selected = null;
       ui.pinned = null;
       renderUi();
@@ -250,8 +250,8 @@ export function createCombatScreen() {
       };
       root = el('section', { className: 'screen screen-combat', attrs: { 'aria-label': t('combat.label', { opponent: opponentName }) } }, [
         parts.score.el,
-        el('div', { className: 'combat-center' }, [parts.board.el]),
-        el('aside', { className: 'panel panel-right' }, [parts.status, parts.info.el, parts.actions.el]),
+        el('div', { className: 'combat-center' }, [parts.status, parts.board.el]),
+        el('aside', { className: 'panel panel-right' }, [parts.info.el, parts.actions.el]),
         parts.hand.el,
         parts.chifoumi.el,
         parts.roundEnd.el,
