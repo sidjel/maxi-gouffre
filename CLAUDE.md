@@ -20,8 +20,10 @@ Ces deux documents sont la référence. Ne pas recopier leurs règles ici : les 
 - Rapport de jalon : nouveautés jouables, étapes de test (PC avec chaque entrée concernée, téléphone), captures, décisions prises seul, limites connues.
 
 ## État du projet
-- Documents v2.0 en place dans `docs/`. Aucun code encore.
-- Prochain jalon : **J0 — Socle et mise en ligne** (`ARCHITECTURE.md` §18).
-- GitHub Pages est configuré avec la source « GitHub Actions » ; le fichier `.github/workflows/pages.yml` est à créer au J0.
+- Documents v2.0 en place dans `docs/`.
+- **J0 — Socle et mise en ligne** livré sur la branche `j0-socle` (pull request vers `main`) : scène mise à l'échelle (`wide` / `compact`), écran « Tourne ton téléphone », écran titre provisoire, écran de plantage, données `strings.json` et `credits.json` validées, `rng`, `config`, `EventBus`, `Scheduler`, `StateMachine`, `InputHandler` minimal, panneau debug, workflow `pages.yml`. Tag à poser après fusion : `v0.0-socle`.
+- Vérifications : `npm run check` (données, registre, tailles, recherches interdites, tests unitaires) ; `npm run e2e` et `npm run shots` utilisent Playwright (déjà présent dans les sessions cloud, sinon `npm install`).
+- Polices provisoires (Lilita One, Atkinson Hyperlegible, IBM Plex Mono) en attente de validation par l'auteur.
+- Prochain jalon : **J1 — Premier match jouable** (`ARCHITECTURE.md` §18).
 
 Mettre à jour la section « État du projet » à la fin de chaque jalon.
