@@ -1,0 +1,108 @@
+/* ---------- Plateau 2.5D (ARCHITECTURE.md §8.2) ---------- */
+.board {
+  perspective: var(--board-perspective);
+  perspective-origin: 50% 40%;
+}
+
+.board-plane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cell-gap);
+  padding: var(--cell-gap);
+  border: var(--border-thick) solid var(--c-ink);
+  border-radius: var(--radius-m);
+  background: var(--c-fresh-blue);
+  box-shadow: var(--shadow-print);
+  transform-style: preserve-3d;
+  /* Pivot sur le bord bas : le plateau penche vers l'arrière sans déborder sur la main */
+  transform-origin: 50% 100%;
+  transform: rotateX(var(--board-tilt));
+  transition: transform var(--dur-normal) ease-out;
+}
+
+.board.is-flat .board-plane {
+  transform: none;
+}
+
+.camp {
+  display: grid;
+  grid-template-columns: repeat(5, var(--cell-w));
+  grid-auto-rows: var(--cell-h);
+  gap: var(--cell-gap);
+}
+
+.board-divider {
+  height: var(--border-thick);
+  margin: 0 var(--space-s);
+  border-radius: var(--border-thick);
+  background: var(--c-promo-yellow);
+}
+
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 3px dashed rgb(27 27 31 / 0.45);
+  border-radius: var(--radius-s);
+  background: var(--c-cell);
+  cursor: default;
+}
+
+.cell.row-front {
+  background: var(--c-cell-front);
+}
+
+.cell.is-legal {
+  border: var(--border-thick) solid var(--c-ink);
+  background: var(--c-legal);
+  cursor: pointer;
+  animation: legal-pulse var(--dur-slow) ease-in-out infinite alternate;
+}
+
+.cell.is-occupied {
+  border-style: solid;
+  border-color: transparent;
+  background: transparent;
+}
+
+@keyframes legal-pulse {
+  from { box-shadow: 0 0 0 0 var(--c-legal); }
+  to { box-shadow: 0 0 0 var(--cell-gap) rgb(255 210 63 / 0.35); }
+}
+
+/* Carte posée : face compacte, à la hauteur de la case */
+.cell .card {
+  height: 100%;
+}
+
+.cell .card.is-new {
+  animation: card-drop var(--dur-normal) ease-out;
+}
+
+@keyframes card-drop {
+  from { transform: translateY(-30%) scale(1.25); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* Le Malus vient d'en face : il glisse depuis l'autre camp */
+.camp-opponent .card.is-new:not(.is-foe),
+.camp-player .card.is-new.is-foe {
+  animation-name: card-drop-malus;
+}
+
+@keyframes card-drop-malus {
+  from { transform: translateY(30%) rotate(-8deg) scale(1.2); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .board-plane {
+    transition: none;
+  }
+
+  .cell.is-legal,
+  .cell .card.is-new {
+    animation: none;
+  }
+}

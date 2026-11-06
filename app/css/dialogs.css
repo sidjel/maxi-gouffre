@@ -1,0 +1,100 @@
+/* ---------- Fenêtres dans la scène : chifoumi, fin de manche, fin de match ---------- */
+.overlay {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-m);
+  background: rgb(27 27 31 / 0.55);
+}
+
+.overlay-light {
+  background: rgb(27 27 31 / 0.3);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-s);
+  width: min(var(--dialog-w), 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: var(--space-m);
+  border: var(--border-thick) solid var(--c-ink);
+  border-radius: var(--radius-m);
+  background: var(--c-paper);
+  box-shadow: var(--shadow-print);
+  text-align: center;
+}
+
+.dialog.is-match {
+  background: var(--c-white);
+}
+
+.dialog.is-victory {
+  background: var(--c-promo-yellow);
+}
+
+.dialog-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--c-tomato);
+  -webkit-text-stroke: 2px var(--c-ink);
+  paint-order: stroke fill;
+}
+
+.dialog-result,
+.dialog-score {
+  font-size: var(--fs-body);
+  font-weight: 700;
+}
+
+.dialog-result:empty {
+  display: none;
+}
+
+.dialog-text {
+  font-size: var(--fs-body);
+}
+
+.dialog-small {
+  font-size: var(--fs-small);
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.dialog-rounds {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.dialog-rounds .is-player { color: var(--c-fresh-blue); }
+.dialog-rounds .is-opponent { color: var(--c-tomato-dark); }
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-s);
+}
+
+.btn-throw {
+  min-width: 8em;
+}
+
+/* Bouton mis en avant sur l'écran titre */
+.btn-primary {
+  background: var(--c-tomato);
+  color: var(--c-white);
+}

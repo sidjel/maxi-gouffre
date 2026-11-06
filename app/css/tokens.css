@@ -93,3 +93,47 @@ html[data-profile='compact'] {
     --dur-slow: 0ms;
   }
 }
+
+/* ---------- Combat (J1) : tailles de la scène par profil ---------- */
+:root {
+  --side-left: 320px;
+  --side-right: 430px;
+  --hand-h: 316px;
+  --cell-w: 150px;
+  --cell-h: 168px;
+  --cell-gap: 12px;
+  --hand-card-w: 186px;
+  --hand-overlap: -14px;
+  --hand-lift: 44px;
+  --fan-angle: 2deg;
+  --fan-drop: 7px;
+  --fs-score: 112px;
+  --dialog-w: 980px;
+
+  /* Stades : couleur et forme d'icône différentes (GD §17.7) */
+  --c-stage-1: #2e8b57;
+  --c-stage-2: #e0a100;
+  --c-stage-3: #6b4f2a;
+  --c-legal: #ffd23f;
+  --c-foe: #b71c1c;
+  --c-cell: rgb(255 255 255 / 0.55);
+  --c-cell-front: rgb(255 255 255 / 0.8);
+  --c-floor-a: #eae3cf;
+  --c-floor-b: #f6f0de;
+}
+
+html[data-profile='compact'] {
+  --side-left: 190px;
+  --side-right: 300px;
+  --hand-h: 172px;
+  --cell-w: 144px;
+  --cell-h: 116px;
+  --cell-gap: 8px;
+  --hand-card-w: 94px;
+  --hand-overlap: 4px;
+  --hand-lift: 26px;
+  --fan-angle: 1.5deg;
+  --fan-drop: 4px;
+  --fs-score: 54px;
+  --dialog-w: 760px;
+}

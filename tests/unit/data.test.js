@@ -2,7 +2,13 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { loadAll, DATA_FILES } from '../../app/src/content/loader.js';
 import { validateAll, DataError } from '../../app/src/content/validate.js';
-import { nodeFetcher, memoryFetcher } from '../helpers/data.js';
+import { readFile } from 'node:fs/promises';
+import { nodeFetcher, memoryFetcher, DATA_DIR } from '../helpers/data.js';
+
+// Les fichiers de contenu réels, pour tester strings.json et credits.json isolément.
+const content = Object.fromEntries(await Promise.all(
+  ['cards.json', 'combats.json', 'quickmatch.json'].map(async (f) => [f, await readFile(`${DATA_DIR}${f}`, 'utf8')]),
+));
 
 const goodCredit = {
   file: 'assets/fonts/x.woff2', author: 'A', source: 'S', license: 'OFL-1.1',
@@ -13,6 +19,7 @@ function files(overrides) {
   return memoryFetcher({
     'strings.json': JSON.stringify({ 'game.title': 'MAXI-GOUFFRE' }),
     'credits.json': JSON.stringify([goodCredit]),
+    ...content,
     ...overrides,
   });
 }

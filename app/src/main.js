@@ -1,17 +1,21 @@
 /**
  * Démarrage et câblage. Aucune logique de jeu ici : on assemble les modules.
  */
-import { TECH } from './config.js';
+import { GAME, TECH } from './config.js';
 import { seedFrom } from './core/rng.js';
+import { buildRules } from './core/rules.js';
 import { loadAll, browserFetcher } from './content/loader.js';
 import { validateAll } from './content/validate.js';
 import { EventBus } from './app/EventBus.js';
 import { Scheduler } from './app/Scheduler.js';
 import { StateMachine } from './app/StateMachine.js';
+import { Store } from './app/Store.js';
+import { Session } from './app/Session.js';
 import { STATES } from './app/states.js';
 import { Stage } from './ui/Stage.js';
 import { createStrings } from './ui/strings.js';
 import { createTitleScreen } from './ui/screens/title.js';
+import { createCombatScreen } from './ui/screens/combat.js';
 import { createRotateScreen } from './ui/screens/rotate.js';
 import { showCrash, installCrashHandlers } from './ui/screens/crash.js';
 import { InputHandler } from './input/InputHandler.js';
@@ -47,9 +51,18 @@ async function boot() {
   const input = new InputHandler(window, bus, { bindings: DEFAULT_BINDINGS, debug: debugEnabled, tech: TECH });
   input.start();
 
-  // Graine de session : tirée de l'heure. Elle deviendra la graine de la partie au J4.
-  const session = { seed: seedFrom(Date.now()) };
-  const ctx = { t, bus, scheduler, tech: TECH };
+  // Graine du prochain combat rapide : tirée de l'heure, renouvelée à chaque match,
+  // sauf si elle a été saisie dans le panneau debug (même graine = même match, pour reproduire un bug).
+  const seeds = { next: seedFrom(Date.now()), locked: false };
+  const store = new Store();
+  const session = new Session({ store, bus, ctx: { defs, rules: buildRules(GAME) } });
+  const query = new URLSearchParams(location.search);
+  // Délai de réflexion de l'IA (GD §9.13). En mode debug, ?aiDelay=0 l'accélère pour les tests.
+  const forcedDelay = debugEnabled ? Number(query.get(TECH.AI_DELAY_QUERY_PARAM) ?? NaN) : NaN;
+  const aiDelay = () => (Number.isFinite(forcedDelay) && forcedDelay >= 0
+    ? forcedDelay
+    : GAME.AI_DELAY_MIN + Math.round(Math.random() * (GAME.AI_DELAY_MAX - GAME.AI_DELAY_MIN)));
+  const ctx = { t, bus, scheduler, tech: TECH, sm, session, aiDelay, navigate: null };
 
   // Rotation : écran superposé et pause (GD §14.5).
   const rotate = createRotateScreen();
@@ -73,12 +86,29 @@ async function boot() {
 
   // Écrans : un seul monté à la fois dans la scène.
   const screenRoot = doc.getElementById('screens');
-  const screens = { TITLE: createTitleScreen() };
+  const screens = { TITLE: createTitleScreen(), COMBAT: createCombatScreen() };
   let current = null;
   const show = (name) => {
     current?.unmount();
-    current = screens[name] ?? null;
-    current?.mount(screenRoot, ctx);
+    scheduler.clear();
+    current = screens[name];
+    current.mount(screenRoot, ctx);
+  };
+  /** Navigation entre écrans : titre, ou nouveau combat rapide (depuis le titre ou « Rejouer »). */
+  ctx.navigate = (name) => {
+    if (name === 'COMBAT') {
+      if (sm.main !== 'PLAYING') sm.go('PLAYING');
+      const seed = seeds.next;
+      if (!seeds.locked) seeds.next = seedFrom(Date.now() + seed);
+      current?.unmount();
+      current = null;
+      session.startQuickMatch(seed);
+      sm.enter('COMBAT');
+    } else {
+      session.end();
+      sm.go(name);
+    }
+    show(name);
   };
 
   // WARNING et PRESS_KEY arrivent au J6 : BOOT mène directement au titre provisoire.
@@ -92,8 +122,11 @@ async function boot() {
       t,
       tech: TECH,
       sm,
-      getSeed: () => session.seed,
-      setSeed: (n) => { session.seed = n; },
+      getSeed: () => seeds.next,
+      setSeed: (n) => {
+        seeds.next = n;
+        seeds.locked = true;
+      },
       getState: () => ({
         version: TECH.APP_VERSION,
         state: sm.snapshot(),
@@ -106,7 +139,9 @@ async function boot() {
         input: input.source,
         scheduler: { paused: scheduler.paused, pending: scheduler.size },
         data: Object.fromEntries(Object.entries(defs).map(([k, v]) => [k, Object.keys(v).length])),
-        seed: session.seed,
+        nextSeed: seeds.next,
+        game: session.state?.game ?? null,
+        match: session.state?.match ?? null,
       }),
     });
     bus.on('INPUT_ACTION', ({ action }) => {
