@@ -18,6 +18,9 @@ export const EFFECTS = Object.freeze([
   'BOOST', 'SCORE_BONUS', 'PANIC', 'TRANSFER', 'EAT',
 ]);
 
+/** Finitions des cartes (DIRECTION_ARTISTIQUE.md §2.3). */
+export const FINISHES = Object.freeze(['matte', 'promo', 'limited', 'greasy']);
+
 /** Règles spéciales de combat (GD §9.11). */
 export const COMBAT_RULES = Object.freeze(['singleRound', 'guided', 'noLoot', 'overtime']);
 
@@ -53,6 +56,7 @@ function checkEffects(effects, where, problems) {
 }
 
 function checkLook(obj, where, problems) {
+  if (!FINISHES.includes(obj.finish)) problems.push(`${where} › champ "finish" : ${FINISHES.join(', ')} attendu`);
   if (obj.image !== null && !(typeof obj.image === 'string' && ASSET.test(obj.image))) problems.push(`${where} › champ "image" : null ou chemin sous assets/ attendu`);
   if (obj.flavor !== undefined && !text(obj.flavor)) problems.push(`${where} › champ "flavor" : texte non vide attendu`);
 }

@@ -43,5 +43,608 @@
     "commercial": true,
     "date": "2026-11-06",
     "usage": "Icône provisoire de l'onglet du navigateur"
+  },
+  {
+    "file": "assets/img/ui/caddie.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné à la main en SVG pour le jeu",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Caddie qui traverse le fond de l'écran d'accueil (provisoire)"
+  },
+  {
+    "file": "assets/img/cards/banane_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Banane Verte"
+  },
+  {
+    "file": "assets/img/cards/banane_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Banane Parfaite"
+  },
+  {
+    "file": "assets/img/cards/banane_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Bouillie Brune"
+  },
+  {
+    "file": "assets/img/cards/steak_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Steak Haché Premier Prix"
+  },
+  {
+    "file": "assets/img/cards/steak_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Steak Douteux"
+  },
+  {
+    "file": "assets/img/cards/steak_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Bactérie Mortelle"
+  },
+  {
+    "file": "assets/img/cards/lait_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Lait Entier"
+  },
+  {
+    "file": "assets/img/cards/lait_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Lait Tourné"
+  },
+  {
+    "file": "assets/img/cards/lait_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Fromage Vivant"
+  },
+  {
+    "file": "assets/img/cards/baguette_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Pain Baguette"
+  },
+  {
+    "file": "assets/img/cards/baguette_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Baguette Dure"
+  },
+  {
+    "file": "assets/img/cards/baguette_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Poussière de Pain"
+  },
+  {
+    "file": "assets/img/cards/glace_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Glace Vanille"
+  },
+  {
+    "file": "assets/img/cards/glace_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Soupe Sucrée"
+  },
+  {
+    "file": "assets/img/cards/glace_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Flotte Collante"
+  },
+  {
+    "file": "assets/img/cards/pizza_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Pizza Ananas"
+  },
+  {
+    "file": "assets/img/cards/pizza_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Pizza Tiède"
+  },
+  {
+    "file": "assets/img/cards/pizza_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Scandale Culinaire"
+  },
+  {
+    "file": "assets/img/cards/pile_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Pile LR6 Neuve"
+  },
+  {
+    "file": "assets/img/cards/pile_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Pile Faible"
+  },
+  {
+    "file": "assets/img/cards/pile_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Acide de Pile"
+  },
+  {
+    "file": "assets/img/cards/cereales_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Céréales Fluo"
+  },
+  {
+    "file": "assets/img/cards/cereales_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Céréales Molles"
+  },
+  {
+    "file": "assets/img/cards/cereales_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Sucre Toxique"
+  },
+  {
+    "file": "assets/img/cards/influenceur_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Influenceur Fitness"
+  },
+  {
+    "file": "assets/img/cards/influenceur_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Influenceur Fatigué"
+  },
+  {
+    "file": "assets/img/cards/influenceur_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Influenceur Annulé"
+  },
+  {
+    "file": "assets/img/cards/enfant_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Enfant Hurlant"
+  },
+  {
+    "file": "assets/img/cards/enfant_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Enfant Épuisé"
+  },
+  {
+    "file": "assets/img/cards/enfant_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Enfant Endormi"
+  },
+  {
+    "file": "assets/img/cards/console_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Console Portable"
+  },
+  {
+    "file": "assets/img/cards/console_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Console Rayée"
+  },
+  {
+    "file": "assets/img/cards/console_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Console Brickée"
+  },
+  {
+    "file": "assets/img/cards/papier_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Papier Toilette"
+  },
+  {
+    "file": "assets/img/cards/papier_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Dernier Rouleau"
+  },
+  {
+    "file": "assets/img/cards/papier_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Carton Vide"
+  },
+  {
+    "file": "assets/img/cards/biere_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Bière Fraîche"
+  },
+  {
+    "file": "assets/img/cards/biere_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Bière Chaude"
+  },
+  {
+    "file": "assets/img/cards/biere_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Vomi de Soirée"
+  },
+  {
+    "file": "assets/img/cards/kevin_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Kévin (Caissier)"
+  },
+  {
+    "file": "assets/img/cards/kevin_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Kévin (Démissionnaire)"
+  },
+  {
+    "file": "assets/img/cards/kevin_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Kévin (Syndiqué)"
+  },
+  {
+    "file": "assets/img/cards/mixeur_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Mixeur Bon Marché"
+  },
+  {
+    "file": "assets/img/cards/mixeur_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Mixeur Surchauffé"
+  },
+  {
+    "file": "assets/img/cards/mixeur_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Explosion Électrique"
+  },
+  {
+    "file": "assets/img/cards/scotch_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Scotch Gris"
+  },
+  {
+    "file": "assets/img/cards/scotch_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Scotch Poussiéreux"
+  },
+  {
+    "file": "assets/img/cards/scotch_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Colle Sèche"
+  },
+  {
+    "file": "assets/img/cards/plante_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Plante Verte"
+  },
+  {
+    "file": "assets/img/cards/plante_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Plante Florissante"
+  },
+  {
+    "file": "assets/img/cards/plante_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Tige Morte"
+  },
+  {
+    "file": "assets/img/cards/chat_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Chat Errant"
+  },
+  {
+    "file": "assets/img/cards/chat_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Gros Matou"
+  },
+  {
+    "file": "assets/img/cards/chat_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Boule de Poils"
+  },
+  {
+    "file": "assets/img/cards/cassette_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Cassette Maudite"
+  },
+  {
+    "file": "assets/img/cards/cassette_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Bande Démagnétisée"
+  },
+  {
+    "file": "assets/img/cards/cassette_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Entité Libérée"
+  },
+  {
+    "file": "assets/img/cards/grandmere_1.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Grand-Mère Perdue"
+  },
+  {
+    "file": "assets/img/cards/grandmere_2.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Grand-Mère Paniquée"
+  },
+  {
+    "file": "assets/img/cards/grandmere_3.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Héritage"
+  },
+  {
+    "file": "assets/img/cards/milkshake.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Milkshake Protéiné"
+  },
+  {
+    "file": "assets/img/cards/burger.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Burger Gras"
+  },
+  {
+    "file": "assets/img/cards/petit_dej.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Petit-Dèj Épique"
+  },
+  {
+    "file": "assets/img/cards/ado_muet.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Ado Muet"
+  },
+  {
+    "file": "assets/img/cards/plante_mutante.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Plante Mutante"
+  },
+  {
+    "file": "assets/img/cards/lance.svg",
+    "author": "Claude (Anthropic), pour l'auteur de MAXI-GOUFFRE",
+    "source": "Dessiné en SVG par le générateur tools/art (npm run art)",
+    "license": "Tous droits réservés (propriété de l'auteur du jeu)",
+    "commercial": true,
+    "date": "2026-11-06",
+    "usage": "Illustration provisoire de carte : Lance de Fortune"
   }
 ]
