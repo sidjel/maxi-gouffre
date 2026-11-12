@@ -2,6 +2,26 @@
 
 Une entrée par jalon (ARCHITECTURE.md §18). Tag `vN.0-nom` posé après la fusion dans `main`.
 
+## J1.5a — Habillage des cartes et de l'accueil (2026-11-12)
+
+Première moitié du jalon J1.5 (DIRECTION_ARTISTIQUE.md §12). Tag proposé après fusion : `v1.5a-habillage`.
+
+### Ajouté
+- **66 illustrations SVG** : les 20 cartes à leurs 3 stades et les 6 plats, style prospectus (fond rayonnant, contours épais). Chaque image montre la carte et suggère son effet (la Bactérie mord vers l'avant, l'Influenceur pousse ses voisins, le Mixeur explose vers les côtés…). Générées par `npm run art` (`tools/art/`), qui renseigne aussi `cards.json` et le registre des assets ; une image de l'auteur n'est jamais écrasée.
+- **`docs/PROMPTS_IMAGES.md`** : une consigne de génération par carte et par stade, par plat, par décor (accueil, 6 supports) et par avatar (joueur, adversaires, PNJ, 7 expressions).
+- **Faces de cartes** : étoile « PRIX CHOC » pour la puissance, bandeau de nom façon promo, effet en étiquette de prix, étiquettes en pastille. Stade 2 : papier plus chaud, coin corné. Stade 3 : papier jauni, taches, tampon « DLC DÉPASSÉE ». Plats teintés selon le stade.
+- **Finitions** (champ `finish` dans `cards.json`) : `matte` (grain de papier), `promo` (reflet qui glisse), `limited` (holographique arc-en-ciel, motif en relief, tampon « ÉDITION LIMITÉE »), `greasy` (irisé gras). Le reflet suit la souris sur PC et l'inclinaison du téléphone ; sans l'un ni l'autre, il oscille lentement en main.
+- **États d'interaction** : contour néon et carte soulevée à la visée ; scintillement le long du bord de la carte sélectionnée ; cases légales rayées façon scotch avec un halo qui pulse ; à la pose, la carte vole de la main vers sa case, puis le laser rouge d'un scanner la balaie (les cartes de l'adversaire partent de son panneau).
+- **Accueil** : façade de nuit, enseigne néon « MAXI-GOUFFRE » dont une lettre grésille, portes coulissantes vitrées (buée, autocollant d'horaires, affiche promo), paillasson. Au premier appui, les portes s'ouvrent sur l'intérieur du magasin. Menu en panneaux de rayon suspendus qui se balancent et s'allument au survol ; « Continuer » barré « RUPTURE DE STOCK ». Un caddie traverse le fond de temps en temps. Après 45 s sans action, les portes se referment à moitié et le haut-parleur fait une remarque. Très rarement, l'enseigne affiche un autre mot.
+- **Crédits** : un long ticket de caisse qui défile tout seul, généré depuis le registre des assets (fichiers regroupés par auteur et licence). « Retour » ou Retour arrière ramène au titre.
+- Tests : `tests/e2e/entrance.mjs` (7 cas), `tests/e2e/card-look.mjs` (5 cas, dont lisibilité des cartes aux 3 tailles), `tests/unit/look.test.js` (finitions, images). `npm run check` vérifie que les illustrations générées sont à jour.
+
+### Modifié
+- L'état `PRESS_KEY` (portes fermées) précède le titre ; `BOOT → PRESS_KEY` en attendant l'avertissement du J6.
+- Le premier geste du joueur (plein écran) est maintenant l'appui qui ouvre les portes.
+- `npm run shots` écrit dans `docs/captures/j1-5/` et ajoute l'entrée, le titre et les crédits.
+- Version 1.5.0-a.
+
 ## Défilement du panneau et cartes rognées (2026-11-06)
 
 Retours de l'auteur après le test du plein écran.

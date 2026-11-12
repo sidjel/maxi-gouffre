@@ -75,3 +75,26 @@ Format : date · jalon · décision · raison.
 | 2026-11-06 | Sur téléphone Android en plein écran, tentative de blocage en paysage (`screen.orientation.lock`), refus ignoré. | GD §14.5 : paysage obligatoire. L'écran « Tourne ton téléphone » reste pour les autres cas. |
 | 2026-11-06 | Écran titre sur téléphone : menu sur 2 colonnes, « Combat rapide » sur toute la largeur, logo à 120 px logiques. | Corrige un débordement introduit au J1 avec la 5ᵉ entrée. |
 | 2026-11-06 | En plein écran sur un écran 16:9 (PC 1920×1080), la scène remplit tout l'écran : les bandes jaunes et rouges n'apparaissent que si la forme de l'écran diffère de 16:9. Je garde ce comportement. | C'est le principe de la scène mise à l'échelle (ARCHITECTURE §8.1). Le rognage signalé venait des cartes de la main, corrigé. |
+
+## J1.5a — Habillage des cartes et de l'accueil
+
+| Date | Décision | Raison |
+|---|---|---|
+| 2026-11-12 | **J1.5 coupé en deux** : J1.5a (cartes, finitions, états d'interaction, accueil, `PROMPTS_IMAGES.md`) et J1.5b (supports du plateau et `arenas.json`, interface intégrée au décor, caméras et avatars, temps forts). | Trop gros pour un échange. Découpage proposé par l'auteur (ARCHITECTURE §18). |
+| 2026-11-12 | Les illustrations SVG sont **produites par un générateur** (`npm run art`, `tools/art/`) plutôt qu'écrites à la main fichier par fichier. `npm run check` échoue si un fichier généré n'est pas à jour. | Un style commun (fonds, contours, yeux, taches) sur 66 images, et des retouches faciles. |
+| 2026-11-12 | « L'avant » d'une illustration est **le haut de l'image** (vers l'adversaire) ; les voisins sont **les côtés**. | Les effets qui visent la carte d'en face ou les voisins se lisent dans le même sens que sur le plateau. |
+| 2026-11-12 | Finitions : un stade 3 qui porte un effet (Bactérie Mortelle, Explosion Électrique…) est **`greasy`**, pas `promo`. | La DA §2.3 donne les deux règles ; « toute carte au stade 3 qui n'est pas limited » est la plus précise. |
+| 2026-11-12 | Sur la **face compacte** (plateau, téléphone), le tampon « DLC DÉPASSÉE » est dessiné sans texte (cadre rouge de travers). Le texte apparaît sur la face complète (main, grand écran). Même chose pour « ÉDITION LIMITÉE », signalée en compact par le reflet holographique seul. | Sur une petite carte, le texte tomberait sous 12 px réels. |
+| 2026-11-12 | Face complète : les **étiquettes** (Aliment, Objet…) passent en pastille sur le haut de l'illustration. | Sans cela, l'illustration n'avait plus qu'une bande de 70 px de haut. |
+| 2026-11-12 | Le reflet est un **calque agrandi déplacé par `transform`**, pas un `background-position` animé. En main, il oscille seul ; sur le plateau, il reste fixe tant que la souris ou le gyroscope ne le pilotent pas. | DA §11 : n'animer que `transform` et `opacity` (60 fps). Pas plus de 10 cartes animées à la fois. |
+| 2026-11-12 | `ui/shine.js` lit `pointermove` et `deviceorientation` **en dehors d'InputHandler**. | Effet purement visuel, sans action de jeu. L'interdit de l'ARCHITECTURE §19 porte sur la lecture des touches. |
+| 2026-11-12 | Le **vol de la carte** vers sa case se fait avec une copie à plat au-dessus de la scène, puis la vraie carte apparaît dans le plateau incliné. | Animer la carte dans le plan incliné demande des calculs 3D fragiles. Le changement de perspective à l'arrivée dure une image. |
+| 2026-11-12 | **Pas de son** au J1.5a (« ding » des portes, bip du scanner). | Tout l'audio arrive au J9b avec `AudioManager` et les volumes (GD §16). |
+| 2026-11-12 | « Réduire les clignotements » : l'option arrive au J7 ; en attendant, **`?reduceFlashes=1`** dans l'adresse l'active. « Réduire les animations » suit le réglage du système (`prefers-reduced-motion`), qui coupe aussi le grésillement du néon et l'easter egg. | Pouvoir tester les deux dès maintenant. |
+| 2026-11-12 | Durées de l'accueil : ouverture des portes 1,1 s ; portes qui se referment après **45 s** sans action ; caddie toutes les 9 à 22 s ; easter egg « AU SECOURS » vérifié toutes les 8 s avec 3 % de chance, affiché 0,22 s. Valeurs dans `config.js` (TECH). | Le GD ne fixe pas ces valeurs. 45 s se situe entre les deux seuils d'inactivité du narrateur (30 et 90 s). |
+| 2026-11-12 | Le **toucher qui ouvre les portes** ne déclenche jamais le panneau qui est derrière : le menu reste inerte jusqu'à la fin de l'ouverture. | Sinon, toucher l'écran au centre lançait directement un combat rapide. |
+| 2026-11-12 | Les **panneaux de rayon** : seule la face visible se balance ; le bouton (zone à toucher) reste immobile. | Une cible qui bouge est plus dure à toucher. |
+| 2026-11-12 | **Usure de l'entrée** (Acte I terminé, fin du jeu) : prête mais inactive, faute de sauvegarde. Aperçu en debug : `?debug=1&wear=1` ou `wear=2`. | La sauvegarde arrive au J4. |
+| 2026-11-12 | **Crédits** : les entrées du registre de même auteur, source et licence tiennent sur une ligne (« Illustrations provisoires des cartes × 66 »). | Le ticket reste long mais lisible. |
+| 2026-11-12 | Version **1.5.0-a**, tag proposé `v1.5a-habillage`. | Convention des tags (ARCHITECTURE §16), jalon coupé en deux. |
+
