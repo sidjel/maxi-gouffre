@@ -55,6 +55,11 @@ export function createBoard(opts) {
   return {
     el: root,
 
+    /** Carte posée (élément), ou null. */
+    cardNode(uid) {
+      return cards.get(uid) ?? null;
+    },
+
     /** Bascule entre vue inclinée et vue à plat. */
     setFlat(flat) {
       root.classList.toggle('is-flat', flat);
