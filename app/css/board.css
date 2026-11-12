@@ -82,7 +82,18 @@
 
 .cell.is-legal .cell-slot {
   border: var(--border-thick) solid var(--c-ink);
-  background: var(--c-legal);
+  background: repeating-linear-gradient(-45deg, var(--c-legal) 0 14px, var(--c-legal-stripe) 14px 28px);
+}
+
+/* Halo qui pulse lentement : seule l'opacité est animée (60 fps sur téléphone) */
+.cell.is-legal .cell-slot::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--border-thick) * -1);
+  border-radius: inherit;
+  box-shadow: 0 0 0 var(--border-thick) var(--c-white), 0 0 calc(var(--cell-gap) * 2) var(--cell-gap) rgb(255 210 63 / 0.75);
+  opacity: 0.25;
+  pointer-events: none;
   animation: legal-pulse var(--dur-slow) ease-in-out infinite alternate;
 }
 
@@ -92,8 +103,7 @@
 }
 
 @keyframes legal-pulse {
-  from { box-shadow: 0 0 0 0 var(--c-legal); }
-  to { box-shadow: 0 0 0 var(--cell-gap) rgb(255 210 63 / 0.35); }
+  to { opacity: 1; }
 }
 
 /* Carte posée : face compacte, qui recouvre l'emplacement */
@@ -127,7 +137,7 @@
     transition: none;
   }
 
-  .cell.is-legal .cell-slot,
+  .cell.is-legal .cell-slot::after,
   .cell .card.is-new {
     animation: none;
   }

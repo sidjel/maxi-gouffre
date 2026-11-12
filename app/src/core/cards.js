@@ -48,5 +48,6 @@ export function cardView(state, uid, ctx) {
     tags: [...def.tags, ...s.tags],
     flavor: s.flavor ?? null,
     image: s.image ?? null,
+    finish: s.finish,
   };
 }

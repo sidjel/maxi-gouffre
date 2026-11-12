@@ -5,10 +5,10 @@ Web (DOM + CSS, JavaScript ES2022 en modules natifs, sans framework ni bundler),
 
 - **Jouer en ligne** : https://sidjel.github.io/maxi-gouffre/
 - **Mode debug** : https://sidjel.github.io/maxi-gouffre/?debug=1 (touche F3 ou bouton « DBG ») ; ajouter `&aiDelay=0` pour une IA instantanée
-- Règles du jeu : [`docs/GAME_DESIGN.md`](docs/GAME_DESIGN.md) · Technique : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- Règles du jeu : [`docs/GAME_DESIGN.md`](docs/GAME_DESIGN.md) · Technique : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · Habillage : [`docs/DIRECTION_ARTISTIQUE.md`](docs/DIRECTION_ARTISTIQUE.md) · Consignes d'images : [`docs/PROMPTS_IMAGES.md`](docs/PROMPTS_IMAGES.md)
 - Journal : [`CHANGELOG.md`](CHANGELOG.md) · Décisions : [`docs/DECISIONS.md`](docs/DECISIONS.md) · Crédits : [`docs/CREDITS.md`](docs/CREDITS.md)
 
-État : **jalon J1 — premier match jouable**. Depuis le titre, « Combat rapide » lance un match complet contre l'IA « Noob ». Effets des cartes et vieillissement : jalon J2.
+État : **jalon J1.5a — habillage des cartes et de l'accueil**. Les portes du magasin s'ouvrent sur le menu ; « Combat rapide » lance un match complet contre l'IA « Noob », avec des cartes illustrées et brillantes. Décor du plateau, caméras et temps forts : J1.5b. Effets des cartes et vieillissement : J2.
 
 ## Installation
 
@@ -44,9 +44,10 @@ Puis ouvrir http://localhost:8080 sur le PC. Sur un téléphone connecté au **m
 |---|---|
 | `npm run serve` | Serveur local sur `app/` (port 8080, accessible depuis le téléphone) |
 | `npm test` | Tests unitaires (`node --test` sur `tests/unit/*.test.js`) |
-| `npm run check` | Données et registre des assets, taille des fichiers (< 300 lignes), recherches interdites, tests unitaires |
-| `npm run e2e` | Tests navigateur Playwright aux 3 tailles de référence (smoke, puis matchs complets à la souris et au doigt), console sans erreur ni avertissement |
-| `npm run shots` | Captures d'écran (titre, combat) dans `docs/captures/j1/` (option `-- --out dossier`) |
+| `npm run check` | Données et registre des assets, illustrations générées à jour, taille des fichiers (< 300 lignes), recherches interdites, tests unitaires |
+| `npm run e2e` | Tests navigateur Playwright aux 3 tailles de référence (smoke, matchs complets à la souris et au doigt, panneau, plein écran, accueil, habillage des cartes), console sans erreur ni avertissement |
+| `npm run shots` | Captures d'écran (entrée, titre, crédits, combat) dans `docs/captures/j1-5/` (option `-- --out dossier`) |
+| `npm run art` | Régénère les illustrations SVG provisoires des cartes (`tools/art/`), le champ `image` de `cards.json` et le registre des assets |
 | `npm run credits` | Régénère `docs/CREDITS.md` depuis `app/data/credits.json` |
 
 `npm run sim` (simulation d'équilibrage) arrive au jalon J2.

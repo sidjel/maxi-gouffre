@@ -16,6 +16,7 @@ import { Stage } from './ui/Stage.js';
 import { createStrings } from './ui/strings.js';
 import { createTitleScreen } from './ui/screens/title.js';
 import { createCombatScreen } from './ui/screens/combat.js';
+import { createCreditsScreen } from './ui/screens/credits.js';
 import { createRotateScreen } from './ui/screens/rotate.js';
 import { createFullscreen } from './ui/screens/fullscreen.js';
 import { showCrash, installCrashHandlers } from './ui/screens/crash.js';
@@ -23,6 +24,7 @@ import { InputHandler } from './input/InputHandler.js';
 import { DEFAULT_BINDINGS } from './input/bindings.js';
 import * as platform from './platform/platform.js';
 import { DebugPanel } from './debug/DebugPanel.js';
+import { installShine } from './ui/shine.js';
 
 const DATA_URL = new URL('../data/', import.meta.url);
 
@@ -43,6 +45,7 @@ async function boot() {
 
   const stage = new Stage(doc.getElementById('stage'), TECH);
   stage.start();
+  installShine(window, root, { tech: TECH, handheld: platform.isHandheld() });
 
   const defs = validateAll(await loadAll(browserFetcher(DATA_URL)));
   const t = createStrings(defs.strings);
@@ -63,7 +66,13 @@ async function boot() {
   const aiDelay = () => (Number.isFinite(forcedDelay) && forcedDelay >= 0
     ? forcedDelay
     : GAME.AI_DELAY_MIN + Math.round(Math.random() * (GAME.AI_DELAY_MAX - GAME.AI_DELAY_MIN)));
-  const ctx = { t, bus, scheduler, tech: TECH, sm, session, aiDelay, navigate: null };
+  // « Réduire les clignotements » (GD §15.4) : l'option arrive au J7 ; en attendant, ?reduceFlashes=1.
+  if (query.get(TECH.REDUCE_FLASHES_QUERY_PARAM) === '1') root.dataset.reduceFlashes = '1';
+  const flashesReduced = () => root.dataset.reduceFlashes === '1';
+  // Usure de l'entrée (DIRECTION_ARTISTIQUE.md §7.3) : lue dans la sauvegarde au J4 ; aperçu en debug (?wear=1 ou 2).
+  const wear = debugEnabled ? Number(query.get(TECH.WEAR_QUERY_PARAM) ?? 0) : 0;
+  const titleWear = [0, 1, 2].includes(wear) ? wear : 0;
+  const ctx = { t, bus, scheduler, tech: TECH, sm, session, aiDelay, navigate: null, win: window, flashesReduced, titleWear, defs };
 
   // Plein écran au premier geste du joueur, ou par un bouton si le navigateur refuse.
   createFullscreen().mount(doc.getElementById('fullscreen'), { t, bus, platform });
@@ -90,7 +99,7 @@ async function boot() {
 
   // Écrans : un seul monté à la fois dans la scène.
   const screenRoot = doc.getElementById('screens');
-  const screens = { TITLE: createTitleScreen(), COMBAT: createCombatScreen() };
+  const screens = { TITLE: createTitleScreen(), COMBAT: createCombatScreen(), CREDITS: createCreditsScreen() };
   let current = null;
   const show = (name) => {
     current?.unmount();
@@ -115,8 +124,8 @@ async function boot() {
     show(name);
   };
 
-  // WARNING et PRESS_KEY arrivent au J6 : BOOT mène directement au titre provisoire.
-  sm.go('TITLE');
+  // WARNING arrive au J6 : BOOT mène directement aux portes fermées (PRESS_KEY), qui s'ouvrent sur le titre.
+  sm.go('PRESS_KEY');
   show('TITLE');
   checkOrientation();
 

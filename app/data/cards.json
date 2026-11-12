@@ -11,7 +11,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/banane_1.svg",
         "flavor": "[TEMP] Croquante comme un concombre. Personne n'en veut."
       },
       {
@@ -19,7 +20,8 @@
         "power": 6,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/banane_2.svg",
         "flavor": "[TEMP] Trois secondes de perfection. Profites-en."
       },
       {
@@ -33,7 +35,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/banane_3.svg",
         "flavor": "[TEMP] Ça coule. Ça colle. Ça se glisse chez l'adversaire."
       }
     ]
@@ -50,7 +53,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/steak_1.svg",
         "flavor": "[TEMP] 15 % de bœuf, 85 % de mystère."
       },
       {
@@ -58,7 +62,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/steak_2.svg",
         "flavor": "[TEMP] La couleur n'existe pas dans la nature."
       },
       {
@@ -70,7 +75,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/steak_3.svg",
         "flavor": "[TEMP] Elle a des projets. Des grands projets."
       }
     ]
@@ -87,7 +93,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/lait_1.svg",
         "flavor": "[TEMP] Entier. Pour l'instant."
       },
       {
@@ -95,7 +102,8 @@
         "power": 4,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/lait_2.svg",
         "flavor": "[TEMP] Il a tourné. Dans quel sens, on ne sait pas."
       },
       {
@@ -106,7 +114,8 @@
           "monstre",
           "fermentation"
         ],
-        "image": null,
+        "finish": "limited",
+        "image": "assets/img/cards/lait_3.svg",
         "flavor": "[TEMP] Il respire. Il te regarde."
       }
     ]
@@ -123,7 +132,8 @@
         "power": 4,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/baguette_1.svg",
         "flavor": "[TEMP] Tradition française, cuisson industrielle."
       },
       {
@@ -138,7 +148,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/baguette_2.svg",
         "flavor": "[TEMP] Arme par destination."
       },
       {
@@ -146,7 +157,8 @@
         "power": 1,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/baguette_3.svg",
         "flavor": "[TEMP] Elle se répand partout. Même dans tes rêves."
       }
     ]
@@ -164,7 +176,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/glace_1.svg",
         "flavor": "[TEMP] Parfum « vanille », arôme « congélateur »."
       },
       {
@@ -172,7 +185,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/glace_2.svg",
         "flavor": "[TEMP] Une minute hors du froid et voilà."
       },
       {
@@ -182,7 +196,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/glace_3.svg",
         "flavor": "[TEMP] Une flaque tiède que tu offres à l'adversaire."
       }
     ]
@@ -199,7 +214,8 @@
         "power": 4,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/pizza_1.svg",
         "flavor": "[TEMP] Le débat est clos. Elle existe."
       },
       {
@@ -207,7 +223,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/pizza_2.svg",
         "flavor": "[TEMP] Ni chaude ni froide. Juste triste."
       },
       {
@@ -221,7 +238,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/pizza_3.svg",
         "flavor": "[TEMP] Même le Gérant détourne les yeux."
       }
     ]
@@ -238,7 +256,8 @@
         "power": 6,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/pile_1.svg",
         "flavor": "[TEMP] Pleine d'énergie, contrairement à toi."
       },
       {
@@ -246,7 +265,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/pile_2.svg",
         "flavor": "[TEMP] Elle tient encore. Comme ton moral."
       },
       {
@@ -256,7 +276,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/pile_3.svg",
         "flavor": "[TEMP] Ne pas lécher. Surtout chez toi."
       }
     ]
@@ -273,7 +294,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/cereales_1.svg",
         "flavor": "[TEMP] Couleur garantie sans fruit."
       },
       {
@@ -281,7 +303,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/cereales_2.svg",
         "flavor": "[TEMP] Restées trop longtemps dans le lait de la vie."
       },
       {
@@ -289,7 +312,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/cereales_3.svg",
         "flavor": "[TEMP] Il brille dans le noir. C'est bon signe ?"
       }
     ]
@@ -314,7 +338,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/influenceur_1.svg",
         "flavor": "[TEMP] « Code promo GOUFFRE pour −10 % sur ta dignité. »"
       },
       {
@@ -330,7 +355,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/influenceur_2.svg",
         "flavor": "[TEMP] Il filme quand même. Il filme toujours."
       },
       {
@@ -344,7 +370,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/influenceur_3.svg",
         "flavor": "[TEMP] Personne ne veut être vu à côté de lui."
       }
     ]
@@ -361,7 +388,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/enfant_1.svg",
         "flavor": "[TEMP] Il veut le paquet de bonbons. Maintenant."
       },
       {
@@ -369,7 +397,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/enfant_2.svg",
         "flavor": "[TEMP] Il a tellement crié qu'il en est devenu fort."
       },
       {
@@ -377,7 +406,8 @@
         "power": 1,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/enfant_3.svg",
         "flavor": "[TEMP] Ne le réveille pas. Ne le réveille SURTOUT pas."
       }
     ]
@@ -394,7 +424,8 @@
         "power": 4,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/console_1.svg",
         "flavor": "[TEMP] Batterie : 3 %. Comme d'habitude."
       },
       {
@@ -402,7 +433,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/console_2.svg",
         "flavor": "[TEMP] L'écran a vu des choses."
       },
       {
@@ -410,7 +442,8 @@
         "power": 0,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/console_3.svg",
         "flavor": "[TEMP] Un presse-papier très cher."
       }
     ]
@@ -427,7 +460,8 @@
         "power": 1,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/papier_1.svg",
         "flavor": "[TEMP] La vraie monnaie du Gouffre."
       },
       {
@@ -439,7 +473,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "limited",
+        "image": "assets/img/cards/papier_2.svg",
         "flavor": "[TEMP] Tout le monde le veut. Panique générale."
       },
       {
@@ -447,7 +482,8 @@
         "power": 0,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/papier_3.svg",
         "flavor": "[TEMP] Il ne reste que le tube. Et le désespoir."
       }
     ]
@@ -464,7 +500,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/biere_1.svg",
         "flavor": "[TEMP] Fraîche, pas chère, pas bonne."
       },
       {
@@ -472,7 +509,8 @@
         "power": 1,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/biere_2.svg",
         "flavor": "[TEMP] Elle a le goût d'un parking en août."
       },
       {
@@ -482,7 +520,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/biere_3.svg",
         "flavor": "[TEMP] Un cadeau à poser chez l'adversaire."
       }
     ]
@@ -499,7 +538,8 @@
         "power": 4,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/kevin_1.svg",
         "flavor": "[TEMP] « Vous avez la carte du magasin ? »"
       },
       {
@@ -507,7 +547,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/kevin_2.svg",
         "flavor": "[TEMP] Il a rendu son badge. Il est toujours là."
       },
       {
@@ -522,7 +563,8 @@
         "tags": [
           "fermentation"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/kevin_3.svg",
         "flavor": "[TEMP] Il a lu le règlement. Tout le règlement."
       }
     ]
@@ -540,7 +582,8 @@
         "placeable": false,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/mixeur_1.svg",
         "flavor": "[TEMP] Garantie : jusqu'à la sortie du magasin."
       },
       {
@@ -549,7 +592,8 @@
         "placeable": false,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/mixeur_2.svg",
         "flavor": "[TEMP] Il sent le plastique brûlé et la mauvaise idée."
       },
       {
@@ -563,7 +607,8 @@
         "tags": [
           "malus"
         ],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/mixeur_3.svg",
         "flavor": "[TEMP] Une bombe. Pose-la chez quelqu'un que tu n'aimes pas."
       }
     ]
@@ -581,7 +626,8 @@
         "placeable": false,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/scotch_1.svg",
         "flavor": "[TEMP] Il répare tout. Sauf ta vie."
       },
       {
@@ -590,7 +636,8 @@
         "placeable": false,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/scotch_2.svg",
         "flavor": "[TEMP] Il colle encore, un peu, par politesse."
       },
       {
@@ -598,7 +645,8 @@
         "power": 0,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/scotch_3.svg",
         "flavor": "[TEMP] Elle ne colle plus rien. Même pas l'ambiance."
       }
     ]
@@ -615,7 +663,8 @@
         "power": 2,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/plante_1.svg",
         "flavor": "[TEMP] Elle purifie l'air du rayon. Elle fait de son mieux."
       },
       {
@@ -628,7 +677,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/plante_2.svg",
         "flavor": "[TEMP] Elle a trouvé la lumière. Où ça, ici ?"
       },
       {
@@ -636,7 +686,8 @@
         "power": 1,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/plante_3.svg",
         "flavor": "[TEMP] Elle a abandonné avant toi."
       }
     ]
@@ -661,7 +712,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/chat_1.svg",
         "flavor": "[TEMP] Il vit au rayon poissonnerie. Il a ses raisons."
       },
       {
@@ -677,7 +729,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "promo",
+        "image": "assets/img/cards/chat_2.svg",
         "flavor": "[TEMP] Il a mangé le rayon poissonnerie."
       },
       {
@@ -693,7 +746,8 @@
           }
         ],
         "tags": [],
-        "image": null,
+        "finish": "greasy",
+        "image": "assets/img/cards/chat_3.svg",
         "flavor": "[TEMP] Il reste surtout des poils."
       }
     ]
@@ -710,7 +764,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/cassette_1.svg",
         "flavor": "[TEMP] Ne pas rembobiner. Ne pas regarder."
       },
       {
@@ -718,7 +773,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/cassette_2.svg",
         "flavor": "[TEMP] Des voix. Juste des voix."
       },
       {
@@ -729,7 +785,8 @@
           "horreur",
           "fermentation"
         ],
-        "image": null,
+        "finish": "limited",
+        "image": "assets/img/cards/cassette_3.svg",
         "flavor": "[TEMP] Tu l'as regardée, hein ?"
       }
     ]
@@ -746,7 +803,8 @@
         "power": 3,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/grandmere_1.svg",
         "flavor": "[TEMP] Elle cherche le rayon tricot depuis 1987."
       },
       {
@@ -754,7 +812,8 @@
         "power": 5,
         "effects": [],
         "tags": [],
-        "image": null,
+        "finish": "matte",
+        "image": "assets/img/cards/grandmere_2.svg",
         "flavor": "[TEMP] Elle a perdu son sac. Et son chemin. Et ses lunettes."
       },
       {
@@ -768,7 +827,8 @@
         "tags": [
           "fermentation"
         ],
-        "image": null,
+        "finish": "limited",
+        "image": "assets/img/cards/grandmere_3.svg",
         "flavor": "[TEMP] Elle t'a tout laissé. Utilise-le bien."
       }
     ]
@@ -784,7 +844,8 @@
     "name": "Milkshake Protéiné",
     "power": 10,
     "effects": [],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/milkshake.svg",
     "flavor": "[TEMP] Banane, lait, et une odeur de vestiaire."
   },
   {
@@ -798,7 +859,8 @@
     "name": "Burger Gras",
     "power": 12,
     "effects": [],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/burger.svg",
     "flavor": "[TEMP] Il goutte. Il goutte beaucoup."
   },
   {
@@ -812,7 +874,8 @@
     "name": "Petit-Dèj Épique",
     "power": 9,
     "effects": [],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/petit_dej.svg",
     "flavor": "[TEMP] Le repas le plus important du Gouffre."
   },
   {
@@ -830,7 +893,8 @@
         "type": "CANCEL_FACING"
       }
     ],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/ado_muet.svg",
     "flavor": "[TEMP] Enfant + console : silence absolu."
   },
   {
@@ -849,7 +913,8 @@
         "value": 4
       }
     ],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/plante_mutante.svg",
     "flavor": "[TEMP] Elle a bu l'acide. Elle en redemande."
   },
   {
@@ -867,7 +932,8 @@
         "type": "DESTROY_FACING"
       }
     ],
-    "image": null,
+    "finish": "limited",
+    "image": "assets/img/cards/lance.svg",
     "flavor": "[TEMP] Une baguette, du scotch, et beaucoup de courage."
   }
 ]

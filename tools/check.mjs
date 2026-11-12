@@ -9,6 +9,7 @@ import { listFiles, ROOT } from './files.mjs';
 import { validateData } from './validate-data.mjs';
 import { checkSizes } from './check-size.mjs';
 import { runUnitTests } from './test.mjs';
+import { checkArt } from './art.mjs';
 
 /**
  * Recherches interdites (ARCHITECTURE.md §19). Chaque règle : où chercher, quoi, pourquoi.
@@ -91,6 +92,7 @@ async function step(title, fn) {
 
 const results = [
   await step('Données et registre des assets', validateData),
+  await step('Illustrations générées à jour (npm run art)', checkArt),
   await step('Taille des fichiers de code', checkSizes),
   await step('Recherches interdites', checkForbidden),
 ];

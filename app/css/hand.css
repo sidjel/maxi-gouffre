@@ -22,31 +22,34 @@
   transform: translateY(calc(var(--hand-lift) * -1)) scale(1.04);
 }
 
-.hand .card.is-selected .card-front {
-  outline: var(--border-thick) solid var(--c-fresh-blue);
-  outline-offset: 2px;
-}
-
 .hand.is-waiting .card:not(.is-selected) {
   filter: saturate(0.7);
 }
 
-/* Face complète : en main, sur grand écran seulement */
+/* Face complète : en main, sur grand écran seulement (DIRECTION_ARTISTIQUE.md §2.1).
+ * Bandeau de nom façon titre de promo, étoile « PRIX CHOC », illustration, effet en étiquette, jauge. */
 html[data-profile='wide'] .hand .card-front {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr auto auto auto;
-  gap: 4px 8px;
-  padding: 8px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 62px 1fr auto auto;
+  gap: 4px;
+  padding: 6px 8px 8px;
 }
 
 html[data-profile='wide'] .hand .card-power {
-  position: static;
-  min-width: 50px;
-  height: 50px;
-  border-width: 4px;
-  font-size: 40px;
+  top: -6px;
+  left: -8px;
+  width: 78px;
+  height: 78px;
 }
+
+html[data-profile='wide'] .hand .card-power::before { inset: 5px; }
+html[data-profile='wide'] .hand .card-power-value { font-size: 36px; }
+
+html[data-profile='wide'] .hand .card-name { position: relative; z-index: 3; grid-row: 1; }
+html[data-profile='wide'] .hand .card-art { grid-row: 2; }
+html[data-profile='wide'] .hand .card-effect { grid-row: 3; }
+html[data-profile='wide'] .hand .card-gauge { grid-row: 4; }
 
 html[data-profile='wide'] .hand .card-name {
   display: -webkit-box;
@@ -54,14 +57,21 @@ html[data-profile='wide'] .hand .card-name {
   -webkit-box-orient: vertical;
   overflow: hidden;
   align-self: center;
+  margin-left: 58px;
+  padding: 3px 6px 3px 12px;
+  border: 3px solid var(--c-ink);
+  border-radius: 4px 10px 10px 4px;
+  background: var(--c-banner);
+  color: var(--c-white);
   font-family: var(--font-display);
   font-size: var(--fs-small);
   line-height: 1.05;
+  transform: rotate(-2deg);
 }
 
 html[data-profile='wide'] .hand .card-art {
   position: relative;
-  grid-column: 1 / -1;
+  inset: auto;
   min-height: 0;
   border: 3px solid var(--c-ink);
   border-radius: 8px;
@@ -72,14 +82,36 @@ html[data-profile='wide'] .hand .card-art-initial { font-size: 60px; -webkit-tex
 html[data-profile='wide'] .hand .card-effect,
 html[data-profile='wide'] .hand .card-gauge {
   position: static;
-  grid-column: 1 / -1;
+}
+
+/* Effet en étiquette de prix, avec son trou */
+html[data-profile='wide'] .hand .card-effect {
+  position: relative;
+  padding: 2px 6px 2px 18px;
+  border: 3px solid var(--c-ink);
+  border-radius: 6px 14px 14px 6px;
+  background: var(--c-label);
+}
+
+html[data-profile='wide'] .hand .card-effect::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--c-ink);
+  border-radius: 50%;
+  background: var(--paper);
+  transform: translateY(-50%);
 }
 
 html[data-profile='wide'] .hand .card-effect-icon {
-  width: 34px;
-  height: 34px;
+  flex: none;
+  width: 30px;
+  height: 30px;
   border-width: 3px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 html[data-profile='wide'] .hand .card-effect-name,
@@ -92,7 +124,23 @@ html[data-profile='wide'] .hand .card-tags {
   line-height: 1.15;
 }
 
-html[data-profile='wide'] .hand .card-tags { grid-column: 1 / -1; }
+html[data-profile='wide'] .hand .card-effect-name { font-weight: 700; }
+
+/* Étiquettes (Aliment, Objet…) en pastille sur le haut de l'illustration */
+html[data-profile='wide'] .hand .card-tags {
+  position: absolute;
+  z-index: 4;
+  top: 76px;
+  left: 12px;
+  max-width: calc(100% - 60px);
+  padding: 0 6px;
+  border-radius: 6px;
+  background: rgb(27 27 31 / 0.82);
+  color: var(--c-white);
+}
+
+html[data-profile='wide'] .hand .card-tags:empty { display: none; }
+html[data-profile='wide'] .hand .card.is-effect-inactive .card-effect { background: var(--c-disabled-bg); }
 html[data-profile='wide'] .hand .card.is-effect-inactive .card-effect-name { color: var(--c-disabled-text); }
 
 html[data-profile='wide'] .hand .card-stage-icon { width: 22px; height: 22px; border-width: 3px; }
@@ -113,6 +161,7 @@ html[data-profile='wide'] .hand .card.stage-3 .card-seg { background: var(--stag
 html[data-profile='wide'] .hand .card-malus {
   display: block;
   position: absolute;
+  z-index: 4;
   top: 118px;
   right: -40px;
   padding: 2px 40px;
@@ -124,7 +173,43 @@ html[data-profile='wide'] .hand .card-malus {
 }
 
 html[data-profile='wide'] .hand .card:not(.is-malus) .card-malus { display: none; }
-html[data-profile='wide'] .hand .card.is-fermented .card-ferment { top: 70px; right: auto; left: 18px; width: 26px; height: 26px; }
+html[data-profile='wide'] .hand .card.is-fermented .card-ferment { top: 74px; right: 14px; width: 26px; height: 26px; }
+
+/* Tampons en toutes lettres sur la face complète */
+html[data-profile='wide'] .hand .card.stage-3 .card-art::before { display: none; }
+
+html[data-profile='wide'] .hand .card.stage-3 .card-stamp,
+html[data-profile='wide'] .hand .card.finish-limited .card-limited {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  padding: 0 6px;
+  border: 3px solid currentcolor;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+html[data-profile='wide'] .hand .card.stage-3 .card-stamp {
+  bottom: 40px;
+  left: 14px;
+  background: rgb(255 255 255 / 0.82);
+  color: var(--c-stamp);
+  transform: rotate(-12deg);
+}
+
+html[data-profile='wide'] .hand .card.has-effect.stage-3 .card-stamp { bottom: 80px; }
+
+html[data-profile='wide'] .hand .card.finish-limited .card-limited {
+  top: 116px;
+  left: 50%;
+  background: var(--c-ink);
+  color: var(--c-promo-yellow);
+  transform: translateX(-50%) rotate(4deg);
+}
+
 
 /* La face complète a sa propre jauge : pas de jauge en bas de carte */
 html[data-profile='wide'] .hand .card-front::after { display: none; }

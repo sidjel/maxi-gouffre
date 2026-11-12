@@ -1,6 +1,7 @@
 /**
  * Pilotage d'un combat dans le navigateur (tests et captures), à la souris ou au doigt.
  */
+import { enterStore } from './browser.js';
 
 /** État affiché (html[data-state]). */
 export const stateOf = (page) => page.evaluate(() => document.documentElement.dataset.state);
@@ -16,8 +17,9 @@ export function waitLeave(page, from, timeout = 8000) {
   return page.waitForFunction((s) => document.documentElement.dataset.state !== s, from, { timeout });
 }
 
-/** Depuis le titre : lance un combat rapide et passe le chifoumi jusqu'à la première manche. */
+/** Depuis l'entrée ou le titre : lance un combat rapide et passe le chifoumi jusqu'à la première manche. */
 export async function startQuickMatch(page, how) {
+  if ((await stateOf(page)) === 'PRESS_KEY') await enterStore(page, how);
   await press(page, '[data-menu="title.quickMatch"]', how);
   await page.waitForSelector('[data-dialog="chifoumi"]:not([hidden])');
   await finishChifoumi(page, how);

@@ -1,6 +1,9 @@
-/* ---------- Cartes (GD §17.4) : face compacte par défaut, face complète en main sur grand écran ---------- */
+/* ---------- Cartes (GD §17.4, DIRECTION_ARTISTIQUE.md §2.1-2.2) : style prospectus ----------
+ * Face compacte par défaut (plateau, téléphone) ; face complète en main sur grand écran (hand.css).
+ * Tailles en cqw : la carte est un conteneur, tout suit sa largeur. */
 .card {
   --stage-color: var(--c-stage-1);
+  --paper: var(--c-card-paper-1);
   --art-filter: none;
   container-type: inline-size;
   position: relative;
@@ -13,8 +16,12 @@
 }
 
 .card.stage-1 { --gauge-fill: 33.4%; }
-.card.stage-2 { --stage-color: var(--c-stage-2); --gauge-fill: 66.7%; --art-filter: saturate(0.75) sepia(0.35); }
-.card.stage-3 { --stage-color: var(--c-stage-3); --gauge-fill: 100%; --art-filter: saturate(0.5) sepia(0.7) hue-rotate(35deg) brightness(0.85); }
+.card.stage-2 { --stage-color: var(--c-stage-2); --gauge-fill: 66.7%; --paper: var(--c-card-paper-2); }
+.card.stage-3 { --stage-color: var(--c-stage-3); --gauge-fill: 100%; --paper: var(--c-card-paper-3); }
+
+/* Plats : une seule illustration, teintée selon le stade (GD §7.4) */
+.card.is-dish.stage-2 { --art-filter: saturate(0.75) sepia(0.3); }
+.card.is-dish.stage-3 { --art-filter: saturate(0.5) sepia(0.6) hue-rotate(35deg) brightness(0.85); }
 
 .card-inner {
   position: absolute;
@@ -36,7 +43,7 @@
 
 .card-front {
   display: block;
-  background: var(--c-white);
+  background: var(--paper);
 }
 
 .card-back {
@@ -46,17 +53,31 @@
 
 .card.is-foe .card-front { border-color: var(--c-foe); }
 
-/* Illustration provisoire style prospectus : aplat de la famille, trame, initiale */
+/* Illustration : image carrée en plein cadre ; à défaut, aplat de la famille et initiale */
 .card-art {
   position: absolute;
-  inset: 0;
+  inset: 0 0 8cqw;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background:
     radial-gradient(circle, rgb(255 255 255 / 0.35) 18%, transparent 20%) 0 0 / 14cqw 14cqw,
     hsl(var(--card-hue) 70% 52%);
   filter: var(--art-filter);
 }
+
+.card-art-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card:not(.has-image) .card-art-img,
+.card.has-image .card-art-initial { display: none; }
 
 .card-art-initial {
   font-family: var(--font-display);
@@ -67,41 +88,91 @@
   paint-order: stroke fill;
 }
 
-/* Taches de pourriture au stade 3 */
+/* Stade 3 : papier jauni, taches vertes (DIRECTION_ARTISTIQUE.md §2.2) */
 .card.stage-3 .card-art::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 22% 30%, rgb(60 80 20 / 0.7) 0 9%, transparent 10%),
-    radial-gradient(circle at 70% 62%, rgb(60 80 20 / 0.6) 0 12%, transparent 13%),
-    radial-gradient(circle at 40% 82%, rgb(40 30 10 / 0.6) 0 6%, transparent 7%);
+    radial-gradient(circle at 18% 26%, var(--c-rot-stain) 0 8%, transparent 9%),
+    radial-gradient(circle at 76% 64%, var(--c-rot-stain) 0 10%, transparent 11%),
+    radial-gradient(circle at 40% 86%, rgb(40 30 10 / 0.5) 0 5%, transparent 6%),
+    linear-gradient(rgb(214 196 120 / 0.28), rgb(214 196 120 / 0.28));
 }
 
-.card-power {
+/* Tampon « DLC DÉPASSÉE » de travers. Face compacte : le cadre seul (le texte serait illisible). */
+.card.stage-3 .card-art::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 44%;
+  left: 14%;
+  width: 72%;
+  height: 20%;
+  border: 3cqw solid var(--c-stamp);
+  border-radius: 3cqw;
+  background: linear-gradient(transparent 38%, var(--c-stamp) 38% 50%, transparent 50% 62%, var(--c-stamp) 62% 74%, transparent 74%) 18% 0 / 64% 100% no-repeat;
+  opacity: 0.8;
+  transform: rotate(-14deg);
+}
+
+.card-stamp,
+.card-limited { display: none; }
+
+/* Stade 2 : coin corné en haut à droite */
+.card-fold { display: none; }
+
+.card.stage-2 .card-fold {
   position: absolute;
   z-index: 2;
-  top: 3cqw;
-  left: 3cqw;
-  display: grid;
-  place-items: center;
-  min-width: 40cqw;
-  height: 40cqw;
-  padding: 0 3cqw;
-  border: max(3px, 3cqw) solid var(--c-ink);
-  border-radius: 20cqw;
-  background: var(--c-promo-yellow);
-  font-family: var(--font-display);
-  /* ≥ 12 px réels sur la plus petite carte posée sur téléphone (≈ 78 px logiques de large) */
-  font-size: 32cqw;
-  line-height: 1;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 16cqw;
+  height: 16cqw;
+  background: linear-gradient(225deg, var(--c-fold-under) 0 50%, var(--paper) 50%);
+  box-shadow: -1cqw 1cqw 0 rgb(27 27 31 / 0.35);
+  border-bottom-left-radius: 3cqw;
 }
 
-.card.is-unplaceable .card-power { background: var(--c-disabled-bg); }
+/* Pastille de puissance « PRIX CHOC » : étoile éclatée jaune cerclée d'encre */
+.card-power {
+  position: absolute;
+  z-index: 3;
+  top: 1cqw;
+  left: 1cqw;
+  display: grid;
+  place-items: center;
+  width: 50cqw;
+  height: 50cqw;
+  isolation: isolate;
+  background: var(--c-ink);
+  clip-path: var(--star-burst);
+}
+
+.card-power::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 4cqw;
+  background: var(--c-promo-yellow);
+  clip-path: var(--star-burst);
+}
+
+.card.is-unplaceable .card-power::before { background: var(--c-disabled-bg); }
+.card.is-malus .card-power::before { background: var(--c-malus-star); }
+
+.card-power-value {
+  font-family: var(--font-display);
+  /* ≥ 12 px réels sur la plus petite carte posée sur téléphone (≈ 78 px logiques de large) */
+  font-size: 30cqw;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
 
 .card-effect {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   right: 3cqw;
   bottom: 12cqw;
   display: flex;
@@ -135,7 +206,7 @@
 /* Icône de stade : forme différente par stade, pas seulement la couleur (GD §17.7) */
 .card-gauge {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: 3cqw;
   bottom: 12cqw;
   display: flex;
@@ -163,7 +234,7 @@
 
 .card.is-fermented .card-ferment {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 4cqw;
   right: 4cqw;
   display: block;
@@ -181,7 +252,7 @@
 .card-front::after {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   right: 0;
   bottom: 0;
@@ -193,7 +264,7 @@
     linear-gradient(to right, var(--stage-color) var(--gauge-fill), var(--c-white) 0);
 }
 
-/* Malus en face compacte : bord rouge à rayures */
+/* Malus en face compacte : bord rouge doublé de jaune */
 .card.is-malus .card-front {
   border-color: var(--c-tomato);
   box-shadow: inset 0 0 0 3cqw var(--c-promo-yellow);

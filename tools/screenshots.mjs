@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 /**
- * Captures d'écran aux 3 tailles de référence : titre, combat (chifoumi, sélection, Malus, plateau à plat,
+ * Captures d'écran aux 3 tailles de référence : entrée (portes fermées), titre, crédits, combat (chifoumi, sélection, Malus, plateau à plat,
  * fin de manche, fin de match), téléphone (paysage, portrait) et panneau debug.
- * `npm run shots` (dossier par défaut : docs/captures/j1) ou `npm run shots -- --out docs/captures/jN`.
+ * `npm run shots` (dossier par défaut : docs/captures/j1-5) ou `npm run shots -- --out docs/captures/jN`.
  * Échoue si la console affiche une erreur ou un avertissement.
  */
 import { mkdir } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SIZES, PHONE, loadPlaywright, serve, openPage, waitReady } from '../tests/helpers/browser.js';
+import { SIZES, PHONE, loadPlaywright, serve, openPage, waitReady, enterStore } from '../tests/helpers/browser.js';
 import { ROOT } from './files.mjs';
 import { stateOf, press, startQuickMatch, playFirstCard, playMatch, waitLeave } from '../tests/helpers/combat.js';
 
-const DEFAULT_OUT = 'docs/captures/j1';
+const DEFAULT_OUT = 'docs/captures/j1-5';
 const WIDE = { viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 };
 const PHONE_LANDSCAPE = { viewport: { width: 844, height: 390 }, ...PHONE };
 
@@ -37,8 +37,8 @@ async function midMatch(page, how, pick = '.hand .card') {
 function combatShots() {
   const how = (ctx) => (ctx.hasTouch ? 'touch' : 'mouse');
   const list = [
-    { file: 'chifoumi-1920x1080.png', context: WIDE, before: (p) => press(p, '[data-menu="title.quickMatch"]', 'mouse') },
-    { file: 'chifoumi-telephone-844x390.png', context: PHONE_LANDSCAPE, before: (p) => press(p, '[data-menu="title.quickMatch"]', 'touch') },
+    { file: 'chifoumi-1920x1080.png', context: WIDE, before: async (p) => { await enterStore(p, 'mouse'); await press(p, '[data-menu="title.quickMatch"]', 'mouse'); } },
+    { file: 'chifoumi-telephone-844x390.png', context: PHONE_LANDSCAPE, before: async (p) => { await enterStore(p, 'touch'); await press(p, '[data-menu="title.quickMatch"]', 'touch'); } },
     { file: 'malus-telephone-844x390.png', context: PHONE_LANDSCAPE, before: (p) => midMatch(p, 'touch', '.hand .card.is-malus') },
     {
       file: 'plateau-a-plat-1920x1080.png',
@@ -87,12 +87,24 @@ function combatShots() {
 
 /** Liste des captures : nom de fichier, options de contexte, adresse, action avant la capture. */
 function shots() {
-  const list = SIZES.map((s) => ({
-    file: `titre-${s.name}.png`,
-    context: { viewport: { width: s.width, height: s.height }, deviceScaleFactor: 1 },
-  }));
+  const list = SIZES.flatMap((s) => {
+    const context = { viewport: { width: s.width, height: s.height }, deviceScaleFactor: 1 };
+    return [
+      { file: `entree-portes-${s.name}.png`, context },
+      { file: `titre-${s.name}.png`, context, before: async (p) => { await enterStore(p, 'mouse'); await p.waitForTimeout(300); } },
+    ];
+  });
   list.push(
-    { file: 'telephone-paysage-844x390.png', context: { viewport: { width: 844, height: 390 }, ...PHONE } },
+    {
+      file: 'credits-1920x1080.png',
+      context: { viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 },
+      before: async (p) => {
+        await enterStore(p, 'mouse');
+        await press(p, '[data-menu="title.credits"]', 'mouse');
+        await p.waitForTimeout(3000);
+      },
+    },
+    { file: 'telephone-paysage-844x390.png', context: { viewport: { width: 844, height: 390 }, ...PHONE }, before: (p) => enterStore(p, 'touch') },
     { file: 'telephone-portrait-390x844.png', context: { viewport: { width: 390, height: 844 }, ...PHONE } },
     {
       file: 'debug-1920x1080.png',

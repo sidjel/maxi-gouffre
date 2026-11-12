@@ -14,6 +14,7 @@ export function expandDish(dish, ratio) {
     power,
     effects,
     tags: [],
+    finish: dish.finish,
     image: dish.image ?? null,
     flavor: dish.flavor ?? null,
   });

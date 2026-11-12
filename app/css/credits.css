@@ -1,0 +1,94 @@
+/* ---------- Crédits : un très long ticket de caisse qui défile (DIRECTION_ARTISTIQUE.md §7.3) ---------- */
+.screen-credits {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 120px, rgb(0 0 0 / 0.18) 120px 124px),
+    var(--c-counter);
+}
+
+.receipt-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+
+.receipt-scroll::-webkit-scrollbar { display: none; }
+
+.receipt {
+  --zig: 18px;
+  width: var(--receipt-w);
+  margin: var(--receipt-gap) auto var(--space-l);
+  padding: calc(var(--zig) + var(--space-m)) var(--space-m);
+  background: var(--c-receipt);
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  /* Bords dentelés du papier arraché */
+  mask:
+    conic-gradient(from -45deg at bottom, transparent, #000 1deg 89deg, transparent 90deg) bottom / calc(var(--zig) * 2) var(--zig) repeat-x,
+    conic-gradient(from 135deg at top, transparent, #000 1deg 89deg, transparent 90deg) top / calc(var(--zig) * 2) var(--zig) repeat-x,
+    linear-gradient(#000, #000) center / 100% calc(100% - var(--zig) * 2) no-repeat;
+  box-shadow: var(--shadow-print);
+}
+
+.receipt-store {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  font-weight: 400;
+  text-align: center;
+}
+
+.receipt-line { text-align: center; }
+
+.receipt-list {
+  margin: var(--space-m) 0;
+  padding: var(--space-s) 0;
+  border-top: 3px dashed var(--c-ink);
+  border-bottom: 3px dashed var(--c-ink);
+  list-style: none;
+}
+
+.receipt-item + .receipt-item { margin-top: var(--space-m); }
+
+.receipt-row {
+  display: flex;
+  gap: var(--space-s);
+  font-weight: 700;
+}
+
+.receipt-what { flex: 1; }
+.receipt-qty { flex: none; }
+
+.receipt-detail {
+  display: block;
+  padding-left: var(--space-m);
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
+}
+
+.receipt-total {
+  font-weight: 700;
+  font-size: var(--fs-button);
+  text-align: right;
+}
+
+.receipt-thanks { margin-top: var(--space-m); }
+
+.receipt-barcode {
+  display: block;
+  height: 90px;
+  margin: var(--space-m) auto 0;
+  width: 70%;
+  background: repeating-linear-gradient(90deg, var(--c-ink) 0 4px, transparent 4px 7px, var(--c-ink) 7px 9px, transparent 9px 14px, var(--c-ink) 14px 20px, transparent 20px 23px);
+}
+
+.credits-back {
+  position: absolute;
+  right: var(--space-l);
+  bottom: var(--space-l);
+}
+
+:root { --receipt-w: 820px; --receipt-gap: 420px; }
+html[data-profile='compact'] { --receipt-w: 680px; --receipt-gap: 260px; }

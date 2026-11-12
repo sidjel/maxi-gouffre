@@ -1,0 +1,181 @@
+/* ---------- Finitions et reflets (DIRECTION_ARTISTIQUE.md §2.3) ----------
+ * Le reflet est un calque agrandi qui glisse par `transform` (composité, 60 fps) :
+ * --sx / --sy (de -1 à 1) viennent du pointeur sur la carte (ui/shine.js) ou du gyroscope (sur <html>).
+ * Sans l'un ni l'autre, le reflet oscille lentement en main et reste fixe sur le plateau. */
+.card-shine {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.card.finish-promo .card-shine,
+.card.finish-limited .card-shine,
+.card.finish-greasy .card-shine { display: block; }
+
+.card-shine::before,
+.card-shine::after {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  transform: translate(calc(var(--sx, -0.4) * 28%), calc(var(--sy, -0.2) * 28%));
+}
+
+/* Carte à effet : reflet léger qui glisse */
+.card.finish-promo .card-shine::before {
+  background: linear-gradient(115deg, transparent 40%, rgb(255 255 255 / 0.9) 48%, rgb(255 255 255 / 0.25) 53%, transparent 60%);
+  opacity: var(--shine-promo);
+}
+
+/* ÉDITION LIMITÉE : holographique arc-en-ciel et motif en relief */
+.card.finish-limited .card-shine::before {
+  background: repeating-linear-gradient(115deg,
+    #ff5f6d 0, #ffc371 6%, #f9f871 12%, #6dffb3 18%, #4fc3f7 24%, #b388ff 30%, #ff5f6d 36%);
+  mix-blend-mode: color-dodge;
+  opacity: var(--shine-limited);
+}
+
+.card.finish-limited .card-shine::after {
+  inset: 0;
+  transform: none;
+  background:
+    repeating-linear-gradient(45deg, rgb(255 255 255 / 0.18) 0 1.5cqw, transparent 1.5cqw 7cqw),
+    repeating-linear-gradient(-45deg, rgb(255 255 255 / 0.18) 0 1.5cqw, transparent 1.5cqw 7cqw);
+  mix-blend-mode: overlay;
+}
+
+/* Stade 3 ordinaire : irisé « gras », flaque d'huile sur du carrelage */
+.card.finish-greasy .card-shine::before {
+  background:
+    radial-gradient(ellipse 30% 22% at 35% 35%, rgb(255 0 200 / 0.55), transparent),
+    radial-gradient(ellipse 34% 26% at 62% 52%, rgb(0 255 220 / 0.5), transparent),
+    radial-gradient(ellipse 28% 20% at 48% 70%, rgb(255 230 0 / 0.5), transparent);
+  mix-blend-mode: hard-light;
+  opacity: var(--shine-greasy);
+}
+
+.card.finish-matte .card-front {
+  background-image: radial-gradient(rgb(27 27 31 / 0.06) 0.8px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Oscillation lente en main, quand ni le pointeur ni le gyroscope ne pilotent le reflet */
+html:not([data-shine='gyro']) .hand .card:not(.is-lit) .card-shine::before {
+  animation: shine-drift var(--dur-shine) ease-in-out infinite alternate;
+}
+
+@keyframes shine-drift {
+  from { transform: translate(-28%, -10%); }
+  to { transform: translate(28%, 10%); }
+}
+
+/* ---------- États d'interaction (DIRECTION_ARTISTIQUE.md §2.4) ---------- */
+
+/* Visée : contour néon léger, la carte se soulève de quelques pixels */
+@media (hover: hover) {
+  .hand .card:hover .card-front,
+  .cell.is-occupied:hover .card-front {
+    box-shadow: 0 0 0 3px var(--c-white), 0 0 0 7px var(--c-neon), 0 0 22px 6px rgb(57 230 255 / 0.55);
+  }
+
+  .cell.is-occupied:hover .card-inner { transform: translateY(calc(var(--lift-hover) * -1)); }
+}
+
+.hand .card:focus-visible { outline: none; }
+
+.hand .card:focus-visible .card-front,
+.cell:focus-visible .card-front {
+  box-shadow: 0 0 0 3px var(--c-white), 0 0 0 8px var(--c-focus), 0 0 22px 6px rgb(57 230 255 / 0.55);
+}
+
+/* Sélectionnée : contour plus intense et scintillement le long du bord */
+.hand .card.is-selected .card-front {
+  box-shadow: 0 0 0 4px var(--c-white), 0 0 0 10px var(--c-select), 0 0 34px 10px rgb(57 230 255 / 0.75);
+}
+
+.card-sparkles {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card-sparkle {
+  display: none;
+  position: absolute;
+  width: 18cqw;
+  height: 18cqw;
+  background: var(--c-white);
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  filter: drop-shadow(0 0 4px var(--c-neon));
+}
+
+.hand .card.is-selected .card-sparkle {
+  display: block;
+  animation: twinkle var(--dur-twinkle) ease-in-out infinite;
+}
+
+.card-sparkle:nth-child(1) { top: -6cqw; left: 54%; }
+.card-sparkle:nth-child(2) { top: 38%; right: -9cqw; animation-delay: calc(var(--dur-twinkle) / -3); }
+.card-sparkle:nth-child(3) { bottom: 14%; left: -9cqw; animation-delay: calc(var(--dur-twinkle) / -1.5); }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+/* Posée : le laser rouge d'un scanner balaie la carte */
+.card-scan {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card-scan::before {
+  content: '';
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 0;
+  height: 5cqw;
+  background: var(--c-laser);
+  box-shadow: 0 0 6cqw 3cqw rgb(255 31 31 / 0.65);
+}
+
+.card.is-scanning .card-scan {
+  display: block;
+  animation: scan-sweep var(--dur-scan) ease-in-out 1 both;
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateY(-8%); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(104%); opacity: 0; }
+}
+
+/* Carte en vol de la main vers la case (calque au-dessus de la scène) */
+.card-flight {
+  position: absolute;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  width: var(--flight-w);
+  pointer-events: none;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.card.is-landing { visibility: hidden; }
+
+/* « Réduire les animations » : reflets fixes, pas de scintillement ni de laser */
+@media (prefers-reduced-motion: reduce) {
+  .card-shine::before { animation: none !important; transform: translate(-12%, -6%) !important; }
+  .hand .card.is-selected .card-sparkle { animation: none; opacity: 1; transform: none; }
+  .card.is-scanning .card-scan { display: none; }
+  .cell.is-occupied:hover .card-inner { transform: none; }
+}

@@ -1,0 +1,193 @@
+/* ---------- Accueil : l'entrée du Maxi-Gouffre (DIRECTION_ARTISTIQUE.md §7) ----------
+ * Façade de nuit, enseigne néon, portes coulissantes ; derrière, l'intérieur éclairé et le menu.
+ * Seuls transform et opacity sont animés. */
+.screen-title {
+  --sign-top: 18px;
+  --neon-size: 150px;
+  --door-top: 300px;
+  --door-w: 1240px;
+  --door-h: 660px;
+  --frame: 18px;
+  --sign-w: 300px;
+  background: var(--c-night);
+  overflow: hidden;
+}
+
+html[data-profile='compact'] .screen-title {
+  --sign-top: 10px;
+  --neon-size: 92px;
+  --door-top: 190px;
+  --door-w: 980px;
+  --door-h: 400px;
+  --frame: 12px;
+  --sign-w: 250px;
+}
+
+.storefront {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent calc(var(--door-top) + var(--door-h)), var(--c-sidewalk) 0),
+    repeating-linear-gradient(90deg, transparent 0 238px, rgb(0 0 0 / 0.25) 238px 242px),
+    linear-gradient(var(--c-wall-top), var(--c-wall-bottom));
+}
+
+.store-sky {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--door-top) - var(--frame) * 2);
+  background:
+    radial-gradient(circle at 8% 30%, var(--c-white) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 23% 12%, var(--c-white) 0 1px, transparent 2px),
+    radial-gradient(circle at 81% 22%, var(--c-white) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 93% 60%, var(--c-white) 0 1px, transparent 2px),
+    linear-gradient(var(--c-night), var(--c-night-low));
+}
+
+/* Enseigne néon */
+.store-sign {
+  position: absolute;
+  top: var(--sign-top);
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  transform: translateX(-50%);
+}
+
+.store-sign-box {
+  position: absolute;
+  inset: -6px -40px 0;
+  border: var(--border-thick) solid var(--c-ink);
+  border-radius: var(--radius-s);
+  background: linear-gradient(var(--c-sign-box), var(--c-ink));
+  box-shadow: 0 12px 0 rgb(0 0 0 / 0.35);
+}
+
+.neon {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: calc(var(--neon-size) * var(--text-scale));
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--c-neon-core);
+  text-shadow: 0 0 4px var(--c-white), 0 0 14px var(--c-neon-pink), 0 0 36px var(--c-neon-pink);
+  white-space: nowrap;
+}
+
+.neon-letter { display: inline-block; }
+
+/* Une lettre qui grésille de façon irrégulière : au plus 3 extinctions par seconde (GD §17.7) */
+.neon-letter.is-flicker { animation: neon-flicker 5.2s steps(1, end) infinite; }
+
+@keyframes neon-flicker {
+  0%, 61%, 64%, 67%, 90%, 92%, 100% { opacity: 1; }
+  62%, 65%, 91% { opacity: 0.22; }
+}
+
+.neon-letter.is-dead-1:is(.wear-1 *, .wear-2 *),
+.wear-2 .neon-letter:not(:nth-child(1), :nth-child(6)) {
+  opacity: 1;
+  color: var(--c-neon-off);
+  text-shadow: none;
+  animation: none;
+}
+
+.neon-egg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%);
+  color: var(--c-neon-egg-core);
+  text-shadow: 0 0 4px var(--c-white), 0 0 14px var(--c-neon-egg), 0 0 36px var(--c-neon-egg);
+}
+
+.is-egg .neon-egg { opacity: 1; }
+.is-egg .title-logo { opacity: 0.08; }
+
+.title-tagline {
+  position: relative;
+  margin-top: var(--space-xs);
+  padding: 2px var(--space-m);
+  border-radius: var(--radius-s);
+  background: var(--c-promo-yellow);
+  color: var(--c-ink);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  transform: rotate(-1deg);
+}
+
+.store-mat {
+  position: absolute;
+  top: calc(var(--door-top) + var(--door-h) + var(--space-s));
+  left: 50%;
+  width: calc(var(--door-w) * 0.5);
+  padding: var(--space-xs) 0;
+  background: repeating-linear-gradient(90deg, var(--c-mat) 0 10px, var(--c-mat-dark) 10px 14px);
+  clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%);
+  color: var(--c-mat-text);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  letter-spacing: 0.3em;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.title-announce {
+  position: absolute;
+  z-index: 5;
+  top: calc(var(--door-top) - var(--fs-body) * 2.2);
+  left: 50%;
+  max-width: var(--door-w);
+  padding: var(--space-xs) var(--space-m);
+  border: 3px solid var(--c-promo-yellow);
+  border-radius: var(--radius-s);
+  background: var(--c-ink);
+  color: var(--c-promo-yellow);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  transform: translateX(-50%);
+}
+
+.title-announce:empty { display: none; }
+
+.title-toast {
+  position: absolute;
+  z-index: 6;
+  bottom: calc(var(--space-m) * 2.4);
+  left: 50%;
+  max-width: 80%;
+  padding: var(--space-xs) var(--space-m);
+  border-radius: var(--radius-s);
+  background: var(--c-ink);
+  color: var(--c-promo-yellow);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity var(--dur-normal) ease-out;
+  pointer-events: none;
+}
+
+.title-toast.is-visible { opacity: 1; }
+
+.title-footer {
+  position: absolute;
+  left: var(--space-m);
+  bottom: var(--space-xs);
+  color: var(--c-white);
+  font-size: var(--fs-small);
+}
+
+/* Progression : entrée plus sale après l'Acte I, presque éteinte après la fin (J4) */
+.wear-1 .door-glass,
+.wear-2 .door-glass { filter: sepia(0.5) brightness(0.85); }
+.wear-2 .store-interior { filter: brightness(0.6) saturate(0.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-letter.is-flicker { animation: none; }
+}
+
+html[data-reduce-flashes='1'] .neon-letter.is-flicker { animation: none; }

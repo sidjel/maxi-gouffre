@@ -15,6 +15,7 @@ import { createInfoBand } from '../components/InfoBand.js';
 import { createActionBar } from '../components/ActionBar.js';
 import { createChifoumi } from '../components/Chifoumi.js';
 import { createRoundEnd } from '../components/RoundEnd.js';
+import { createFlights } from '../components/Flight.js';
 
 export function createCombatScreen() {
   let ctx = null;
@@ -69,6 +70,8 @@ export function createCombatScreen() {
     const legal = legalFor(m);
     const evaluation = evaluate(s, coreCtx());
     parts.board.update({ state: s, coreCtx: coreCtx(), evaluation, legal, fresh: ui.fresh });
+    parts.flights.landAll(ui.fresh, (uid) => parts.board.cardNode(uid), ui.launch, root.querySelector('.score-opponent'));
+    ui.launch = null;
     parts.hand.update({ state: s, coreCtx: coreCtx(), selected: ui.selected, active: myTurn(m) });
     parts.score.update({ match: m, score: evaluation.score });
     parts.actions.update({ mode: ui.mode, canPass: myTurn(m) && !m.passed.player, flat: ui.flat });
@@ -179,6 +182,7 @@ export function createCombatScreen() {
       const uid = ui.selected;
       ui.selected = null;
       ui.pinned = uid;
+      ui.launch = { uid, rect: parts.hand.rectOf(uid) };
       ctx.session.play(uid, index);
       return;
     }
@@ -236,7 +240,7 @@ export function createCombatScreen() {
       const m = state().match;
       const rules = coreCtx().rules;
       const opponentName = coreCtx().defs.combats[m.combatId].opponent;
-      ui = { selected: null, pinned: null, hover: null, mode: 'idle', flat: false, awaitingGo: false, fresh: new Set() };
+      ui = { selected: null, pinned: null, hover: null, mode: 'idle', flat: false, awaitingGo: false, fresh: new Set(), launch: null };
       parts = {
         opponentName,
         board: createBoard({ t, tech: ctx.tech, rules, opponentName }),
@@ -256,6 +260,7 @@ export function createCombatScreen() {
         parts.chifoumi.el,
         parts.roundEnd.el,
       ]);
+      parts.flights = createFlights({ win: window, layer: root, durationMs: ctx.tech.CARD_FLIGHT_MS });
       root.addEventListener('click', onClick);
       root.addEventListener('pointerover', onPointerOver);
       root.addEventListener('pointerleave', (e) => {
@@ -285,6 +290,7 @@ export function createCombatScreen() {
       aiTimer = null;
       for (const off of offs) off();
       offs = [];
+      parts?.flights.stop();
       root?.remove();
       root = null;
       parts = null;

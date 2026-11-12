@@ -17,6 +17,11 @@ export function createHand(opts) {
   return {
     el: root,
 
+    /** Rectangle à l'écran d'une carte de la main (départ du vol vers le plateau), ou null. */
+    rectOf(uid) {
+      return cards.get(uid)?.getBoundingClientRect() ?? null;
+    },
+
     /**
      * @param {{ state: object, coreCtx: object, selected: string|null, active: boolean }} vm
      */
