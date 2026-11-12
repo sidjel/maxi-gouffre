@@ -1,7 +1,8 @@
-# Vérifications puis publication de app/ sur GitHub Pages (ARCHITECTURE.md §12).
-# - pull request vers main : npm run check seulement ;
-# - fusion (push) sur main ou lancement manuel : npm run check, puis publication.
-# Réglage du dépôt : Settings → Pages → Source : GitHub Actions.
+# Vérifications puis publication sur GitHub Pages.
+# - pull request vers main : vérifications seulement (npm run check : fichiers, tests unitaires, construction) ;
+# - fusion (push) sur main ou lancement manuel : vérifications, puis publication de dist/.
+# L'ancienne version v2 reste jouable dans le sous-dossier /v2/.
+# Réglage du dépôt (déjà fait pour la v2) : Settings → Pages → Source : GitHub Actions.
 name: Vérifier et publier
 
 on:
@@ -16,7 +17,6 @@ permissions:
 
 concurrency:
   group: pages-${{ github.ref }}
-  # Une publication en cours n'est jamais interrompue par la suivante.
   cancel-in-progress: false
 
 jobs:
@@ -27,12 +27,19 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      # Aucune dépendance d'exécution : pas de npm install nécessaire pour les vérifications.
+          node-version: 22
+          cache: npm
+      - run: npm ci
       - run: npm run check
+      - name: Ancienne version v2 dans /v2/
+        run: cp -r archive/v2/app dist/v2
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: dist
 
   deploy:
-    name: Publier app/ sur GitHub Pages
+    name: Publier sur GitHub Pages
     needs: check
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -43,10 +50,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: app
       - id: deployment
         uses: actions/deploy-pages@v4

@@ -1,84 +1,68 @@
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
-import { loadAll, DATA_FILES } from '../../app/src/content/loader.js';
-import { validateAll, DataError } from '../../app/src/content/validate.js';
-import { readFile } from 'node:fs/promises';
-import { nodeFetcher, memoryFetcher, DATA_DIR } from '../helpers/data.js';
+import { describe, it, expect } from 'vitest';
+import { existsSync } from 'node:fs';
+import aisle from '../../src/data/aisle.json';
+import products from '../../src/data/products.json';
+import lines from '../../src/data/lines.json';
+import character from '../../src/data/character.json';
+import { maskFromData, isWalkable } from '../../src/core/geometry.js';
+import { SETTINGS } from '../../src/config.js';
 
-// Les fichiers de contenu réels, pour tester strings.json et credits.json isolément.
-const content = Object.fromEntries(await Promise.all(
-  ['cards.json', 'combats.json', 'quickmatch.json'].map(async (f) => [f, await readFile(`${DATA_DIR}${f}`, 'utf8')]),
-));
+const pub = (p) => new URL(`../../public/${p}`, import.meta.url);
 
-const goodCredit = {
-  file: 'assets/fonts/x.woff2', author: 'A', source: 'S', license: 'OFL-1.1',
-  commercial: true, date: '2026-11-06', usage: 'police',
-};
-
-function files(overrides) {
-  return memoryFetcher({
-    'strings.json': JSON.stringify({ 'game.title': 'MAXI-GOUFFRE' }),
-    'credits.json': JSON.stringify([goodCredit]),
-    ...content,
-    ...overrides,
+describe('données du jeu', () => {
+  it('chaque image référencée existe dans public/', () => {
+    const images = [
+      ...products.map((p) => p.image),
+      ...aisle.decor.map((d) => d.image),
+      ...aisle.props.map((p) => p.image),
+      ...Object.values(character.views).flatMap((v) => [
+        ...Object.values(v.animations).flatMap((a) => a.frames),
+        ...(v.prop ? [v.prop.image] : []),
+      ]),
+    ];
+    for (const img of images) expect(existsSync(pub(img)), img).toBe(true);
   });
-}
 
-test('les vrais fichiers de app/data/ se chargent et passent la validation', async () => {
-  const defs = validateAll(await loadAll(nodeFetcher()));
-  assert.deepEqual(Object.keys(defs).sort(), Object.keys(DATA_FILES).sort());
-  assert.equal(defs.strings['game.title'], 'MAXI-GOUFFRE');
-  assert.ok(defs.credits.length > 0);
-  assert.ok(Object.isFrozen(defs.credits[0]), 'les données validées sont gelées');
-});
-
-test('un JSON illisible nomme le fichier', async () => {
-  await assert.rejects(loadAll(files({ 'strings.json': '{ pas du json' })), (err) => {
-    assert.ok(err instanceof DataError);
-    assert.match(err.message, /data\/strings\.json : JSON invalide/);
-    return true;
+  it('chaque produit du rayon existe, et on peut s’en approcher', () => {
+    const mask = maskFromData(aisle.walk);
+    const ids = new Set(products.map((p) => p.id));
+    for (const spot of aisle.products) {
+      expect(ids.has(spot.product), spot.product).toBe(true);
+      const x = Math.min(Math.max(spot.x, 360), 3840);
+      expect(isWalkable(mask, x, aisle.floor.yBack + 30), spot.product).toBe(true);
+    }
   });
-});
 
-test('un fichier absent nomme le fichier', async () => {
-  const fetcher = memoryFetcher({ 'strings.json': '{}' });
-  await assert.rejects(loadAll(fetcher), /data\/credits\.json : lecture impossible/);
-});
-
-test('strings.json : texte vide et clé mal formée sont signalés', async () => {
-  const raw = await loadAll(files({ 'strings.json': JSON.stringify({ 'title.ok': 'oui', 'title.vide': '  ', 'Mauvaise Clé': 'x' }) }));
-  assert.throws(() => validateAll(raw), (err) => {
-    assert.equal(err.problems.length, 2);
-    assert.match(err.problems.join('\n'), /clé "title\.vide" : texte non vide attendu/);
-    assert.match(err.problems.join('\n'), /clé "Mauvaise Clé" : format attendu/);
-    return true;
+  it('le point de départ est dans la zone de marche', () => {
+    expect(isWalkable(maskFromData(aisle.walk), aisle.spawn.x, aisle.spawn.y)).toBe(true);
   });
-});
 
-test('credits.json : chaque problème nomme le fichier, l\'élément et le champ', async () => {
-  const bad = [
-    goodCredit,
-    { ...goodCredit, file: 'assets/fonts/y.woff2', license: '', commercial: 'oui', date: '06/11/2026' },
-    { ...goodCredit },
-    { ...goodCredit, file: '../secret.txt' },
-  ];
-  const raw = await loadAll(files({ 'credits.json': JSON.stringify(bad) }));
-  assert.throws(() => validateAll(raw), (err) => {
-    const text = err.problems.join('\n');
-    assert.match(text, /data\/credits\.json › élément 1 \(assets\/fonts\/y\.woff2\) › champ "license"/);
-    assert.match(text, /élément 1 .* › champ "commercial" : true ou false attendu/);
-    assert.match(text, /élément 1 .* › champ "date" : format AAAA-MM-JJ attendu/);
-    assert.match(text, /élément 2 .* › champ "file" : fichier déjà enregistré/);
-    assert.match(text, /élément 3 .* › champ "file" : chemin attendu sous assets\//);
-    return true;
+  it('chaque produit a des propriétés, une puissance et des couleurs de particules', () => {
+    for (const p of products) {
+      expect(p.props.length, p.id).toBeGreaterThan(0);
+      expect(p.power, p.id).toBeGreaterThan(0);
+      expect(p.colors.length, p.id).toBeGreaterThan(0);
+      expect(p.age).toBeGreaterThanOrEqual(0);
+      expect(p.age).toBeLessThanOrEqual(1);
+    }
   });
-});
 
-test('une donnée sans validateur est refusée', () => {
-  assert.throws(() => validateAll({ inconnu: [] }), /données "inconnu" : aucun validateur/);
-});
+  it('les répliques provisoires sont marquées [TEMP]', () => {
+    for (const [event, entry] of Object.entries(lines)) {
+      expect(entry.lines.length, event).toBeGreaterThan(0);
+      for (const l of entry.lines) expect(l.startsWith('[TEMP] '), `${event} : ${l}`).toBe(true);
+    }
+  });
 
-test('les erreurs de données sont préfixées [MG]', async () => {
-  const raw = await loadAll(files({ 'credits.json': '{}' }));
-  assert.throws(() => validateAll(raw), (err) => err.message.startsWith('[MG] Données invalides'));
+  it('chaque vue du personnage a au moins l’animation idle', () => {
+    for (const [name, v] of Object.entries(character.views)) expect(v.animations.idle?.frames.length, name).toBeGreaterThan(0);
+  });
+
+  it('chaque réglage a une valeur dans ses bornes', () => {
+    for (const s of SETTINGS) {
+      if (s.type === 'bool') { expect(typeof s.value).toBe('boolean'); continue; }
+      expect(s.value, s.key).toBeGreaterThanOrEqual(s.min);
+      expect(s.value, s.key).toBeLessThanOrEqual(s.max);
+    }
+  });
 });

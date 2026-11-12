@@ -1,36 +1,34 @@
-# MAXI-GOUFFRE — consignes pour Claude
+# MAXI-GOUFFRE — règles de travail
 
-Jeu de cartes tactique web (DOM + CSS, JavaScript ES2022 en modules natifs, sans framework ni bundler), jouable sur PC, mobile et Android.
+## Qui fait quoi
+- L'auteur décide du jeu, teste sur PC et téléphone, valide. Amateur : explique simplement.
+- Claude code, teste, propose. Il ne décide jamais seul d'une règle qui change l'expérience de jeu.
 
-## À lire avant chaque jalon
-1. `docs/ARCHITECTURE.md` — technique, organisation du travail (§0), feuille de route (§18). Fait foi pour la technique.
-2. `docs/GAME_DESIGN.md` — règles et contenu du jeu. Fait foi pour les règles.
-3. `docs/DIRECTION_ARTISTIQUE.md` — apparence, décors, finitions, ambiance. Fait foi pour l'habillage.
+## Une séance
+1. Relire docs/VISION.md, ce fichier et le dernier rapport dans docs/JOURNAL.md.
+2. Annoncer en 3 à 5 lignes : la question que la séance vérifie, ce qui va être construit. Puis enchaîner sans attendre, sauf question bloquante.
+3. Travailler sur une branche `sN-nom`. Commits courts et clairs.
+4. Finir avec une version JOUABLE, vérifiée (tests verts, aucune erreur console, captures PC et téléphone).
+5. Ouvrir une pull request et écrire le rapport (voir plus bas), copié en tête de docs/JOURNAL.md.
 
-Ces documents sont la référence. Ne pas recopier leurs règles ici : les lire.
+## Rapport de fin de séance (court)
+- Ce qui est jouable maintenant.
+- Comment tester : sur PC (touches) et sur téléphone (adresse, gestes), en 5 étapes au plus.
+- **Quoi essayer et à quoi faire attention** : 2 ou 3 questions de ressenti pour l'auteur.
+- Réglages disponibles dans le panneau (touche F2 ou bouton « ⚙ »).
+- Décisions prises seul (détails mineurs uniquement) et pourquoi.
+- Ce que l'auteur doit préparer pour la suite (dessins, sons, textes), seulement si c'est utile maintenant, avec le format exact.
+- Proposition pour la séance suivante (une seule).
 
-## Façon de travailler
-- **Un jalon complet par échange**, selon `ARCHITECTURE.md` §0.3 : code, tests, vérifications (§14), commits, push, rapport de jalon.
-- **Pousser sur `main` automatiquement à chaque modification** (accord de l'auteur, 2026-11-12), après `npm run check` et `npm run e2e` verts, pour que le site soit à jour tout de suite. En cas de problème, revenir sur le commit fautif par un `git revert` poussé sur `main`. Jamais de force-push ni de réécriture de l'historique de `main`. Une branche et une pull request restent possibles si l'auteur le demande.
-- Règle manquante ou ambiguë : appliquer `GAME_DESIGN.md` §0.2 (décider seul si c'est mineur et le noter dans `docs/DECISIONS.md`, sinon demander).
-- L'auteur teste **sans copie locale** : il fusionne la pull request puis joue sur https://sidjel.github.io/maxi-gouffre/ (PC et téléphone). Le rapport doit donc dire précisément quoi tester en ligne.
-- `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md` et `docs/DIRECTION_ARTISTIQUE.md` ne changent qu'à la demande de l'auteur.
-
-## Rapports et échanges
-- En français, phrases simples, à la première personne. Pas de formules creuses (« En outre », « Par ailleurs », « De surcroît », « En conclusion », « crucial », « plonger dans »).
-- Rapport de jalon : nouveautés jouables, étapes de test (PC avec chaque entrée concernée, téléphone), captures, décisions prises seul, limites connues.
-- **Chaque message à l'auteur se termine par le lien pour jouer** : https://sidjel.github.io/maxi-gouffre/ (le site montre `main`, mis à jour 1 à 2 minutes après chaque push).
-
-## État du projet
-- Documents v2.0 en place dans `docs/`.
-- **J0 — Socle et mise en ligne** : fusionné dans `main` (pull request sidjel/maxi-gouffre#1), tag `v0.0-socle` posé. Testé en ligne par l'auteur sur PC et téléphone : aucun bug. **Polices validées** : Lilita One, Atkinson Hyperlegible, IBM Plex Mono.
-- **J1 — Premier match jouable** : fusionné dans `main` (pull request sidjel/maxi-gouffre#2), tag `v1.0-premier-match` posé par l'auteur. Testé en ligne : tout fonctionne. Contenu : « Combat rapide » depuis le titre, contre l'IA Noob (Chad Prot') ; 20 cartes et 6 plats en données (effets présents mais pas résolus) ; plateau 2.5D ou à plat ; main ; pose au pointeur ; Malus ; passer avec confirmation ; scores en direct ; 3 manches, manche nulle, départage, qui commence ; chifoumi ; fins de manche et de match ; `Store`, `Session`.
-- **Corrections du J1** : fusionnées (pull request sidjel/maxi-gouffre#4), d'après les retours de l'auteur : panneau de droite réorganisé (effet, fraîcheur, description en avant ; stades en retrait ; défilement ; « Comment jouer » sans carte visée), cases au format des cartes avec les noms des lignes, consigne au-dessus du plateau, jauge de fraîcheur sur les faces compactes, boutons « À plat » et « Quitter » réduits. Nouveau test `tests/e2e/info-band.mjs` (78 fiches × 3 tailles).
-- **Plein écran** : fusionné (pull request sidjel/maxi-gouffre#5) : au premier geste du joueur, fenêtre si le navigateur refuse, petit bouton en bas à droite ; titre sur 2 colonnes sur téléphone. GD v2.0.1 : option « Plein écran » à « Oui » par défaut (validé par l'auteur).
-- **Défilement et rognage** : fusionné (pull request sidjel/maxi-gouffre#6) : le panneau de droite ne revient plus en haut au deuxième glissé ; cartes de la main plus rognées en bas.
-- **J1.5a — Habillage des cartes et de l'accueil** : fusionné dans `main` (pull request sidjel/maxi-gouffre#7), tag à poser par l'auteur : `v1.5a-habillage` : 66 illustrations SVG générées par `npm run art` (`tools/art/`) ; `docs/PROMPTS_IMAGES.md` ; faces prospectus, rendu par stade, finitions `matte` / `promo` / `limited` / `greasy` (champ `finish` de `cards.json`) avec reflets (souris, gyroscope) ; visée, sélection qui scintille, cases légales en scotch, vol et laser à la pose ; accueil : état `PRESS_KEY` (portes fermées), enseigne néon, menu en panneaux de rayon, RUPTURE DE STOCK, caddie, portes qui se referment après 45 s, easter egg, crédits en ticket de caisse. `?reduceFlashes=1` en attendant l'option du J7.
-- Vérifications : `npm run check` (données, registre, illustrations à jour, tailles, recherches interdites, tests unitaires) ; `npm run e2e` (smoke, `play-match.mjs`, `info-band.mjs`, `fullscreen.mjs`, `entrance.mjs`, `card-look.mjs`) et `npm run shots` utilisent Playwright (déjà présent dans les sessions cloud, sinon `npm install`). Les matchs e2e tournent avec le vrai délai de l'IA (~1 min 30 au total). Les tests passent d'abord les portes (`enterStore` dans `tests/helpers/browser.js`).
-- Dans les sessions cloud, GitHub refuse l'envoi de tags (HTTP 403, les branches passent) et sidjel.github.io n'est pas joignable : l'auteur pose les tags (page Releases de GitHub) et teste en ligne.
-- Prochain jalon : **J1.5b** (DIRECTION_ARTISTIQUE.md §3 tapis de caisse et table de démonstration avec `arenas.json`, §4 interface intégrée, §5 caméras et avatars, §6 temps forts), puis **J2 — Effets, vieillissement, IA Gamer**. Points ouverts : départage aux points même avec 1 manche gagnée contre 2 nulles (DECISIONS J1) ; l'IA Noob vide souvent sa main dès la manche 1, à mesurer par la simulation.
-
-Mettre à jour la section « État du projet » à la fin de chaque jalon.
+## Règles
+- Décisions de jeu (nouvelle règle, effet, équilibrage, contenu narratif) : proposer 2 ou 3 options courtes, l'auteur choisit.
+- Détails mineurs (interface, technique) : choisir l'option la plus simple et le noter dans le rapport.
+- Toutes les valeurs réglables dans src/config.js et exposées dans le panneau de réglages en jeu.
+- Contenu (cartes, combos, répliques, lieux) en JSON. Textes provisoires préfixés [TEMP].
+- Visuels provisoires : formes simples et sobres en papier découpé, couleurs ternes de magasin, étiquettes lisibles. Ils seront remplacés par les dessins de l'auteur sans changer le code (chaque image référencée dans les données).
+- Bug qui résiste à 2 tentatives : s'arrêter, expliquer, proposer des pistes.
+- Ne jamais modifier du code qui fonctionne hors du périmètre de la séance sans le dire.
+- Git : jamais de push sur main, de force-push, de reset --hard ou de suppression sans accord.
+- Aucune dépendance nouvelle ni ressource externe sans accord.
+- Accessibilité : contrôles complets au clavier/souris, à la manette et au doigt ; option « réduire les animations » ; textes lisibles sur téléphone.
+- docs/VISION.md ne change qu'à la demande de l'auteur.

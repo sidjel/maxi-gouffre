@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="170" viewBox="0 0 60 170">
+<defs><g id="biere">
+<rect x="24" y="16" width="12" height="38" fill="#7a5124"/><rect x="22" y="8" width="16" height="10" rx="2" fill="#c98f36"/>
+<path d="M24 54 Q12 62 12 78 L12 158 Q12 164 18 164 L42 164 Q48 164 48 158 L48 78 Q48 62 36 54 Z" fill="#7a5124"/>
+<rect x="14" y="96" width="32" height="42" fill="#efe3c4"/>
+<text x="30" y="121" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="7" text-anchor="middle" fill="#7a5124" stroke="none" >BLONDE</text>
+<rect x="17" y="66" width="5" height="88" rx="2" fill="#ffffff" opacity=".25"/></g></defs>
+<use href="#biere" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#biere" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#biere" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

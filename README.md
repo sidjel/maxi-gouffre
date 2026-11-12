@@ -1,72 +1,70 @@
 # MAXI-GOUFFRE
 
-Jeu de cartes tactique au tour par tour dans un hypermarché infini, avec un narrateur odieux.
-Web (DOM + CSS, JavaScript ES2022 en modules natifs, sans framework ni bundler), jouable sur PC, mobile et Android.
+RPG de cartes en papier dans un supermarché sans fin : on scanne les produits pour en extraire des cartes qui pourrissent.
+Vision du jeu : [`docs/VISION.md`](docs/VISION.md) · Journal des séances : [`docs/JOURNAL.md`](docs/JOURNAL.md) · Règles de travail : [`CLAUDE.md`](CLAUDE.md)
 
-- **Jouer en ligne** : https://sidjel.github.io/maxi-gouffre/
-- **Mode debug** : https://sidjel.github.io/maxi-gouffre/?debug=1 (touche F3 ou bouton « DBG ») ; ajouter `&aiDelay=0` pour une IA instantanée
-- Règles du jeu : [`docs/GAME_DESIGN.md`](docs/GAME_DESIGN.md) · Technique : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · Habillage : [`docs/DIRECTION_ARTISTIQUE.md`](docs/DIRECTION_ARTISTIQUE.md) · Consignes d'images : [`docs/PROMPTS_IMAGES.md`](docs/PROMPTS_IMAGES.md)
-- Journal : [`CHANGELOG.md`](CHANGELOG.md) · Décisions : [`docs/DECISIONS.md`](docs/DECISIONS.md) · Crédits : [`docs/CREDITS.md`](docs/CREDITS.md)
+- **Jouer en ligne** : https://sidjel.github.io/maxi-gouffre/ (mis à jour à chaque fusion sur `main`)
+- **Ancienne version (v2, jeu de plateau)** : https://sidjel.github.io/maxi-gouffre/v2/ — code et documents dans [`archive/v2/`](archive/)
 
-État : **jalon J1.5a — habillage des cartes et de l'accueil**. Les portes du magasin s'ouvrent sur le menu ; « Combat rapide » lance un match complet contre l'IA « Noob », avec des cartes illustrées et brillantes. Décor du plateau, caméras et temps forts : J1.5b. Effets des cartes et vieillissement : J2.
+État : **prototype A — Le rayon** (marcher, scanner un produit, obtenir une carte).
 
-## Installation
+## Lancer le jeu sur son ordinateur
 
-Il faut **Node.js 20 ou plus** pour les outils (serveur local, vérifications, tests). Il n'est pas nécessaire pour jouer.
-Le jeu n'a **aucune dépendance d'exécution**.
+Il faut **Node.js 20 ou plus**.
 
 ```bash
 git clone https://github.com/sidjel/maxi-gouffre.git
 cd maxi-gouffre
-```
-
-Seuls les tests navigateur et les captures demandent Playwright (une fois) :
-
-```bash
 npm install
-npx playwright install chromium
+npm run dev
 ```
 
-## Lancer le jeu en local
+Le terminal affiche deux adresses :
 
-Les modules JavaScript ne fonctionnent pas en `file://` : il faut un serveur HTTP.
+- `Local: http://localhost:5173/` → à ouvrir sur le PC ;
+- `Network: http://192.168.x.x:5173/` → à ouvrir sur le **téléphone**, connecté au **même Wi-Fi**.
 
-```bash
-npm run serve
-```
-
-Puis ouvrir http://localhost:8080 sur le PC. Sur un téléphone connecté au **même Wi-Fi**, ouvrir l'adresse
-`http://IP-du-PC:8080` affichée par le serveur. Sans Node : `python -m http.server 8080 -d app`.
+Chaque fichier modifié est rechargé instantanément.
 
 ## Commandes
 
 | Commande | Rôle |
 |---|---|
-| `npm run serve` | Serveur local sur `app/` (port 8080, accessible depuis le téléphone) |
-| `npm test` | Tests unitaires (`node --test` sur `tests/unit/*.test.js`) |
-| `npm run check` | Données et registre des assets, illustrations générées à jour, taille des fichiers (< 300 lignes), recherches interdites, tests unitaires |
-| `npm run e2e` | Tests navigateur Playwright aux 3 tailles de référence (smoke, matchs complets à la souris et au doigt, panneau, plein écran, accueil, habillage des cartes), console sans erreur ni avertissement |
-| `npm run shots` | Captures d'écran (entrée, titre, crédits, combat) dans `docs/captures/j1-5/` (option `-- --out dossier`) |
-| `npm run art` | Régénère les illustrations SVG provisoires des cartes (`tools/art/`), le champ `image` de `cards.json` et le registre des assets |
-| `npm run credits` | Régénère `docs/CREDITS.md` depuis `app/data/credits.json` |
-
-`npm run sim` (simulation d'équilibrage) arrive au jalon J2.
+| `npm run dev` | Serveur de développement, joignable depuis le téléphone |
+| `npm run build` | Construit le jeu dans `dist/` (chemins relatifs) |
+| `npm run preview` | Sert la version construite |
+| `npm test` | Tests de la logique (`tests/unit`, Vitest) |
+| `npm run check` | Fichiers < 300 lignes, aucune ressource externe, tests, construction |
+| `npm run e2e` | Tests navigateur (Playwright) : PC 1920×1080, PC 1366×768, téléphone en paysage |
+| `npm run shots` | Captures PC et téléphone dans `docs/captures/s1/` |
+| `npm run art` | Régénère les visuels provisoires (SVG) dans `public/art/` |
 
 ## Organisation
 
 ```
-app/            le jeu, seul dossier publié (index.html, css/, assets/, data/, src/)
-docs/           cahier des charges, décisions, crédits, captures
-tests/          unit/ (node --test), e2e/ (Playwright), helpers/
-tools/          serveur, vérifications, crédits, captures
+src/core/     logique pure (hasard à graine, zone de marche, chemin, cartes, narrateur), testée avec Vitest
+src/scene/    décor en calques, produits, personnage en papier, déplacement, scan, particules, debug
+src/ui/       interface : narrateur, cartes, Panier, boutons, panneau de réglages
+src/input/    clavier, souris, manette, tactile → actions
+src/audio/    sons provisoires synthétiques
+src/data/     contenu en JSON : lieu (aisle.json), produits, personnage, répliques
+src/config.js toutes les valeurs réglables (panneau F2)
+public/art/   visuels provisoires, référencés par les données (à remplacer par les dessins)
+tools/        vérifications, captures, générateur de visuels provisoires
 ```
+
+## Remplacer un visuel provisoire par un dessin
+
+Déposer l'image dans `public/art/…` puis changer son chemin dans le fichier de données concerné
+(`src/data/character.json`, `products.json` ou `aisle.json`). Aucun code à toucher.
+Le personnage accepte des animations image par image : ajouter des images dans `frames` (voir le champ `notes`).
 
 ## Publication
 
 Le workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) lance `npm run check` sur chaque pull request.
-À chaque fusion sur `main`, il relance `npm run check` puis publie le dossier `app/` sur GitHub Pages.
+À chaque fusion sur `main`, il publie `dist/` (et l'ancienne v2 dans `/v2/`) sur GitHub Pages.
 Réglage du dépôt (déjà fait) : *Settings → Pages → Source : GitHub Actions*.
 
 ## Licence
 
-Tous droits réservés (voir [`LICENSE`](LICENSE)). Les polices sont sous SIL Open Font License 1.1.
+Tous droits réservés (voir [`LICENSE`](LICENSE)). Les polices sont sous SIL Open Font License 1.1 (`public/fonts/`).

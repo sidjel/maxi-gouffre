@@ -1,7 +1,7 @@
 {
   "name": "maxi-gouffre",
-  "version": "1.5.0-a",
-  "description": "MAXI-GOUFFRE — jeu de cartes tactique dans un hypermarché infini (DOM + CSS, JavaScript natif).",
+  "version": "3.0.0-a",
+  "description": "MAXI-GOUFFRE — RPG de cartes en papier dans un supermarché sans fin.",
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
@@ -9,15 +9,18 @@
     "node": ">=20"
   },
   "scripts": {
-    "serve": "node tools/serve.mjs",
-    "test": "node tools/test.mjs",
-    "check": "node tools/check.mjs",
-    "e2e": "node --test --test-reporter=spec tests/e2e/smoke.mjs tests/e2e/play-match.mjs tests/e2e/info-band.mjs tests/e2e/fullscreen.mjs tests/e2e/entrance.mjs tests/e2e/card-look.mjs",
-    "shots": "node tools/screenshots.mjs",
-    "credits": "node tools/credits.mjs",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "test": "vitest run",
+    "check": "node tools/check.mjs && vitest run && vite build",
+    "e2e": "playwright test --trace off",
+    "shots": "node tools/shots.mjs",
     "art": "node tools/art.mjs"
   },
   "devDependencies": {
-    "playwright": "1.63.0"
+    "@playwright/test": "1.63.0",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
   }
 }

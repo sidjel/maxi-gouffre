@@ -1,0 +1,24 @@
+{
+  "id": "heros",
+  "name": "[TEMP] Le client",
+  "height": 470,
+  "views": {
+    "front": {
+      "size": [300, 520],
+      "feet": [150, 506],
+      "animations": {
+        "idle": { "fps": 1, "frames": ["art/char/front.svg"] }
+      },
+      "prop": { "image": "art/char/scanner.svg", "size": [120, 80], "grip": [34, 58], "hand": [214, 372], "tip": [116, 22], "restAngle": 28, "scanAngle": -38 }
+    },
+    "back": {
+      "size": [300, 520],
+      "feet": [150, 506],
+      "animations": {
+        "idle": { "fps": 1, "frames": ["art/char/back.svg"] }
+      },
+      "prop": { "image": "art/char/scanner.svg", "size": [120, 80], "grip": [34, 58], "hand": [222, 362], "tip": [116, 22], "restAngle": 28, "scanAngle": -50 }
+    }
+  },
+  "notes": "Animations possibles par vue : idle, walk, scan, surprise. Chaque animation = { fps, frames: [images…] }. Une animation absente reprend « idle ». Mettre « prop » à null quand les dessins incluent déjà la douchette."
+}

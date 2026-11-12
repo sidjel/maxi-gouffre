@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="100" viewBox="0 0 140 100">
+<defs><g id="fromage">
+<path d="M14 78 L118 78 L130 44 L32 32 Z" fill="#f3e3a8"/>
+<path d="M14 78 L118 78 L118 92 L14 92 Z" fill="#e7c15a"/>
+<path d="M118 78 L130 44 L130 60 L118 92 Z" fill="#c99c34"/>
+<circle cx="60" cy="56" r="7" fill="#e7c15a"/><circle cx="92" cy="60" r="5" fill="#e7c15a"/><circle cx="44" cy="68" r="4" fill="#e7c15a"/>
+<path d="M30 92 q4 10 8 0 M70 92 q5 14 10 0" fill="#e7c15a"/></g></defs>
+<use href="#fromage" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#fromage" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#fromage" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

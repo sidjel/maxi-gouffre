@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="110" viewBox="0 0 120 110">
+<defs><g id="glace">
+<path d="M16 34 L104 34 L94 100 L26 100 Z" fill="#f4ecd2"/>
+<path d="M84 34 L104 34 L94 100 L80 100 Z" fill="#e2d8ba"/>
+<ellipse cx="60" cy="32" rx="46" ry="11" fill="#9db6c4"/>
+<rect x="22" y="56" width="74" height="22" fill="#c7b37c"/>
+<text x="58" y="72" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="13" text-anchor="middle" fill="#f7f1e1" stroke="none" >VANILLE</text>
+<circle cx="40" cy="90" r="3" fill="#c7b37c"/><circle cx="56" cy="92" r="2" fill="#c7b37c"/></g></defs>
+<use href="#glace" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#glace" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#glace" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

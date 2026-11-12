@@ -1,0 +1,41 @@
+@font-face { font-family: 'Lilita One'; src: url('/fonts/lilita-one-latin-400-normal.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Atkinson'; src: url('/fonts/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Atkinson'; src: url('/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Plex Mono'; src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2'); font-display: swap; }
+
+:root {
+  --ink: #3b332a;
+  --ink-soft: #6b604f;
+  --paper: #f7f1e1;
+  --cream: #efe6cc;
+  --mustard: #e3c547;
+  --rust: #b9553f;
+  --sage: #7f9a5b;
+  --steel: #87949a;
+  --bg: #2b251e;
+  --fresh: #7f9a5b;
+  --ripe: #d1a13a;
+  --rotten: #7b5a6b;
+  --font-title: 'Lilita One', 'Arial Black', sans-serif;
+  --font-ui: 'Atkinson', Arial, sans-serif;
+  --font-mono: 'Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font-ui); overflow: hidden; }
+body { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+img { -webkit-user-drag: none; user-select: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 6px solid var(--mustard); outline-offset: 4px; }
+
+#viewport { position: fixed; inset: 0; overflow: hidden; }
+#stage {
+  position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px;
+  transform-origin: 50% 50%; transform: translate(-50%, -50%);
+}
+
+#rotate {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: var(--bg); color: var(--paper); font: 700 22px var(--font-ui); text-align: center; padding: 24px;
+}
+#rotate[hidden] { display: none; }

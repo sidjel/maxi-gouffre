@@ -1,0 +1,23 @@
+{
+  "name": "maxi-gouffre",
+  "version": "1.5.0-a",
+  "description": "MAXI-GOUFFRE — jeu de cartes tactique dans un hypermarché infini (DOM + CSS, JavaScript natif).",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "serve": "node tools/serve.mjs",
+    "test": "node tools/test.mjs",
+    "check": "node tools/check.mjs",
+    "e2e": "node --test --test-reporter=spec tests/e2e/smoke.mjs tests/e2e/play-match.mjs tests/e2e/info-band.mjs tests/e2e/fullscreen.mjs tests/e2e/entrance.mjs tests/e2e/card-look.mjs",
+    "shots": "node tools/screenshots.mjs",
+    "credits": "node tools/credits.mjs",
+    "art": "node tools/art.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

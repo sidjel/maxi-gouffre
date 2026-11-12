@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="520" viewBox="0 0 300 520">
+<defs><g id="f">
+<rect x="116" y="384" width="30" height="104" rx="13" fill="#45464d"/>
+<rect x="152" y="388" width="32" height="106" rx="13" fill="#52545c"/>
+<ellipse cx="136" cy="490" rx="26" ry="13" fill="#5b3f2c"/><ellipse cx="180" cy="497" rx="30" ry="14" fill="#6a4a33"/>
+<rect x="80" y="276" width="30" height="112" rx="15" transform="rotate(8 95 282)" fill="#b48a24"/>
+<circle cx="88" cy="390" r="15" fill="#d9b28b"/>
+<rect x="138" y="232" width="30" height="34" fill="#d9b28b"/>
+<path d="M98 262 Q150 238 206 262 L216 402 Q150 420 90 402 Z" fill="#c99f2e"/>
+<path d="M132 258 L156 304 L180 258 Z" fill="#a9c1cf"/>
+<circle cx="158" cy="326" r="4.5" fill="#6e5420"/><circle cx="159" cy="354" r="4.5" fill="#6e5420"/><circle cx="160" cy="382" r="4.5" fill="#6e5420"/>
+<rect x="178" y="298" width="28" height="18" rx="2" fill="#f2ead6"/><rect x="182" y="304" width="18" height="3" fill="#b9553f" stroke="none"/>
+<path d="M194 268 Q232 296 226 364 L204 368 Q206 312 184 286 Z" fill="#d1a837"/>
+<circle cx="152" cy="158" r="96" fill="#e8c6a0"/>
+<ellipse cx="66" cy="172" rx="15" ry="21" fill="#d9b28b"/>
+<path d="M58 150 Q58 62 150 60 Q236 58 248 134 Q212 100 168 104 Q120 108 98 140 Q88 166 82 192 Q60 182 58 150 Z" fill="#5a4030"/>
+<path d="M150 64 Q156 26 186 36 Q168 46 172 64 Z" fill="#5a4030"/>
+<ellipse cx="178" cy="168" rx="8" ry="11" fill="#2b2520" stroke="none"/><ellipse cx="222" cy="164" rx="6.5" ry="10" fill="#2b2520" stroke="none"/>
+<circle cx="181" cy="164" r="2.6" fill="#ffffff" stroke="none"/><circle cx="224" cy="160" r="2.2" fill="#ffffff" stroke="none"/>
+<path d="M164 142 Q178 135 192 141 M212 138 Q222 134 232 139" fill="none" stroke="#3b2a1e" stroke-width="5" stroke-linecap="round"/>
+<path d="M236 184 Q246 196 233 203" fill="none" stroke="#b98f6a" stroke-width="4" stroke-linecap="round"/>
+<path d="M192 224 Q207 233 222 222" fill="none" stroke="#7a4a3a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="152" cy="202" r="14" fill="#e7a08c" opacity=".45" stroke="none"/><circle cx="238" cy="200" r="8" fill="#e7a08c" opacity=".45" stroke="none"/>
+<circle cx="214" cy="372" r="16" fill="#e8c6a0"/></g></defs>
+<use href="#f" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="18" stroke-linejoin="round" opacity=".9"/>
+<use href="#f" stroke="#f7f1e1" stroke-width="18" stroke-linejoin="round"/>
+<use href="#f" stroke="#3b332a" stroke-width="3" stroke-linejoin="round"/>
+</svg>
