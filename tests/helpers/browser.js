@@ -62,3 +62,16 @@ export async function openPage(browser, contextOptions) {
 export async function waitReady(page) {
   await page.waitForSelector('html[data-ready="1"]', { timeout: 10000 });
 }
+
+/**
+ * Entrée du magasin : au chargement, les portes sont fermées (PRESS_KEY). Un appui les ouvre ;
+ * on attend le titre (TITLE), une fois les portes passées.
+ * @param {'mouse'|'touch'|'keyboard'} [how]
+ */
+export async function enterStore(page, how = 'mouse') {
+  const doors = page.locator('.store-entrance');
+  if (how === 'touch') await doors.tap();
+  else if (how === 'keyboard') await page.keyboard.press('Enter');
+  else await doors.click();
+  await page.waitForFunction(() => document.documentElement.dataset.state === 'TITLE', null, { timeout: 5000 });
+}

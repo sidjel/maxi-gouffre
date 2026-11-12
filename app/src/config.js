@@ -62,7 +62,7 @@ export const GAME = deepFreeze({
 
 /** Valeurs techniques (ARCHITECTURE.md §13), plus quelques réglages propres aux jalons (DECISIONS.md). */
 export const TECH = deepFreeze({
-  APP_VERSION: '1.0.0',
+  APP_VERSION: '1.5.0-a',
   WIDE_STAGE: { width: 1920, height: 1080 },
   COMPACT_STAGE: { width: 1280, height: 720 },
   COMPACT_MAX_WIDTH: 1100,
@@ -87,4 +87,20 @@ export const TECH = deepFreeze({
   FONTS_TIMEOUT_MS: 3000,
   // J1 : accélérer l'IA en mode debug (?debug=1&aiDelay=0), pour les tests navigateur
   AI_DELAY_QUERY_PARAM: 'aiDelay',
+  // J1.5 : habillage (DIRECTION_ARTISTIQUE.md)
+  CARD_FLIGHT_MS: 260,
+  SHINE_TILT_RANGE: 25,
+  SHINE_RECENTER: 0.01,
+  TITLE_DOORS_MS: 1100,
+  TITLE_IDLE_MS: 45000,
+  TITLE_CART_MIN_MS: 9000,
+  TITLE_CART_MAX_MS: 22000,
+  TITLE_EGG_CHECK_MS: 8000,
+  TITLE_EGG_CHANCE: 0.03,
+  TITLE_EGG_MS: 220,
+  TITLE_FLICKER_LETTER: 3,
+  TITLE_DEAD_LETTER: 8,
+  CREDITS_SPEED_PX: 70,
+  WEAR_QUERY_PARAM: 'wear',
+  REDUCE_FLASHES_QUERY_PARAM: 'reduceFlashes',
 });

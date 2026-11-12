@@ -7,8 +7,8 @@
 export const STATES = Object.freeze({
   initial: 'BOOT',
   main: Object.freeze({
-    // BOOT → TITLE : raccourci provisoire tant que WARNING et PRESS_KEY n'existent pas (J6).
-    BOOT: Object.freeze(['WARNING', 'TITLE']),
+    // BOOT → PRESS_KEY : raccourci provisoire tant que WARNING n'existe pas (J6).
+    BOOT: Object.freeze(['WARNING', 'PRESS_KEY', 'TITLE']),
     WARNING: Object.freeze(['PRESS_KEY']),
     PRESS_KEY: Object.freeze(['TITLE']),
     TITLE: Object.freeze(['INTRO', 'PLAYING', 'CREDITS']),

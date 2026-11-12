@@ -5,7 +5,7 @@
  */
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, PHONE, loadPlaywright, serve, openPage, waitReady } from '../helpers/browser.js';
+import { SIZES, PHONE, loadPlaywright, serve, openPage, waitReady, enterStore } from '../helpers/browser.js';
 
 let browser;
 let server;
@@ -56,6 +56,11 @@ for (const size of SIZES) {
     const { context, page, problems } = await openPage(browser, { viewport: { width: size.width, height: size.height } });
     await page.goto(server.url);
     await waitReady(page);
+    // Portes fermées, puis ouvertes sur le menu : les deux vues passent les mesures.
+    const closed = await measure(page);
+    assert.equal(closed.state, 'PRESS_KEY');
+    assert.ok(closed.minFont >= 12, `texte trop petit (portes) : ${closed.minFont.toFixed(1)} px réels (« ${closed.minFontText} »)`);
+    await enterStore(page, 'mouse');
     const m = await measure(page);
     assert.equal(m.state, 'TITLE');
     assert.equal(m.profile, size.profile);
@@ -79,6 +84,7 @@ test('souris : un clic sur une entrée du menu affiche le message provisoire', a
   const { context, page, problems } = await openPage(browser, { viewport: { width: 1280, height: 720 } });
   await page.goto(server.url);
   await waitReady(page);
+  await enterStore(page, 'mouse');
   await page.locator('[data-menu="title.newGame"]').click();
   const toast = page.locator('.title-toast');
   await toast.waitFor({ state: 'visible' });
@@ -108,6 +114,7 @@ test('téléphone en paysage : profil compact, toucher un bouton répond', async
   await waitReady(page);
   assert.equal((await measure(page)).profile, 'compact');
   assert.ok(await page.locator('#rotate').isHidden());
+  await enterStore(page, 'touch');
   await page.locator('[data-menu="title.options"]').tap();
   await page.locator('.title-toast.is-visible').waitFor();
   assert.match(await page.locator('.title-toast').textContent(), /Options/);
@@ -144,6 +151,7 @@ test('?debug=1 : F3 et DBG ouvrent le panneau, état, FPS, graine, journal', asy
   const { context, page, problems } = await openPage(browser, { viewport: { width: 1920, height: 1080 } });
   await page.goto(`${server.url}?debug=1`);
   await waitReady(page);
+  await enterStore(page, 'keyboard');
   const panel = page.locator('[data-debug="panel"]');
   const toggle = page.locator('[data-debug="toggle"]');
   assert.ok(await toggle.isVisible());
@@ -155,7 +163,8 @@ test('?debug=1 : F3 et DBG ouvrent le panneau, état, FPS, graine, journal', asy
   assert.equal(state.state.main, 'TITLE');
   assert.equal(state.profile, 'wide');
   await page.waitForFunction(() => /\d+ FPS/.test(document.querySelector('[data-debug="fps"]').textContent));
-  assert.match(await page.locator('[data-debug="log"]').textContent(), /BOOT → TITLE/);
+  assert.match(await page.locator('[data-debug="log"]').textContent(), /BOOT → PRESS_KEY/);
+  assert.match(await page.locator('[data-debug="log"]').textContent(), /PRESS_KEY → TITLE/);
 
   // Graine : saisie, puis même graine = mêmes tirages.
   const input = page.locator('[data-debug="seed-input"]');
@@ -187,7 +196,9 @@ test('sous-dossier comme sur GitHub Pages (/maxi-gouffre/) : chemins relatifs co
     const { context, page, problems } = await openPage(browser, { viewport: { width: 1280, height: 720 } });
     await page.goto(sub.url);
     await waitReady(page);
-    assert.equal(await page.evaluate(() => document.documentElement.dataset.state), 'TITLE');
+    assert.equal(await page.evaluate(() => document.documentElement.dataset.state), 'PRESS_KEY');
+    // Les illustrations et le caddie se chargent aussi depuis le sous-dossier.
+    await enterStore(page, 'mouse');
     assert.deepEqual(problems, []);
     await context.close();
   } finally {

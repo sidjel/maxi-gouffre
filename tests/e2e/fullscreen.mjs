@@ -4,7 +4,7 @@
  */
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { PHONE, loadPlaywright, serve, openPage, waitReady } from '../helpers/browser.js';
+import { PHONE, loadPlaywright, serve, openPage, waitReady, enterStore } from '../helpers/browser.js';
 
 let browser;
 let server;
@@ -52,7 +52,7 @@ test('navigateur qui accepte : plein écran dès le premier clic, bouton masqué
   await page.goto(server.url);
   await waitReady(page);
   assert.ok(await visible(page, 'toggle'), 'bouton visible avant le premier geste');
-  await page.locator('[data-menu="title.options"]').click();
+  await enterStore(page, 'mouse');
   assert.equal(await page.evaluate(() => window.__fsCalls), 1);
   assert.ok(!(await visible(page, 'toggle')));
   assert.ok(!(await visible(page, 'dialog')));
@@ -72,7 +72,7 @@ test('navigateur qui refuse (téléphone) : fenêtre « Jouer en plein écran ? 
   await fakeFullscreen(page, 'refuse');
   await page.goto(server.url);
   await waitReady(page);
-  await page.locator('[data-menu="title.options"]').tap();
+  await enterStore(page, 'touch');
   await page.locator('[data-fullscreen="dialog"]').waitFor({ state: 'visible' });
   assert.match(await page.locator('[data-fullscreen="dialog"]').textContent(), /Jouer en plein écran/);
   await page.locator('[data-fullscreen="accept"]').tap();
@@ -90,7 +90,7 @@ test('« Plus tard » ferme la fenêtre sans rien demander', async () => {
   await fakeFullscreen(page, 'refuse');
   await page.goto(server.url);
   await waitReady(page);
-  await page.locator('[data-menu="title.options"]').tap();
+  await enterStore(page, 'touch');
   await page.locator('[data-fullscreen="later"]').tap();
   assert.ok(!(await visible(page, 'dialog')));
   assert.equal(await page.evaluate(() => window.__fsCalls), 1);
@@ -103,7 +103,7 @@ test('sans plein écran possible (comme sur iPhone) : ni bouton ni fenêtre', as
   await fakeFullscreen(page, 'absent');
   await page.goto(server.url);
   await waitReady(page);
-  await page.locator('[data-menu="title.options"]').tap();
+  await enterStore(page, 'touch');
   assert.equal(await page.locator('[data-fullscreen]').count(), 0);
   assert.deepEqual(problems, []);
   await context.close();
@@ -113,7 +113,7 @@ test('vrai navigateur : le premier clic passe en plein écran ou affiche la fen�
   const { context, page, problems } = await openPage(browser, { viewport: { width: 1280, height: 720 } });
   await page.goto(server.url);
   await waitReady(page);
-  await page.locator('[data-menu="title.options"]').click();
+  await enterStore(page, 'mouse');
   await page.waitForFunction(() => document.fullscreenElement || !document.querySelector('[data-fullscreen="dialog"]').hidden);
   assert.deepEqual(problems, []);
   await context.close();
