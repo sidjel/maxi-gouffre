@@ -19,6 +19,7 @@ Ces documents sont la référence. Ne pas recopier leurs règles ici : les lire.
 ## Rapports et échanges
 - En français, phrases simples, à la première personne. Pas de formules creuses (« En outre », « Par ailleurs », « De surcroît », « En conclusion », « crucial », « plonger dans »).
 - Rapport de jalon : nouveautés jouables, étapes de test (PC avec chaque entrée concernée, téléphone), captures, décisions prises seul, limites connues.
+- **Chaque message à l'auteur se termine par le lien pour jouer** : https://sidjel.github.io/maxi-gouffre/ (en précisant si la dernière pull request est déjà fusionnée ou non, car le site ne montre que `main`).
 
 ## État du projet
 - Documents v2.0 en place dans `docs/`.
