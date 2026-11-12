@@ -1,6 +1,5 @@
-# Dépendances de développement (playwright)
+# Dépendances de développement
 node_modules/
-package-lock.json
 
 # Résultats de tests et traces Playwright
 test-results/
@@ -25,3 +24,6 @@ android/.gradle/
 *.apk
 *.aab
 *.keystore
+
+# Construction Vite
+dist/

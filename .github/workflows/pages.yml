@@ -1,0 +1,54 @@
+# Vérifications puis publication sur GitHub Pages.
+# - pull request vers main : vérifications seulement (npm run check : fichiers, tests unitaires, construction) ;
+# - fusion (push) sur main ou lancement manuel : vérifications, puis publication de dist/.
+# L'ancienne version v2 reste jouable dans le sous-dossier /v2/.
+# Réglage du dépôt (déjà fait pour la v2) : Settings → Pages → Source : GitHub Actions.
+name: Vérifier et publier
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: npm run check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - name: Ancienne version v2 dans /v2/
+        run: cp -r archive/v2/app dist/v2
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: dist
+
+  deploy:
+    name: Publier sur GitHub Pages
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
