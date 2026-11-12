@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="190" viewBox="0 0 130 190">
+<defs><g id="w">
+<path d="M65 8 L118 180 L12 180 Z" fill="#e3c547"/>
+<path d="M65 8 L118 180 L106 180 L65 30 Z" fill="#c9ab33"/>
+<circle cx="62" cy="70" r="8" fill="#3b332a"/>
+<path d="M58 80 L48 110 L70 112 M52 96 L74 88 M48 110 L36 128" stroke="#3b332a" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M30 136 Q65 128 96 138" stroke="#3b332a" stroke-width="3" fill="none"/>
+<text x="65" y="156" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#3b332a" stroke="none" >SOL GLISSANT</text>
+<text x="65" y="170" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="8" text-anchor="middle" fill="#3b332a" stroke="none" >ET LA VIE AUSSI</text></g></defs>
+<use href="#w" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="10" stroke-linejoin="round" opacity=".9"/>
+<use href="#w" stroke="#f7f1e1" stroke-width="10" stroke-linejoin="round"/>
+<use href="#w" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,12 @@
+[
+  { "id": "banane", "name": "Banane", "image": "art/products/banane.svg", "w": 150, "h": 110, "power": 3, "age": 0.3, "ageRate": 1.6, "props": ["mou", "sucré"], "colors": ["#e3c547", "#b8952c", "#6e5a26"] },
+  { "id": "lait", "name": "Lait demi-écrémé", "image": "art/products/lait.svg", "w": 90, "h": 150, "power": 2, "age": 0.1, "ageRate": 1.2, "props": ["liquide", "froid"], "colors": ["#f1ede2", "#6f8fa8", "#c9d4dc"] },
+  { "id": "steak", "name": "Steak haché", "image": "art/products/steak.svg", "w": 150, "h": 90, "power": 5, "age": 0.2, "ageRate": 1.5, "props": ["gras", "cru"], "colors": ["#a8463e", "#d98a7c", "#efe8dc"] },
+  { "id": "baguette", "name": "Baguette", "image": "art/products/baguette.svg", "w": 190, "h": 80, "power": 3, "age": 0.15, "ageRate": 1.3, "props": ["croustillant", "poudre"], "colors": ["#d4a253", "#a8742e", "#efe2c2"] },
+  { "id": "glace", "name": "Glace vanille", "image": "art/products/glace.svg", "w": 120, "h": 110, "power": 4, "age": 0.05, "ageRate": 2, "props": ["froid", "sucré"], "colors": ["#f4ecd2", "#c7b37c", "#9db6c4"] },
+  { "id": "pile", "name": "Pile 1,5 V", "image": "art/products/pile.svg", "w": 80, "h": 120, "power": 4, "age": 0.1, "ageRate": 0.3, "props": ["électrique"], "colors": ["#3c3f44", "#c08a3c", "#d8d2c0"] },
+  { "id": "cereales", "name": "Céréales du matin", "image": "art/products/cereales.svg", "w": 110, "h": 160, "power": 2, "age": 0.1, "ageRate": 0.5, "props": ["poudre", "croustillant", "sucré"], "colors": ["#cf9a3e", "#8f5f2a", "#e8d7a6"] },
+  { "id": "biere", "name": "Bière blonde", "image": "art/products/biere.svg", "w": 60, "h": 170, "power": 3, "age": 0.2, "ageRate": 0.6, "props": ["liquide", "alcool"], "colors": ["#7a5124", "#c98f36", "#efe3c4"] },
+  { "id": "plante", "name": "Plante verte", "image": "art/products/plante.svg", "w": 120, "h": 170, "power": 2, "age": 0.25, "ageRate": 0.8, "props": ["vivant"], "colors": ["#6f8f4e", "#4c6a38", "#b5683f"] },
+  { "id": "fromage", "name": "Fromage qui coule", "image": "art/products/fromage.svg", "w": 140, "h": 100, "power": 4, "age": 0.4, "ageRate": 1.1, "props": ["gras", "odorant"], "colors": ["#e7c15a", "#c99c34", "#f3e3a8"] }
+]

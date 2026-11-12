@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="170" viewBox="0 0 120 170">
+<defs><g id="plante">
+<ellipse cx="44" cy="70" rx="14" ry="40" transform="rotate(-30 44 70)" fill="#6f8f4e"/>
+<ellipse cx="78" cy="66" rx="14" ry="42" transform="rotate(28 78 66)" fill="#4c6a38"/>
+<ellipse cx="60" cy="52" rx="13" ry="46" fill="#6f8f4e"/>
+<ellipse cx="34" cy="98" rx="10" ry="26" transform="rotate(-60 34 98)" fill="#4c6a38"/>
+<ellipse cx="88" cy="98" rx="10" ry="26" transform="rotate(60 88 98)" fill="#6f8f4e"/>
+<path d="M30 116 L90 116 L82 162 L38 162 Z" fill="#b5683f"/><rect x="26" y="108" width="68" height="14" rx="3" fill="#a05a35"/></g></defs>
+<use href="#plante" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#plante" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#plante" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

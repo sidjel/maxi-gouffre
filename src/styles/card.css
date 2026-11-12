@@ -1,0 +1,36 @@
+/* Carte en papier façon étiquette de rayon. Tailles en em : font-size règle toute la carte. */
+.card { position: relative; width: 15em; height: 21em; perspective: 60em; flex: none; outline-offset: .3em; }
+.card-inner { position: absolute; inset: 0; transform-style: preserve-3d; }
+.card-face {
+  position: absolute; inset: 0; border-radius: .8em; border: .22em solid var(--ink); backface-visibility: hidden;
+  box-shadow: .25em .3em 0 rgba(42, 34, 24, .35); overflow: hidden;
+}
+.card-front { background: var(--paper); display: flex; flex-direction: column; }
+.card-back { transform: rotateY(180deg); background: repeating-linear-gradient(45deg, var(--rust) 0 1em, #a54a37 1em 2em); display: grid; place-items: center; }
+.card-back span { font: 400 2.4em/1 var(--font-title); color: var(--paper); text-align: center; text-shadow: .06em .08em 0 var(--ink); }
+
+.card-band { display: flex; align-items: center; justify-content: space-between; padding: .45em .6em .45em .8em; background: var(--stage-color); border-bottom: .18em solid var(--ink); }
+.card-stage { font: 700 1.2em var(--font-ui); color: var(--paper); letter-spacing: .04em; text-transform: uppercase; text-shadow: .05em .06em 0 rgba(0, 0, 0, .35); }
+.card-power {
+  width: 2.3em; height: 2.3em; border-radius: 50%; background: var(--mustard); border: .16em solid var(--ink);
+  display: grid; place-items: center; font: 400 1.5em/1 var(--font-title); color: var(--ink);
+}
+.card-art { flex: 1; display: grid; place-items: center; padding: .6em; background: radial-gradient(circle at 50% 60%, #fffaf0, var(--cream)); }
+.card-art img { max-width: 80%; max-height: 7.5em; object-fit: contain; }
+.card-name { padding: .2em .6em 0; font: 400 1.55em/1.05 var(--font-title); text-align: center; color: var(--ink); }
+.card-age { margin: .4em .9em .2em; height: .5em; border: .1em solid var(--ink); border-radius: .3em; background: var(--cream); overflow: hidden; }
+.card-age i { display: block; height: 100%; background: linear-gradient(90deg, var(--fresh), var(--ripe) 50%, var(--rotten)); transform-origin: 0 50%; }
+.card-props { list-style: none; margin: 0; padding: .3em .5em .7em; display: flex; flex-wrap: wrap; justify-content: center; gap: .3em; }
+.card-props li { padding: .1em .5em; border: .12em solid var(--ink-soft); border-radius: .4em; font: 700 .95em var(--font-ui); color: var(--ink-soft); background: var(--cream); transform: rotate(-2deg); }
+.card-props li:nth-child(2n) { transform: rotate(2deg); }
+
+.card--frais { --stage-color: var(--fresh); }
+.card--mur { --stage-color: var(--ripe); }
+.card--pourri { --stage-color: var(--rotten); }
+.card--pourri .card-art { background: radial-gradient(circle at 30% 40%, rgba(123, 90, 107, .18) 0 .8em, transparent .9em), radial-gradient(circle at 70% 70%, rgba(123, 90, 107, .2) 0 1.1em, transparent 1.2em), var(--cream); }
+.card--pourri .card-art img { filter: saturate(.55) sepia(.3); }
+
+/* Une carte qui change de stade se retourne sous nos yeux. */
+.card.is-turning .card-inner { animation: card-turn .6s ease-in-out; }
+@keyframes card-turn { 50% { transform: rotateY(90deg); } }
+.reduce-motion .card.is-turning .card-inner { animation: none; }

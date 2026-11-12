@@ -1,0 +1,48 @@
+{
+  "arrive": { "priority": 3, "once": true, "lines": [
+    "[TEMP] Bienvenue au rayon 7. Il n'y a pas de rayon 8. Il n'y a jamais eu de rayon 8.",
+    "[TEMP] Ah, un client. Ou un joueur. Ne touchez à rien. Enfin si, c'est un peu le principe du jeu."
+  ] },
+  "firstNear": { "priority": 2, "once": true, "lines": [
+    "[TEMP] Ce produit vous regarde. Scannez-le avant qu'il ne vous scanne."
+  ] },
+  "firstScan": { "priority": 3, "once": true, "lines": [
+    "[TEMP] Bravo. Vous venez de réduire un aliment en carte à jouer. Vos parents seraient fiers. Ou inquiets."
+  ] },
+  "scan": { "priority": 1, "lines": [
+    "[TEMP] Bip. C'est la seule chose gentille que ce magasin sache dire.",
+    "[TEMP] Encore une âme en carton dans votre Panier.",
+    "[TEMP] La douchette a faim. La douchette a toujours faim."
+  ] },
+  "scan:banane": { "priority": 1, "lines": ["[TEMP] Une banane. Déjà à moitié mûre. Comme vous."] },
+  "scan:steak": { "priority": 1, "lines": ["[TEMP] Un steak haché. Ne demandez pas haché à partir de quoi."] },
+  "scan:pile": { "priority": 1, "lines": ["[TEMP] Une pile. Enfin quelque chose dans ce rayon qui a de l'énergie."] },
+  "scan:plante": { "priority": 1, "lines": ["[TEMP] Vous avez scanné une plante vivante. « Vivante » était peut-être un peu optimiste."] },
+  "scan:biere": { "priority": 1, "lines": ["[TEMP] De la bière au rayon petit-déjeuner. Personne ne juge. Sauf moi."] },
+  "scan:fromage": { "priority": 1, "lines": ["[TEMP] Ce fromage coulait déjà avant l'ouverture. Le magasin n'a jamais ouvert."] },
+  "already": { "priority": 2, "lines": [
+    "[TEMP] Déjà scanné. Il ne reste qu'une étiquette et un vague sentiment de culpabilité.",
+    "[TEMP] Rupture de stock. Comme votre patience, j'imagine."
+  ] },
+  "idle": { "priority": 1, "lines": [
+    "[TEMP] Vous êtes toujours là ? Le magasin ferme dans… non. Il ne ferme jamais.",
+    "[TEMP] Si vous restez immobile, les tubes du plafond vont finir par vous remarquer.",
+    "[TEMP] Je compte les secondes. J'ai l'éternité. Vous, non."
+  ] },
+  "basket": { "priority": 2, "once": true, "lines": [
+    "[TEMP] Votre Panier. Des cartes qui pourrissent en silence, comme tout ici."
+  ] },
+  "bump": { "priority": 1, "once": true, "lines": [
+    "[TEMP] Ça, c'est un obstacle. Dans le métier, on appelle ça du « level design »."
+  ] },
+  "aisleEnd": { "priority": 1, "lines": [
+    "[TEMP] Le rayon continue. Vous, non. Question de budget.",
+    "[TEMP] Plus loin, c'est le rayon suivant. Il ressemble à celui-ci. Ils se ressemblent tous."
+  ] },
+  "allScanned": { "priority": 3, "once": true, "lines": [
+    "[TEMP] Vous avez vidé le rayon. Un employé invisible va tout remettre en place. Pour toujours."
+  ] },
+  "settings": { "priority": 1, "once": true, "lines": [
+    "[TEMP] Vous trichez avec les réglages ? Allez-y, je ne dirai rien. Enfin, je dirai tout."
+  ] }
+}

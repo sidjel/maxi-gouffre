@@ -1,0 +1,73 @@
+/* Calques du décor, produits, personnage. Seuls transform et opacity sont animés. */
+.layer { position: absolute; inset: 0; pointer-events: none; }
+.decor { position: absolute; left: 0; top: 0; will-change: transform; pointer-events: none; }
+.plane { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+.layer-front { z-index: 3; }
+.layer-plane { z-index: 2; }
+
+/* Produits sur les étagères */
+.product { position: absolute; left: 0; top: 0; pointer-events: auto; cursor: pointer; }
+.product > img { display: block; width: 100%; height: 100%; transform-origin: 50% 100%; transition: transform .18s ease-out, opacity .5s ease-in; }
+.product.is-near > img { transform: translateY(-8px) scale(1.08); }
+.product.is-gone > img { opacity: 0; transform: scale(.6); }
+.product-glow {
+  position: absolute; left: -15%; right: -15%; bottom: -14px; height: 28px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 246, 205, .95), rgba(255, 246, 205, 0)); opacity: 0; transition: opacity .2s;
+}
+.product.is-near .product-glow { opacity: 1; }
+.product-tag {
+  position: absolute; left: 50%; bottom: calc(100% + 18px); width: max-content; max-width: 360px;
+  padding: 8px 18px 10px; background: var(--paper); border: 4px solid var(--ink); border-radius: 6px;
+  font: 700 36px/1.1 var(--font-ui); color: var(--ink); text-align: center;
+  transform: translateX(-50%) translateY(10px) scale(.85); opacity: 0; transition: transform .18s ease-out, opacity .18s; pointer-events: none;
+  box-shadow: 4px 5px 0 rgba(42, 34, 24, .25);
+}
+.product-tag::after {
+  content: ''; position: absolute; left: 50%; top: 100%; width: 22px; height: 22px; margin-left: -11px; margin-top: -11px;
+  background: var(--paper); border-right: 4px solid var(--ink); border-bottom: 4px solid var(--ink); transform: rotate(45deg);
+}
+.product-tag small { display: block; font: 400 26px var(--font-ui); color: var(--ink-soft); }
+.product.is-near .product-tag { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); animation: tag-bob 1.4s ease-in-out .2s infinite; }
+@keyframes tag-bob { 50% { transform: translateX(-50%) translateY(-8px) scale(1); } }
+.product-rupture {
+  position: absolute; left: 50%; bottom: 0; padding: 4px 12px; background: var(--mustard); border: 3px solid var(--ink);
+  font: 700 22px var(--font-ui); transform: translateX(-50%) rotate(-4deg); opacity: 0; transition: opacity .4s .3s;
+}
+.product.is-gone .product-rupture { opacity: 1; }
+.product-scanline {
+  position: absolute; left: -10%; right: -10%; top: 0; height: 6px; background: #e0473a; border-radius: 3px; opacity: 0;
+  box-shadow: 0 0 12px 2px rgba(224, 71, 58, .6);
+}
+.product.is-scanning .product-scanline { animation: scanline .45s ease-in-out infinite alternate; }
+@keyframes scanline { from { opacity: .9; transform: translateY(0); } to { opacity: .9; transform: translateY(var(--h, 120px)); } }
+
+/* Acteurs (personnage et obstacles), triés par profondeur via z-index */
+.actor { position: absolute; left: 0; top: 0; will-change: transform; pointer-events: none; }
+.prop-img { position: absolute; display: block; }
+.char-shadow {
+  position: absolute; left: -90px; top: -22px; width: 180px; height: 44px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(40, 30, 18, .38), rgba(40, 30, 18, 0)); will-change: transform;
+}
+.char-sheet { position: absolute; will-change: transform; }
+.char-view { position: absolute; inset: 0; visibility: hidden; }
+.char-view.is-on { visibility: visible; }
+.char-frame { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
+.char-frame.is-on { visibility: inherit; }
+.char-prop { position: absolute; display: block; will-change: transform; }
+
+/* Laser de la douchette */
+.laser {
+  position: absolute; left: 0; top: 0; height: 5px; margin-top: -2.5px; transform-origin: 0 50%; border-radius: 3px;
+  background: linear-gradient(90deg, rgba(224, 71, 58, 1), rgba(224, 71, 58, .55)); box-shadow: 0 0 10px 2px rgba(224, 71, 58, .45);
+  opacity: 0; pointer-events: none; z-index: 5000;
+}
+.laser.is-on { animation: laser-flicker .09s steps(2) infinite; }
+@keyframes laser-flicker { from { opacity: 1; } to { opacity: .7; } }
+
+.particles { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; z-index: 4; pointer-events: none; }
+
+/* Mode debug : zone de marche */
+.debug-mask { position: absolute; left: 0; top: 0; overflow: visible; z-index: 6000; pointer-events: none; }
+
+.reduce-motion .product.is-near .product-tag { animation: none; }
+.reduce-motion .laser.is-on { animation: none; opacity: 1; }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="190" viewBox="0 0 520 190">
+<path d="M90 0 L90 64 M430 0 L430 64" stroke="#5f686c" stroke-width="4"/><defs><g id="s">
+<rect x="20" y="62" width="480" height="116" rx="8" fill="#efe6cc"/>
+<rect x="20" y="62" width="480" height="20" rx="4" fill="#87949a"/>
+<text x="260" y="132" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="46" text-anchor="middle" fill="#3b332a" stroke="none" >RAYON 7</text>
+<text x="260" y="164" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" text-anchor="middle" fill="#6b604f" stroke="none" >PETIT-DÉJEUNER ET AUTRES REGRETS</text></g></defs>
+<use href="#s" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#s" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#s" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

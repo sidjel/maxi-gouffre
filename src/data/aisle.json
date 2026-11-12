@@ -1,0 +1,48 @@
+{
+  "id": "rayon-7",
+  "name": "[TEMP] Rayon 7 — Petit-déjeuner et autres regrets",
+  "world": { "width": 4200, "height": 1080 },
+  "camera": { "minX": 300, "maxX": 1980 },
+  "floor": { "yBack": 715, "yFront": 1010 },
+  "spawn": { "x": 560, "y": 860, "view": "front", "side": 1 },
+  "endZones": { "left": 420, "right": 3780 },
+  "walk": {
+    "polygon": [[350, 715], [3850, 715], [3880, 1012], [320, 1012]],
+    "holes": [
+      { "id": "palette", "shape": "ellipse", "cx": 1525, "cy": 818, "rx": 160, "ry": 42 },
+      { "id": "bac", "shape": "ellipse", "cx": 2960, "cy": 888, "rx": 132, "ry": 34 },
+      { "id": "panneau", "shape": "ellipse", "cx": 2290, "cy": 968, "rx": 52, "ry": 18 }
+    ]
+  },
+  "decor": [
+    { "id": "lointain", "image": "art/aisle/far.svg", "x": -300, "y": 0, "w": 3300, "h": 1080, "parallax": 0.35, "plane": "back" },
+    { "id": "rayon", "image": "art/aisle/wall.svg", "x": 0, "y": 0, "w": 4200, "h": 1080, "parallax": 1, "plane": "back" },
+    { "id": "panonceau-1", "image": "art/aisle/sign.svg", "x": 1400, "y": 0, "w": 520, "h": 190, "parallax": 1.08, "plane": "front" },
+    { "id": "panonceau-2", "image": "art/aisle/sign.svg", "x": 3050, "y": 0, "w": 520, "h": 190, "parallax": 1.08, "plane": "front" },
+    { "id": "pilier-1", "image": "art/aisle/pillar.svg", "x": 2000, "y": 0, "w": 210, "h": 1080, "parallax": 1.35, "plane": "front" },
+    { "id": "pilier-2", "image": "art/aisle/pillar.svg", "x": 3800, "y": 0, "w": 210, "h": 1080, "parallax": 1.35, "plane": "front" },
+    { "id": "tete-de-gondole", "image": "art/aisle/endcap.svg", "x": 2320, "y": 830, "w": 660, "h": 320, "parallax": 1.3, "plane": "front" }
+  ],
+  "props": [
+    { "id": "palette", "image": "art/aisle/pallet.svg", "x": 1525, "y": 835, "w": 360, "h": 300 },
+    { "id": "bac", "image": "art/aisle/bin.svg", "x": 2960, "y": 905, "w": 300, "h": 200 },
+    { "id": "panneau", "image": "art/aisle/wetfloor.svg", "x": 2290, "y": 980, "w": 130, "h": 190 }
+  ],
+  "products": [
+    { "product": "banane", "x": 640, "y": 580 },
+    { "product": "lait", "x": 900, "y": 440 },
+    { "product": "steak", "x": 1160, "y": 580 },
+    { "product": "baguette", "x": 1880, "y": 300 },
+    { "product": "glace", "x": 2140, "y": 580 },
+    { "product": "pile", "x": 2420, "y": 440 },
+    { "product": "cereales", "x": 2680, "y": 580 },
+    { "product": "biere", "x": 3380, "y": 440 },
+    { "product": "plante", "x": 3640, "y": 580 },
+    { "product": "fromage", "x": 3900, "y": 440 }
+  ],
+  "shelves": {
+    "units": [[0, 1350], [1700, 2850], [3200, 4200]],
+    "top": 170,
+    "levels": [300, 440, 580, 700]
+  }
+}

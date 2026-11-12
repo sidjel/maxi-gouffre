@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="1080" viewBox="0 0 210 1080">
+<g stroke="#2a2218" stroke-opacity=".5" stroke-width="2">
+<rect x="0" y="0" width="150" height="1080" fill="#d8d0bb"/>
+<rect x="150" y="0" width="60" height="1080" fill="#b9b19c"/>
+<rect x="0" y="980" width="150" height="100" fill="#8d8676"/><rect x="150" y="980" width="60" height="100" fill="#756f61"/>
+<rect x="0" y="560" width="150" height="16" fill="#9a927e"/>
+<rect x="18" y="380" width="114" height="120" rx="6" fill="#6f8f6b"/>
+<text x="75" y="440" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="26" text-anchor="middle" fill="#f7f1e1" stroke="none" >SORTIE</text>
+<text x="75" y="478" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30" text-anchor="middle" fill="#f7f1e1" stroke="none" >↑</text>
+<rect x="28" y="640" width="94" height="130" fill="#efe6cc"/>
+<text x="75" y="672" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="13" text-anchor="middle" fill="#4a4136" stroke="none" >AVIS</text>
+<text x="75" y="694" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#4a4136" stroke="none" >LE MAGASIN</text>
+<text x="75" y="710" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#4a4136" stroke="none" >DÉCLINE TOUTE</text>
+<text x="75" y="726" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#4a4136" stroke="none" >RESPONSABILITÉ</text>
+<text x="75" y="742" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#4a4136" stroke="none" >EN CAS DE</text>
+<text x="75" y="758" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="11" text-anchor="middle" fill="#4a4136" stroke="none" >TOUT.</text></g>
+</svg>

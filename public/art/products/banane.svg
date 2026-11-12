@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="110" viewBox="0 0 150 110">
+<defs><g id="banane">
+<g transform="rotate(-8 120 30) translate(0 0)">
+<path d="M22 44 Q76 112 136 34 Q134 52 124 62 Q76 98 30 56 Z" fill="#e1c044"/>
+<path d="M22 44 L14 40 L26 52 Z" fill="#6e5a26"/>
+</g>
+<g transform="rotate(1 120 30) translate(0 -6)">
+<path d="M22 44 Q76 112 136 34 Q134 52 124 62 Q76 98 30 56 Z" fill="#e8cb52"/>
+<path d="M22 44 L14 40 L26 52 Z" fill="#6e5a26"/>
+</g>
+<g transform="rotate(10 120 30) translate(0 -12)">
+<path d="M22 44 Q76 112 136 34 Q134 52 124 62 Q76 98 30 56 Z" fill="#e1c044"/>
+<path d="M22 44 L14 40 L26 52 Z" fill="#6e5a26"/>
+</g><path d="M128 30 L140 14 L148 20 L136 36 Z" fill="#7a6a30"/><circle cx="70" cy="72" r="3" fill="#8a6f2e"/><circle cx="92" cy="66" r="2.5" fill="#8a6f2e"/></g></defs>
+<use href="#banane" transform="translate(4 5)" stroke="#2a2218" stroke-opacity=".22" stroke-width="12" stroke-linejoin="round" opacity=".9"/>
+<use href="#banane" stroke="#f7f1e1" stroke-width="12" stroke-linejoin="round"/>
+<use href="#banane" stroke="#3b332a" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
